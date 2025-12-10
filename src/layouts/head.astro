@@ -1,0 +1,22 @@
+---
+import { directus } from "@/server/directus";
+import readFile from "@/server/readFile";
+import { readSettings } from "@directus/sdk";
+const { title, description } = Astro.props;
+const siteSettings = await directus.request(readSettings());
+const favicon = await readFile(siteSettings?.public_favicon,title) || '/assets/img/logos/favicon.png';
+import '@/styles/main.css';
+---
+
+<head>
+ <meta charset="UTF-8" />
+ <link
+   rel="icon"
+   type="image/png"
+   href={favicon}
+ />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta name="description" content={description} />
+ <link rel="canonical" href={Astro.request.url} />
+ <title>{title}</title>
+</head>

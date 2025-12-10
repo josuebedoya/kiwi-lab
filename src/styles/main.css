@@ -1,0 +1,5 @@
+@import "./components/form.css";
+
+:root{
+  --main-color-one: #4CAF50; /* Replace by primary color of project*/
+}

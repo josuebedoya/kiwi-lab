@@ -1,0 +1,65 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro"
+import {actions} from 'astro:actions';
+---
+<style>
+  .bg{
+    background: #fff;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .presentantion{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, #020288 0%, #9d9999 35%, #01019b 100%);
+    opacity: .9;
+    flex-direction: column;
+  }
+
+  .btn{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    max-height: max-content;
+    font-family: "Dubai", cursive;
+    letter-spacing: 2px;
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .btn:hover{
+    background: #0056b3;
+    box-shadow: inset 0 0 10px 2px #fff;
+    transform: translateY(10px);
+  }
+
+  p{
+    color: #fff;
+    font-size: 30px;
+    font-family: "Dubai", cursive;
+    text-align: center;
+    max-width: 600px;
+    background: #0039;
+    padding: 10px 30px;
+  }
+</style>
+<LayoutPage title="Inicio" description="Página de inicio">
+ <div class="bg"></div>
+ <div class="presentantion">
+  <p>HOLA BIENVENIDOS A UN NUEVO PROYECTO</p>
+  <a href="/migrations" class="btn">Iniciar Migraciones</a>
+ </div>
+ <div>
+</LayoutPage>

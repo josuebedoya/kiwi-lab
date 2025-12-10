@@ -1,0 +1,56 @@
+.form #message {
+  display: none;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.form #message.show {
+  display: block;
+  opacity: 1;
+}
+.form .message {
+  color: #fff;
+  background-color: var(--main-color-one);
+  max-width: max-content;
+  padding: 10px 20px;
+  font-size: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.form .loading {
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.3333333333);
+  opacity: 0;
+  pointer-events: none;
+  inset: 0;
+  transform: translateX(-5%) translateY(-5%);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form .loader {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ddd;
+  border-top-color: var(--main-color-one);
+  border-radius: 50%;
+  margin: 10px auto;
+}
+.form .loader.show {
+  animation: spinLoading 1s linear infinite;
+  opacity: 1;
+}
+.form .loading.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@keyframes spinLoading {
+  to {
+    transform: rotate(360deg);
+  }
+}
