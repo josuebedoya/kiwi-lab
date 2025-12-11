@@ -1,8 +1,11 @@
 ---
 import {actions} from 'astro:actions';
+import {directus} from "@/server/directus.ts";
+import {readItems} from "@directus/sdk";
 
 const itemsMenu = [
   {title: 'Menú', key: 'menu'},
+  {title: 'Contact', key: 'contact'},
   {title: 'Finish', key: 'finish'},
 ];
 ---
@@ -149,10 +152,22 @@ const itemsMenu = [
 
    .section{
      display: none;
+     animation: fadeIn 0.5s ease-in-out;
    }
 
    .section.active{
      display: block;
+   }
+
+   @keyframes fadeIn{
+     from{
+       opacity: 0;
+       transform: translateY(30px);
+     }
+     to{
+       opacity: 1;
+       transform: translateY(0);
+     }
    }
  </style>
 </head>
@@ -194,30 +209,55 @@ const itemsMenu = [
    <p>Si todo está configurado correctamente, puedes iniciar la migración del modelo de Menú.</p>
 
    <div class="controls">
-    <button id="migrateMenu">Crear Modelo Menú</button>
-    <div id="migrateMenuMessage" class="message"></div>
+    <button id="migrateModelMenu">Crear Modelo Menú</button>
+    <div id="migrateModelMenuMessage" class="message"></div>
    </div>
 
    <p>Luego podrás crear los campos del modelo.</p>
    <div class="controls">
-    <button id="migrateFields">Crear Fields</button>
-    <div id="migrateFieldsMessage" class="message"></div>
+    <button id="migrateFieldsMenu">Crear Fields</button>
+    <div id="migrateFieldsMenuMessage" class="message"></div>
+   </div>
+  </div>
+  <div id="contact" class="section">
+   <h1>
+    Migración Contact Info
+   </h1>
+   <p>
+    Puedes iniciar la migración del modelo de Contact Info.</p>
+   <br>
+   <div class="controls">
+    <button id="migrateModelInfoContact">Crear Modelo Contact Info</button>
+    <div id="migrateModelInfoContactMessage" class="message"></div>
+   </div>
+
+   <p>
+    Seguidamente Puedes crear los campos del modelo.
+   </p>
+
+   <div class="controls">
+    <button id="migrateFieldsInfoContact">Crear Fields</button>
+    <div id="migrateFieldsInfoContactMessage" class="message"></div>
    </div>
   </div>
   <div id="finish" class="section">
-    <h1>¡Migración completada!</h1>
-    <p>Has completado todas las migraciones necesarias.</p>
-     <p>Para que no quede BASURA en el proyecto,  elimina los siguientes Archivos:</p>
-    <ul>
-     <li><code>/src/actions</code></li>
-      <li><code>/src/server/database</code></li>
-     <li><code>/src/pages/migrations.astro</code></li>
-    </ul>
+   <h1>¡Migración completada!</h1>
+   <p>Has completado todas las migraciones necesarias.</p>
+   <p>Para que no quede BASURA en el proyecto, elimina los siguientes Archivos:</p>
+   <ul>
+    <li><code>/src/actions</code></li>
+    <li><code>/src/server/database</code></li>
+    <li><code>/src/pages/migrations.astro</code></li>
+    <p>Si tu sitio web no cuenta con buscador o Formularios, Puedes tambien eliminar</p>
+    <li><code>/src/components/species/form.astro</code></li>
+    <li><code>/src/pages/api/form</code></li>
+    <li><code>/src/pages/api/search</code></li>
+   </ul>
   </div>
  </div>
 </div>
 <script>
-  import { actions } from "astro:actions";
+  import {actions} from "astro:actions";
 
   const migrate = (model) => {
     const button = document.querySelector(`#${model}`);
@@ -242,9 +282,12 @@ const itemsMenu = [
     });
   };
 
-  migrate("migrateMenu");
-  migrate("migrateFields");
+  migrate("migrateModelMenu");
+  migrate("migrateFieldsMenu");
+  migrate("migrateModelInfoContact");
+  migrate("migrateFieldsInfoContact");
 
+  // Handler Btns
   window.addEventListener("load", () => {
     const params = new URLSearchParams(window.location.search);
     const activeItem = params.get("migrate");

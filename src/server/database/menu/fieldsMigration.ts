@@ -1,5 +1,6 @@
 import {directus} from "@/server/directus";
 import {createField} from '@directus/sdk';
+import {commonFields} from "@/server/database/fields/commonFields.ts";
 
 const collection = 'menu';
 const choicesPosition = [
@@ -54,24 +55,8 @@ const fieldLink = {
 export async function migrateFieldsMenu() {
   try {
     const fields = [
-      {
-        field: 'status',
-        type: 'string',
-        schema: {
-          type: 'string',
-          name: 'Estado',
-          default_value: 'published',
-          is_nullable: false,
-          max_length: 50
-        },
-        meta: {
-          interface: 'select-dropdown',
-          options: {
-            choices: choicesStatus
-          },
-          required: true
-        }
-      },
+      commonFields.status,
+      commonFields.date_created,
       fieldTitle,
       fieldLink,
       {
@@ -87,6 +72,10 @@ export async function migrateFieldsMenu() {
           interface: 'select-dropdown',
           options: {
             choices: choicesPosition
+          },
+          display: "labels",
+          "display_options": {
+            "choices": choicesPosition
           }
         }
       },
@@ -107,7 +96,7 @@ export async function migrateFieldsMenu() {
       }
     ];
 
-    const res= {};
+    const res = {};
 
     for (const f of fields) {
       await directus.request(createField(collection, f));
@@ -115,7 +104,7 @@ export async function migrateFieldsMenu() {
       console.log('Field created:', f.field);
     }
 
-    return {res: `Fields: ${JSON.stringify(res, null,2)} Creados En la collection`, collection  };
+    return {res: `Fields: ${JSON.stringify(res, null, 2)} Creados En la collection`, collection};
   } catch (err) {
     console.error('Error: Triying create Fields menu', err);
     return {res: 'Error creando  Fields en la collection: ' + collection + ' ' + JSON.stringify(err, null, 2)};
