@@ -1,7 +1,7 @@
 import type {APIContext} from 'astro';
 import directus from '@/server/directus'
 import {readItems} from "@directus/sdk";
-import {SITE_URL} from "astro:env/client";
+import {PUBLIC_SITE_URL} from "astro:env/client";
 
 // Must be been created menu model into directus with field link
 const itemsMenu = await directus.request(
@@ -28,7 +28,7 @@ const formatItems = itemsMenu.map((item) => {
 const links = [...formatItems].flatMap(l => l);
 
 export async function GET(context: APIContext) {
-  const site = context.site?.toString() || SITE_URL;
+  const site = context.site?.toString() || PUBLIC_SITE_URL;
 
   // Generate URLs for all content
   const urls: Array<{ loc: string; changefreq?: string; priority?: number, date?: string | null }> = [];
