@@ -1,5 +1,13 @@
-@import "./components/form.css";
+@import url('./global.css');
+@import url('./default.css');
 
-:root{
-  --main-color-one: #4CAF50; /* Replace by primary color of project*/
-}
+/** Vendor styles **/
+@import "./vendor/animate.css";
+@import "./vendor/bootstrap.min.css";
+@import "./vendor/magnific-popup.css";
+@import "./vendor/nice-select.css";
+@import "./vendor/slick.css";
+
+/** Component styles **/
+@import "./components/form.css";
+@import "./components/header.css";

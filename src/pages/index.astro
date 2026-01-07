@@ -1,69 +1,28 @@
 ---
-import LayoutPage from "@/layouts/layoutPage.astro"
-import {actions} from 'astro:actions';
+import AboutHero from "@/components/organisms/home/aboutHero.astro";
+import Differentials from "@/components/organisms/home/differentials.astro";
+import Experience from "@/components/organisms/home/experience.astro";
+import Faq from "@/components/organisms/home/faq.astro";
+import Impact from "@/components/organisms/home/impact.astro";
+import LetsWork from "@/components/organisms/home/letsWork.astro";
+import MainHero from "@/components/organisms/home/mainHero.astro";
+import Partners from "@/components/organisms/home/partners.astro";
+import RealImpact from "@/components/organisms/home/realImpact.astro";
+import LayoutPage from "@/layouts/layoutPage.astro";
 ---
-<style>
-  .bg{
-    background: linear-gradient(135deg, #0d0d40 0%, #1b1b5e 50%, #24248a 100%);
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
 
-  .presentantion{
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    backdrop-filter: blur(6px);
-  }
-
-  .presentantion p{
-    color: #f8f9ff;
-    font-size: 2rem;
-    font-family: "Dubai", sans-serif;
-    text-align: center;
-    max-width: 700px;
-    background: rgba(255,255,255,0.08);
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    letter-spacing: 1px;
-    line-height: 1.4;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    backdrop-filter: blur(4px);
-  }
-
-  .btn{
-    margin-top: 2rem;
-    padding: 14px 32px;
-    border-radius: 12px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    font-family: "Dubai", sans-serif;
-    text-decoration: none;
-    color: #fff;
-    background: linear-gradient(135deg, #007bff, #005ad4);
-    letter-spacing: 2px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  }
-
-  .btn:hover{
-    background: linear-gradient(135deg, #0056b3, #003d91);
-    transform: translateY(4px) scale(1.02);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.35);
-  }
-</style>
-<LayoutPage title="Inicio" description="Página de inicio" keywords='inicio, proyecto, migraciones'>
-  <div>
- <div class="bg"></div>
- <div class="presentantion">
-  <p>HOLA BIENVENIDOS A UN NUEVO PROYECTO</p>
-  <a href="/migrations" class="btn">Iniciar Migraciones</a>
- </div>
- <div>
+<LayoutPage
+  title="Inicio"
+  description="Página de inicio"
+  keywords="inicio, proyecto, migraciones"
+>
+  <MainHero />
+  <AboutHero />
+  <Differentials />
+  <Impact />
+  <RealImpact />
+  <Partners />
+  <Experience />
+  <Faq />
+  <LetsWork />
 </LayoutPage>
