@@ -1,0 +1,32 @@
+---
+import toLink from "@/utils/toLink.ts";
+
+interface Props {
+  id?: number;
+  title: string;
+  link: string;
+  hasItems: boolean;
+  isActive?: boolean;
+}
+
+const { title, link, hasItems = false, isActive = false, id } = Astro.props;
+---
+
+<li
+  class={`menu-item ${hasItems ? "has-children" : ""}`}
+  aria-label={id?.toString() || title}
+>
+  <a
+    class={`"nav-link" ${isActive ? "active" : ""}`}
+    href={toLink(link)}
+    target="_self">{title}</a
+  >
+
+  {
+    hasItems && (
+      <ul class="sub-menu">
+        <slot />
+      </ul>
+    )
+  }
+</li>

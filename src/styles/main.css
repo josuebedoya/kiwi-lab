@@ -1,4 +1,4 @@
-@import url('./global.css');
+@import url('./global.scss');
 @import url('./default.css');
 
 /** Vendor styles **/
@@ -9,5 +9,16 @@
 @import "./vendor/slick.css";
 
 /** Component styles **/
-@import "./components/form.css";
-@import "./components/header.css";
+@import "./components/form.scss";
+@import "./components/header.scss";
+@import "./components/footer.scss";
+@import url('./components/hero.scss');
+@import url('./components/about.scss');
+@import url('./components/services.scss');
+@import url('./components/counter.scss');
+@import url('./components/impact.scss');
+@import url('./components/partners.scss');
+@import url('./components//cta.scss');
+
+/** Responsive styles **/
+@import url('./responsive.scss');

@@ -1,0 +1,29 @@
+---
+type Item = {
+  label: string;
+  link: string;
+  icon: string;
+};
+
+type Props = {
+  items: Item[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="widget social-widget mb-40 wow fadeInUp" data-wow-delay=".25s">
+  <h4 class="widget-title">Síguenos</h4>
+  <ul class="social-nav">
+    {
+      items?.map((item) => (
+        <li>
+          <a href={item.link}>
+            <i class={item.icon} />
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

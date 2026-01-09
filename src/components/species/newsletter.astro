@@ -1,0 +1,26 @@
+---
+interface Props {
+  title?: string;
+  summary?: string;
+}
+const { title, summary } = Astro.props;
+---
+
+<div class="widget newsletter-widget mb-40 wow fadeInUp" data-wow-delay=".30s">
+  <div class="newsletter-content">
+    {title && <h4 class="widget-title">{title}</h4>}
+    {summary && <p>{summary}</p>}
+    <form>
+      <div class="form_group">
+        <input
+          type="email"
+          class="form_control"
+          placeholder="Correo..."
+          name="email"
+          required
+        />
+        <button class="main-btn">Registrarse</button>
+      </div>
+    </form>
+  </div>
+</div>

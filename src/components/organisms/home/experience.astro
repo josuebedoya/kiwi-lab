@@ -1,66 +1,51 @@
+---
+import CardExperience from "@/components/atoms/cardExperience.astro";
+import type { Btn } from "@/resources/defuaultTypes";
+
+type Item = {
+  experience_id: {
+    img: string;
+    title: string;
+    summary: string;
+  };
+};
+interface Props {
+  title?: string;
+  subtitle?: string;
+  summary?: string;
+  items?: Item[];
+  btn: Btn;
+}
+
+const { title, subtitle, summary, items, btn } = Astro.props;
+---
+
 <section class="process-area process-area-v1 pt-90 pb-85">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-7">
         <div class="section-title text-center mb-55 wow fadeInUp">
-          <span class="sub-title st-one">Process</span>
-          <h2>How Does We Works</h2>
-          <p>Professional Design Agency to provide solutions</p>
+          {title && <span class="sub-title st-one">{title}</span>}
+          {subtitle && <h2>{subtitle}</h2>}
+          {summary && <p>{summary}</p>}
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12 process-column">
-        <div
-          class="process-item text-center mb-40 wow fadeInUp"
-          data-wow-delay=".15s"
-        >
-          <div class="icon">
-            <img src="assets/images/icon/icon-7.png" alt="" />
-          </div>
-          <div class="text">
-            <h4>Project Layouts</h4>
-            <p>
-              Sed ut pericias unde omnis natus error sit voluptate ccusan tium
-              dolore mque laudan
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12 process-column">
-        <div
-          class="process-item text-center mb-40 wow fadeInUp"
-          data-wow-delay=".20s"
-        >
-          <div class="icon">
-            <img src="assets/images/icon/icon-8.png" alt="" />
-          </div>
-          <div class="text">
-            <h4>Project Analysis</h4>
-            <p>
-              Sed ut pericias unde omnis natus error sit voluptate ccusan tium
-              dolore mque laudan
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 col-sm-12 process-column">
-        <div
-          class="process-item text-center mb-40 wow fadeInUp"
-          data-wow-delay=".25s"
-        >
-          <div class="icon">
-            <img src="assets/images/icon/icon-9.png" alt="" />
-          </div>
-          <div class="text">
-            <h4>Final Results</h4>
-            <p>
-              Sed ut pericias unde omnis natus error sit voluptate ccusan tium
-              dolore mque laudan
-            </p>
-          </div>
-        </div>
-      </div>
+      {
+        items?.map(({ experience_id: item }: Item) => (
+          <CardExperience {...item} />
+        ))
+      }
+    </div>
+    <div class="btn-partners row justify-content-center mt-60 mb-100">
+      {
+        btn && (
+          <a href={btn.link} class="main-btn arrow-btn col-auto">
+            {btn.label}
+          </a>
+        )
+      }
     </div>
   </div>
 </section>

@@ -1,0 +1,27 @@
+---
+type Item = {
+  title: string;
+  link: string;
+};
+
+type Props = {
+  title?: string;
+  items: Item[];
+  delay?: string;
+};
+
+const { items, title, delay = ".15s" } = Astro.props;
+---
+
+<div class="widget footer-nav-widget mb-40 wow fadeInUp" data-wow-delay={delay}>
+  {title && <h4 class="widget-title">{title}</h4>}
+  <ul class="widget-nav">
+    {
+      items?.map((item) => (
+        <li>
+          <a href={item.link}>{item.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

@@ -1,0 +1,40 @@
+---
+type Item = {
+  partners_id: {
+    name: string;
+    logo: string;
+    link?: string;
+  };
+};
+interface Props {
+  title?: string;
+  items?: Item[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<section class="partners-area pt-125 pb-130">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="section-title text-center mb-55 wow fadeInUp">
+          <h2>{title}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="partners-wrapper wow fadeInUp">
+      {
+        items?.map(({ partners_id: item }: Item) => (
+          <div class="partner-item">
+            <div class="img-holder">
+              <a href={item?.link ?? "#"}>
+                <img src={item?.logo} alt={item?.name} />
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+.fancy-text-block-v1 .img-holder .shape {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.fancy-text-block-v1 .img-holder .shape.shape-one {
+  left: 0;
+}
+
+.fancy-text-block-v1 .img-holder .shape.shape.shape-two {
+  right: -30%;
+  z-index: -1;
+}
+
+.bototm-minus-200 {
+  margin-bottom: -200px;
+}
+
+.fancy-text-block .text-wrapper p {
+  margin-bottom: 45px;
+}
+
+.fancy-text-block-v1 .img-holder {
+  position: relative;
+  z-index: 1;
+  padding-left: 100px;
+}
+
+.fancy-text-block-v2 .text-wrapper {
+  padding-left: 70px;
+}
+
+.fancy-text-block .text-wrapper .section-title p,
+.about-area-v3 .text-wrapper .section-title p {
+  margin-bottom: 0;
+}
+
+.fancy-text-block-v1 li{
+  list-style: disc;
+  margin-left: 20px;
+  padding-left: 10px;
+}

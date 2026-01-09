@@ -1,25 +1,40 @@
-<section class="cta-area cta-area-v1 pt-130">
+---
+import type { Btn } from "@/resources/defuaultTypes";
+
+interface Props {
+  title?: string;
+  summary?: string;
+  img?: string;
+  btn?: Btn;
+}
+const { title, summary, img, btn } = Astro.props;
+---
+
+<section class="cta-area cta-area-v1 pt-130 pb-160">
   <div class="container-1450">
     <div class="cta-wrapper dark-blue-bg">
       <div class="cta-img wow fadeInDown">
-        <img src="assets/images/cta/img-1.jpg" alt="" />
+        <img src="/assets/images/cta/img-1.jpg" alt="" />
       </div>
       <div class="row">
         <div class="col-xl-8 col-lg-12">
           <div class="text-wrapper wow fadeInUp">
-            <div class="section-title section-title-white mb-55">
-              <span class="sub-title st-one">Let’s Work</span>
+            <div class="section-title section-title-heading mb-55">
               <h2>
-                Experience & innovative <span class="fill-text">solutions</span
-                >for <span class="fill-text">creative</span> design & development
-                <span class="fill-text">agency</span>
+                <div set:html={title} class="fill-text" />
               </h2>
+              <div set:html={summary} class="col-lg-8" />
             </div>
-            <a
-              href="contact.html"
-              class="main-btn bordered-btn btn-white arrow-btn"
-              >Let's Work Together</a
-            >
+            {
+              btn && (
+                <a
+                  href={btn?.link}
+                  class="main-btn bordered-btn arrow-btn btn-heading-hover"
+                >
+                  {btn?.label}
+                </a>
+              )
+            }
           </div>
         </div>
       </div>

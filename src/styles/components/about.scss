@@ -1,0 +1,29 @@
+/** about area home **/
+
+.about-area-v1 .img-holder-box {
+  position: relative;
+}
+
+.about-area-v1 .shape-one {
+  position: absolute;
+  bottom: 0;
+  left: -30px;
+}
+
+.about-area-v1 .img-holder img {
+  border-radius: 250px;
+}
+
+.about-area-v1 .text-wrapper h4 {
+  font-size: 22px;
+  color: var(--blue-dark);
+  margin-bottom: 20px;
+}
+
+.about-area-v1 .text-wrapper p {
+  margin-bottom: 20px;
+}
+
+.about-area-v1 .text-wrapper .list-style-one li {
+  margin-bottom: 15px;
+}

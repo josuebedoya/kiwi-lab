@@ -92,6 +92,22 @@
         $(".nav-menu").removeClass("menu-on");
     });
 
+    // acoridion
+    $('.accordion-wrapper').each(function () {
+        var cards = $(this).find('.card');
+        cards.each(function () {
+            var cardH = $(this).find('.card-header');
+            var cardBody = $(this).find('.collapse');
+            cardH.on('click', function () {
+                if (cardBody.hasClass('show')) {
+                    cardBody.collapse('hide');
+                } else {
+                    cardBody.collapse('show');
+                }
+            });
+        });
+    });
+
     // Document Ready
     $(document).ready(function() {
         mainMenu();

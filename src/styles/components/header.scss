@@ -79,7 +79,7 @@
   font-family: var(--rajdhani);
   text-transform: capitalize;
   font-weight: 700;
-  padding: 35px 18px;
+  padding: 15px 18px;
   line-height: 1;
 }
 
@@ -236,7 +236,7 @@
   display: block;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   color: var(--heading);
-  padding: 13px 20px;
+  padding: 20px 20px;
 }
 
 .header-navigation.breakpoint-on .nav-menu .main-menu ul li a:after {
@@ -277,14 +277,14 @@
   display: block;
   position: absolute;
   right: 0;
-  height: 42px;
+  height: 58px;
   width: 45px;
   top: 0;
   border-left: 1px solid #eaeaea;
   z-index: 2;
   background: transparent;
   text-align: center;
-  line-height: 45px;
+  line-height: 60px;
   cursor: pointer;
   color: #162542;
   font-size: 20px;
@@ -364,7 +364,7 @@
 }
 
 .header-navigation .navbar-close i {
-  color: #fff;
+  color: var(--heading);
   font-size: 20px;
 }
 
@@ -406,6 +406,9 @@
 
 .header-right-nav ul li.bar-item {
   cursor: pointer;
+  font-size: 20px;
+  border-radius: 8px;
+  color: var(--heading);
 }
 
 .header-right-nav ul li.bar-item a {
@@ -439,8 +442,8 @@
 }
 
 .navigation-style-v1 .container-fluid {
-  padding-left: 70px;
-  padding-right: 70px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 

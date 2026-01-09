@@ -1,12 +1,15 @@
 ---
 import ItemAcordion from "@/components/atoms/itemAcordion.astro";
 
-interface Props {
-  id: string;
-  items: {
+type Item = {
+  faq_id: {
     title: string;
     body: string;
-  }[];
+  };
+};
+interface Props {
+  id: string;
+  items: Item[];
 }
 
 const { id, items } = Astro.props;
@@ -15,7 +18,7 @@ const { id, items } = Astro.props;
 <div class="accordion-wrapper">
   <div id={id}>
     {
-      items?.map((item, index) => (
+      items?.map(({ faq_id: item }: Item, index) => (
         <ItemAcordion
           title={item.title}
           body={item.body}

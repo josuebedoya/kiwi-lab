@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+}
+
+const { title, summary } = Astro.props;
+---
+
+<div class="col-lg-4 col-md-6 col-sm-12">
+  <div
+    class="service-item service-style-three mb-30 wow fadeInUp"
+    data-wow-delay=".15s"
+  >
+    <div class="text">
+      <h3 class="title">
+        {title}
+      </h3>
+      <p>{summary}</p>
+    </div>
+  </div>
+</div>

@@ -2,9 +2,9 @@
 import Acordion from "@/components/species/acordion.astro";
 
 interface Props {
-  title: string;
+  title?: string;
   summary?: string;
-  items: {
+  items?: {
     title: string;
     body: string;
   }[];
@@ -27,7 +27,7 @@ const { items, title, summary } = Astro.props;
         </div>
       </div>
       <div class="col-lg-6">
-        <Acordion id="accordionOne" items={items} />
+        <Acordion id="accordionOne" items={items ?? []} />
       </div>
     </div>
   </div>
