@@ -1,0 +1,42 @@
+---
+import { getInfoData } from "@/server/services/getInfoData";
+
+const { data, error } = await getInfoData(["phones", "emails", "address"]);
+
+console.log("INFOOOOOOOOO", data);
+---
+
+<ul>
+  <li>
+    <i class="fal fa-map-marker-alt"></i>
+    {
+      data?.address?.map(({ address }: { address: string }) => (
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {address}
+        </a>
+      ))
+    }
+  </li>
+  <li>
+    <i class="fal fa-envelope-open"></i>
+    {
+      data?.emails?.map(({ email }: { email: string }) => (
+        <a href={`mailto:${email}`}>{email}</a>
+      ))
+    }
+  </li>
+  <li>
+    <i class="fal fa-phone"></i>
+    {
+      data?.phones?.map(
+        ({ number, code }: { number: string; code: string }) => (
+          <a href={`tel:${code}${number}`}>{`${code} ${number}`}</a>
+        )
+      )
+    }
+  </li>
+</ul>

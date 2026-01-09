@@ -1,0 +1,22 @@
+---
+import directus from "@/server/directus";
+import { readSettings } from "@directus/sdk";
+import CustomImage from "./customImage.astro";
+const siteSettings = await directus.request(readSettings());
+
+interface Props {
+  width?: number;
+  height?: number;
+}
+
+const { width = 190, height = 70 } = Astro.props;
+---
+
+<a href="/" class="brand-logo">
+  <CustomImage
+    id={siteSettings?.project_logo}
+    alt={siteSettings?.project_name ?? "Kiwi Lab Logo"}
+    width={width}
+    height={height}
+  />
+</a>

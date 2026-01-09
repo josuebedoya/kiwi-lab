@@ -870,11 +870,14 @@ button {
   font-size: 14px;
   border-radius: 50%;
   text-align: center;
-  color: #fff;
+  color: var(--heading);
+  font-weight: 600;
 }
 
 .offcanvas-panel .contact-us ul li a {
   display: block;
+  color: var(--text-color);
+  font-size: 18px;
 }
 
 .offcanvas-panel .contact-us ul li a:hover {

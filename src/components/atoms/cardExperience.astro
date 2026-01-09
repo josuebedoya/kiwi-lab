@@ -1,4 +1,6 @@
 ---
+import CustomImage from "./customImage.astro";
+
 interface Props {
   img: string;
   title: string;
@@ -13,7 +15,7 @@ const { img, title, summary } = Astro.props;
     data-wow-delay=".15s"
   >
     <div class="icon">
-      <img src={img} alt={title} />
+      <CustomImage id={img} alt={title} width={80} height={80} />
     </div>
     <div class="text">
       <h4>{title}</h4>

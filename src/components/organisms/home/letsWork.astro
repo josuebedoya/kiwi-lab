@@ -1,5 +1,6 @@
 ---
 import type { Btn } from "@/resources/defuaultTypes";
+import CustomImage from "@/components/atoms/customImage.astro";
 
 interface Props {
   title?: string;
@@ -14,7 +15,12 @@ const { title, summary, img, btn } = Astro.props;
   <div class="container-1450">
     <div class="cta-wrapper dark-blue-bg">
       <div class="cta-img wow fadeInDown">
-        <img src="/assets/images/cta/img-1.jpg" alt="" />
+        <CustomImage
+          id={img}
+          alt={title ?? "Hablemos"}
+          width={643}
+          height={303}
+        />
       </div>
       <div class="row">
         <div class="col-xl-8 col-lg-12">

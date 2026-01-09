@@ -98,3 +98,8 @@
 .partners-area-v1 .partner-item {
   text-align: center;
 }
+
+.partners-area .partner-item img{
+  max-height: 90px;
+  object-fit: contain;
+}

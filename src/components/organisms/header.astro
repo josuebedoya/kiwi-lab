@@ -1,6 +1,7 @@
 ---
 import { getMenuData } from "@/server/services/getMenuData";
 import Menu from "@/components/species/menu.astro";
+import Logo from "../atoms/logo.astro";
 
 const { data: menuData, error } = await getMenuData(0);
 
@@ -16,9 +17,7 @@ if (error) {
     <div class="container-fluid">
       <div class="primary-menu">
         <div class="site-branding">
-          <a href="index.html" class="brand-logo"
-            ><img src="/assets/images/logo/logo-kiwi.png" alt="Site Logo" /></a
-          >
+          <Logo />
         </div>
         <div class="nav-menu">
           <!-- Navbar Close -->

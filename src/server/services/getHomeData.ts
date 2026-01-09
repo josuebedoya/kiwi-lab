@@ -99,7 +99,6 @@ export const getHomeData = async (field?: f[]) => {
 
   const data = await directus?.request(readItems("home", { fields: joinedFields ?? [ "*" ] })) as any;
 
-  console.log("Home data fetched:", data);
   if (!data) {
     return nullDataResponse;
   }
@@ -153,6 +152,7 @@ export const getHomeData = async (field?: f[]) => {
       link: data?.btn_real_impact_link,
     },
   }
+  
   const partners_data = {
     title: data?.title_partners,
     items: data?.items_partners,

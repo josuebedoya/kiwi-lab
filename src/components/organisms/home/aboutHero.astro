@@ -1,5 +1,7 @@
 ---
+import CustomImage from "@/components/atoms/customImage.astro";
 import type { Btn } from "@/resources/defuaultTypes.ts";
+import { getCustomData } from "@/server/services/getCustomData";
 import toLink from "@/utils/toLink";
 interface Props {
   title?: string;
@@ -7,7 +9,9 @@ interface Props {
   summary?: string;
   btn?: Btn;
   img?: string;
+  seal: string;
 }
+const { data: seal } = await getCustomData(["seal"]);
 const { title, subtitle, summary, btn, img } = Astro.props;
 ---
 
@@ -17,14 +21,20 @@ const { title, subtitle, summary, btn, img } = Astro.props;
       <div class="col-lg-6">
         <div class="img-holder-box mb-50">
           <div class="img-holder wow fadeInLeft">
-            <img src="/assets/images/about/about-1.jpg" alt="Image" />
+            <CustomImage
+              id={img}
+              alt={subtitle ?? "Nosotros Kiwi"}
+              width={500}
+              height={712}
+            />
           </div>
           <div class="shape shape-one">
-            <span class="animate-float-y"
-              ><img
-                src="/assets/images/shape/circle-logo-2.png"
-                class="circle-logo"
-                alt="circle logo"
+            <span class="animate-float-y">
+              <CustomImage
+                id={seal.seal}
+                alt="Sello kiwi"
+                width={160}
+                height={160}
               /></span
             >
           </div>

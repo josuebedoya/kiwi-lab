@@ -1,4 +1,6 @@
 ---
+import CustomImage from "@/components/atoms/customImage.astro";
+
 type Item = {
   partners_id: {
     name: string;
@@ -29,7 +31,11 @@ const { title, items } = Astro.props;
           <div class="partner-item">
             <div class="img-holder">
               <a href={item?.link ?? "#"}>
-                <img src={item?.logo} alt={item?.name} />
+                <CustomImage
+                  id={item?.logo}
+                  alt={item?.name}
+                  style="object-fit: contain;"
+                />
               </a>
             </div>
           </div>

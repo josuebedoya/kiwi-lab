@@ -1,6 +1,7 @@
 ---
 import toLink from "@/utils/toLink";
 import type { Btn } from "@/resources/defuaultTypes.ts";
+import CustomImage from "@/components/atoms/customImage.astro";
 
 interface Props {
   title?: string;
@@ -16,29 +17,35 @@ const { title, summary, btn, btn2, img, img2, sealImg } = Astro.props;
 
 <section class="hero-banner-v1 position-relative" id="home">
   <div class="hero-img hero-img-one scene">
-    <span data-depth=".5"
-      ><img
-        src="/assets/images/hero/hero-one-img-1.jpg"
+    <span data-depth=".5">
+      <CustomImage
+        id={img2}
+        alt={"Hero image mini"}
+        width={245}
+        height={335}
         class="wow fadeInLeft"
-        alt="hero image"
       /></span
     >
   </div>
   <div class="hero-img hero-img-two scene">
-    <span data-depth=".2"
-      ><img
-        src="/assets/images/hero/hero-one-img-2.jpg"
+    <span data-depth=".2">
+      <CustomImage
+        id={img}
+        alt={title ?? "hero image"}
+        width={495}
+        height={690}
         class="wow fadeInLeft"
-        alt="hero image"
       /></span
     >
   </div>
   <div class="hero-img hero-img-three scene">
-    <span data-depth=".3"
-      ><img
-        src="/assets/images/shape/circle-logo-1.png"
+    <span data-depth=".3">
+      <CustomImage
+        id={sealImg}
+        alt="Sello kiwi"
+        width={165}
+        height={165}
         class="wow fadeInLeft"
-        alt="hero image"
       /></span
     >
   </div>
