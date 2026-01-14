@@ -42,6 +42,8 @@ const fields = {
     "img_starting"
   ]
 }
+
+
 type f = keyof typeof fields;
 export const getTeamData = async (field?: f[]) => {
 

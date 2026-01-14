@@ -1,4 +1,4 @@
-.service-item {
+.service-item{
   position: relative;
   z-index: 1;
   padding: 50px 55px 40px;
@@ -10,62 +10,62 @@
   transition: all .3s;
 }
 
-.service-style-one:hover {
+.service-style-one:hover{
   background-color: #fff;
   border-color: transparent;
-  -webkit-box-shadow: 0px 10px 60px 0px rgba(89, 86, 233, 0.1);
-  box-shadow: 0px 10px 60px 0px rgba(89, 86, 233, 0.1);
+  -webkit-box-shadow: 0 10px 60px 0 rgba(89, 86, 233, 0.1);
+  box-shadow: 0 10px 60px 0 rgba(89, 86, 233, 0.1);
 }
 
-.service-item .icon {
+.service-item .icon{
   margin-bottom: 10px;
 }
 
-.service-item .icon i {
+.service-item .icon i{
   font-size: 75px;
   line-height: 1;
   color: var(--blue-dark);
 }
 
-.service-item .text h3.title {
+.service-item .text h3.title{
   margin-bottom: 15px;
   font-size: 24px;
   line-height: 35px;
 }
 
-.service-item .text p {
+.service-item .text p{
   margin-bottom: 10px;
 }
 
-.service-item:hover .list-style-two li {
+.service-item:hover .list-style-two li{
   color: var(--heading);
 }
 
-.service-item .text .list-style-two li {
+.service-item .text .list-style-two li{
   margin-bottom: 10px;
 }
 
-.service-area-v1 .service-wrapper {
+.service-area-v1 .service-wrapper{
   padding-left: 90px;
   padding-right: 90px;
   background-color: #fff;
 }
 
 .service-style-three:hover,
-.service-style-two:hover {
+.service-style-two:hover{
   background-color: var(--blue-dark);
   border-color: transparent;
 }
 
 .service-style-three:hover:after,
-.service-style-two:hover:after {
-  -webkit-transform: translateY(0px);
-  -ms-transform: translateY(0px);
-  transform: translateY(0px);
+.service-style-two:hover:after{
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
 }
 
 .service-style-three:after,
-.service-style-two:after {
+.service-style-two:after{
   position: absolute;
   content: '';
   bottom: 60px;
@@ -73,7 +73,7 @@
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255,.3);
+  background-color: rgba(255, 255, 255, .3);
   -webkit-transform: translateY(-30px);
   -ms-transform: translateY(-30px);
   transform: translateY(-30px);
@@ -83,17 +83,27 @@
   transition: all .4s;
 }
 
-.service-style-three {
-  -webkit-box-shadow: 0px 10px 60px 0px rgba(89, 86, 233, 0.1);
-  box-shadow: 0px 10px 60px 0px rgba(89, 86, 233, 0.1);
+.service-style-three{
+  -webkit-box-shadow: 0 10px 60px 0 rgba(89, 86, 233, 0.1);
+  box-shadow: 0 10px 60px 0 rgba(89, 86, 233, 0.1);
   border: none;
   min-height: -webkit-fill-available;
   cursor: pointer;
+  height: 100%;
 }
+
 .service-style-three:hover{
   transform: scale(1.02);
 }
 
+.differentials-item{
+  padding-inline: 15px;
+  min-height: -webkit-fill-available;
+  height: 100%;
+}
+.differentials-carousel .slick-track, .differentials-item{
+  display: flex !important;
+}
 .service-style-three:hover .text .btn-link-two,
 .service-style-three:hover .text p,
 .service-style-three:hover .text .list-style-two li,
@@ -102,17 +112,17 @@
 .service-style-two:hover .text h3.title,
 .service-style-two:hover .text .list-style-two li,
 .service-style-two:hover .btn-link,
-.service-style-two:hover .icon i {
+.service-style-two:hover .icon i{
   color: var(--text-color);
 }
 
-.service-area-v2 .service-wrapper {
+.service-area-v2 .service-wrapper{
   position: relative;
   z-index: 2;
   padding: 80px 90px 50px;
   border-radius: 7px;
 }
 
-.service-style-three:hover .text .btn-link-two:before {
+.service-style-three:hover .text .btn-link-two:before{
   background-color: #fff;
 }

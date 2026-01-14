@@ -1,0 +1,44 @@
+---
+import Carousel from "@/components/species/carousel.astro";
+import CardCarousel from "@/components/atoms/cardCarousel.astro";
+import CardKnow from "@/components/atoms/cardKnow.astro";
+import '@/styles/components/portafolio.scss';
+
+type Item = {
+  img: string;
+  title: string;
+  summary?: string;
+  slug: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  summary?: string;
+  items?: Item[]
+}
+
+const {title, subtitle, summary, items} = Astro.props;
+---
+<section class="portfolio-area pb-50">
+ <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-lg-8">
+    <div class="section-title text-center mb-55 wow fadeInUp">
+      {title && <span class="sub-title st-one">{title}</span>}
+      {subtitle && <h2>{subtitle}</h2>}
+      {summary && <p>{summary}</p>}
+    </div>
+   </div>
+  </div>
+  <Carousel id="portfolio">
+    {
+      items?.map(({services_id: item}: Item) => (
+        <CardCarousel id="portfolio">
+         <CardKnow {...item}/>
+        </CardCarousel>
+      ))
+    }
+  </Carousel>
+ </div>
+</section>

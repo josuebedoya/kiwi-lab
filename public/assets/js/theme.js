@@ -117,7 +117,7 @@
     $(window).on('load', function(event) {
         $('.preloader').delay(500).fadeOut('500');
     })
-    
+
     //===== Sticky
     $(window).on('scroll', function(event) {
         var scroll = $(window).scrollTop();
@@ -158,17 +158,17 @@
 
     $(".img-popup").magnificPopup({
         type: "image",
-         gallery: { 
-          enabled: true 
+         gallery: {
+          enabled: true
         }
     });
     //===== Nice select js
     $('select').niceSelect();
 
-    
+
     //===== Slick slider js
-    
-    $('.portfolio-slider-one').slick({
+
+    $('.portfolio-carousel').slick({
 		dots: true,
 		arrows: false,
         infinite: true,
@@ -195,91 +195,126 @@
             }
         ]
     });
-    $('.testimonial-slider-one').slick({
-		dots: true,
-		arrows: false,
-        infinite: true,
-		speed: 1500,
-        autoplay: true,
-        vertical: true,
-		slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
-		nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>',
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    dots: false
-                }
-            }
-        ]
-    });
-    var sliderdots= $('.testimonial-two-dots');
-    $('.testimonial-slider-two').slick({
-		dots: true,
-		arrows: false,
-        infinite: true,
-		speed: 1500,
-        autoplay: false,
-        appendDots: sliderdots,
-		slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
-		nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>'
-    });
-    $('.testimonial-slider-three').slick({
-		dots: true,
-		arrows: false,
-        infinite: true,
-		speed: 1500,
-        autoplay: true,
-		slidesToShow: 2,
-        slidesToScroll: 1,
-        prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
-		nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>',
-        responsive: [
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
-    var sliderarrows= $('.partners-arrows');
-    $('.partners-slider-one').slick({
+    $('.differentials-carousel').slick({
 		dots: false,
-		arrows: true,
+		arrows: false,
         infinite: true,
 		speed: 1500,
         autoplay: true,
-        appendArrows: sliderarrows,
-		slidesToShow: 6,
+		slidesToShow: 3,
         slidesToScroll: 1,
-        prevArrow: '<div class="prev"><i class="far fa-arrow-left"></i></div>',
-		nextArrow: '<div class="next"><i class="far fa-arrow-right"></i></div>',
+        prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
+		nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>',
         responsive: [
+          {
+            breakpoint: 2500,
+            settings: {
+              arrows: false,
+              slidesToShow: 3
+            }
+          },
             {
-                breakpoint: 1199,
+                breakpoint: 992,
                 settings: {
-                    slidesToShow: 4
-                }
-            },
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 3
+                    arrows: false,
+                    slidesToShow: 2
                 }
             },
             {
                 breakpoint: 767,
                 settings: {
+                    arrows: false,
                     slidesToShow: 1
                 }
             }
         ]
     });
+
+    // $('.testimonial-slider-one').slick({
+		// dots: true,
+		// arrows: false,
+    //     infinite: true,
+		// speed: 1500,
+    //     autoplay: true,
+    //     vertical: true,
+		// slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
+		// nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>',
+    //     responsive: [
+    //         {
+    //             breakpoint: 1200,
+    //             settings: {
+    //                 dots: false
+    //             }
+    //         }
+    //     ]
+    // });
+    // var sliderdots= $('.testimonial-two-dots');
+    // $('.testimonial-slider-two').slick({
+		// dots: true,
+		// arrows: false,
+    //     infinite: true,
+		// speed: 1500,
+    //     autoplay: false,
+    //     appendDots: sliderdots,
+		// slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
+		// nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>'
+    // });
+    // $('.testimonial-slider-three').slick({
+		// dots: true,
+		// arrows: false,
+    //     infinite: true,
+		// speed: 1500,
+    //     autoplay: true,
+		// slidesToShow: 2,
+    //     slidesToScroll: 1,
+    //     prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
+		// nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>',
+    //     responsive: [
+    //         {
+    //             breakpoint: 991,
+    //             settings: {
+    //                 slidesToShow: 1
+    //             }
+    //         }
+    //     ]
+    // });
+    // var sliderarrows= $('.partners-arrows');
+    // $('.partners-slider-one').slick({
+		// dots: false,
+		// arrows: true,
+    //     infinite: true,
+		// speed: 1500,
+    //     autoplay: true,
+    //     appendArrows: sliderarrows,
+		// slidesToShow: 6,
+    //     slidesToScroll: 1,
+    //     prevArrow: '<div class="prev"><i class="far fa-arrow-left"></i></div>',
+		// nextArrow: '<div class="next"><i class="far fa-arrow-right"></i></div>',
+    //     responsive: [
+    //         {
+    //             breakpoint: 1199,
+    //             settings: {
+    //                 slidesToShow: 4
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 991,
+    //             settings: {
+    //                 slidesToShow: 3
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 767,
+    //             settings: {
+    //                 slidesToShow: 1
+    //             }
+    //         }
+    //     ]
+    // });
     //====== Isotope js
     $('.portfolio-area').imagesLoaded( function() {
         // items on button click
@@ -300,28 +335,28 @@
             layoutMode: 'fitRows'
         });
     });
-    $('.masonry-portfolio').imagesLoaded( function() {
-        // items on button click
-        $('.filter-btn').on('click', 'li', function () {
-            var filterValue = $(this).attr('data-filter');
-            $grid.isotope({
-                filter: filterValue
-            });
-        });
-        // menu active class
-        $('.filter-btn li').on('click', function (e) {
-            $(this).siblings('.active').removeClass('active');
-            $(this).addClass('active');
-            e.preventDefault();
-        });
-        var $grid = $('.masonry-row').isotope({
-            itemSelector: '.portfolio-column',
-            percentPosition: true
-        });
-    });
+    // $('.masonry-portfolio').imagesLoaded( function() {
+    //     // items on button click
+    //     $('.filter-btn').on('click', 'li', function () {
+    //         var filterValue = $(this).attr('data-filter');
+    //         $grid.isotope({
+    //             filter: filterValue
+    //         });
+    //     });
+    //     // menu active class
+    //     $('.filter-btn li').on('click', function (e) {
+    //         $(this).siblings('.active').removeClass('active');
+    //         $(this).addClass('active');
+    //         e.preventDefault();
+    //     });
+    //     var $grid = $('.masonry-row').isotope({
+    //         itemSelector: '.portfolio-column',
+    //         percentPosition: true
+    //     });
+    // });
 
     //===== Wow js
-    
+
     // new WOW().init();
 
     // Item Active
@@ -335,7 +370,7 @@
     $('.scene').each(function () {
         new Parallax($(this)[0]);
     });
-    
+
     // page_scroll JS
 
     $("a.page-scroll").on('click', function (e) {

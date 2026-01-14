@@ -1,5 +1,7 @@
 ---
 import CardDifferential from "@/components/atoms/cardDifferential.astro";
+import Carousel from "@/components/species/carousel.astro";
+import CardCarousel from "@/components/atoms/cardCarousel.astro";
 
 type Item = {
   title: string;
@@ -11,23 +13,27 @@ interface Props {
   items?: Item[];
 }
 
-const { title, subtitle, items } = Astro.props;
+const {title, subtitle, items} = Astro.props;
 ---
 
 <section class="service-area service-area-v2 pt-100">
-  <div class="container-1350">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="section-title text-center mb-55 wow fadeInUp">
-          {title && <span class="sub-title st-one">{title}</span>}
-          {subtitle && <h2>{subtitle}</h2>}
-        </div>
-      </div>
+ <div class="container-1350">
+  <div class="row justify-content-center">
+   <div class="col-lg-8">
+    <div class="section-title text-center mb-55 wow fadeInUp">
+      {title && <span class="sub-title st-one">{title}</span>}
+      {subtitle && <h2>{subtitle}</h2>}
     </div>
-    <div class="service-wrapper light-gray-bg">
-      <div class="row">
-        {items?.map((item: Item) => <CardDifferential {...item} />)}
-      </div>
-    </div>
+   </div>
   </div>
+  <div class="service-wrapper light-gray-bg">
+   <Carousel id="differentials">
+     {items?.map((item: Item) => (
+       <CardCarousel id="differentials">
+        <CardDifferential {...item}/>
+       </CardCarousel>
+     ))}
+   </Carousel>
+  </div>
+ </div>
 </section>

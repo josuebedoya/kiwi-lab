@@ -1,0 +1,11 @@
+---
+interface Props {
+  id: string;
+}
+
+const {id} = Astro.props;
+---
+
+<div class={`${id}-item wow fadeInUp`}>
+ <slot/>
+</div>

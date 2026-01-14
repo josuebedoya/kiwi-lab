@@ -10,6 +10,7 @@ import Partners from "@/components/organisms/home/partners.astro";
 import LayoutPage from "@/layouts/layoutPage.astro";
 import {getHomeData} from "@/server/services/getHomeData.ts";
 import Hero02 from "@/components/organisms/hero02.astro";
+import RealImpact from "@/components/organisms/home/realImpact.astro";
 
 // Data
 const {
@@ -36,7 +37,7 @@ const {
 ]);
 
 if (error) {
-  return Astro.redirect("/404");
+  return Astro.redirect("/500");
 }
 ---
 
@@ -50,7 +51,7 @@ if (error) {
  <AboutHero {...about_data}/>
  <Differentials {...differentials_data}/>
  <Impact {...impact_data}/>
- <Hero02 {...real_impact_data}/>
+ <RealImpact {...real_impact_data}/>
  <Partners {...partners_data}/>
  <Experience {...experience_data}/>
  <Faq {...faq_data}/>

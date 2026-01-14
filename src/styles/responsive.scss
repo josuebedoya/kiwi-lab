@@ -25,13 +25,13 @@
 
   .hero-banner-v1 .hero-content h1{
     margin-bottom: 35px;
-    font-size: 75px;
-    line-height: 80px;
+    font-size: 75px !important;
+    line-height: 80px !important;
   }
 
   .cta-area-v1 .cta-wrapper .section-title h2{
-    font-size: 60px;
-    line-height: 70px;
+    font-size: 60px !important;
+    line-height: 70px !important;
   }
 
   .hero-banner-v1 .hero-img.hero-img-three{
@@ -157,8 +157,8 @@
   }
 
   .testimonial-area-v1 .testimonial-item .testimonial-content h3{
-    font-size: 32px;
-    line-height: 45px;
+    font-size: 32px !important;
+    line-height: 45px !important;
   }
 
   .contact-area-v1 .img-holder{
@@ -174,25 +174,25 @@
   }
 
   .service-item .text h3.title{
-    font-size: 24px;
-    line-height: 35px;
+    font-size: 24px !important;
+    line-height: 35px !important;
   }
 
   .service-item .text .list-style-two li{
-    font-size: 15px;
+    font-size: 15px !important;
   }
 
   .testimonial-area-v2 .testimonial-item .testimonial-content h3{
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 30px !important;
+    line-height: 40px !important;
   }
 
   .pricing-list li{
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   .pricing-item .pricing-head span.plan{
-    font-size: 18px;
+    font-size: 18px !important;
   }
 
   .blog-area-v2 .blog-post-item{
@@ -237,23 +237,23 @@
 
   .team-area-v3 .team-item .img-holder .hover-content-two h3.title,
   .team-area-v3 .team-item .img-holder .hover-content h3.title{
-    font-size: 24px;
-    line-height: 35px;
+    font-size: 24px !important;
+    line-height: 35px !important;
   }
 
   .team-area-v3 .team-item .img-holder .hover-content-two p.position,
   .team-area-v3 .team-item .img-holder .hover-content p.position{
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   .team-details-section .text-wrapper .text h3.title{
-    font-size: 35px;
-    line-height: 45px;
+    font-size: 35px !important;
+    line-height: 45px !important;
   }
 
   .blog-standard-post-item .entry-content h3.title{
-    font-size: 22px;
-    line-height: 32px;
+    font-size: 22px !important;
+    line-height: 32px !important;
   }
 
   .blog-standard-post-item .entry-content{
@@ -270,8 +270,8 @@
   }
 
   .hero-banner-v3 .hero-content h1{
-    font-size: 52px;
-    line-height: 65px;
+    font-size: 52px !important;
+    line-height: 65px !important;
   }
   .page-banner.bg_cover.position-relative.z-1.pb-150 + section{
     padding-top: 150px !important;
@@ -283,18 +283,18 @@
 
 @media only screen and (min-width: 992px) and (max-width: 1199px){
   .section-title h2, .section-title h2 p{
-    font-size: 45px;
-    line-height: 55px;
+    font-size: 45px !important;
+    line-height: 55px !important;
   }
 
   .contact-area-v1 .text-wrapper h2{
-    font-size: 44px;
-    line-height: 55px;
+    font-size: 44px !important;
+    line-height: 55px !important;
   }
 
   .hero-banner-v2 .hero-content h1{
-    font-size: 45px;
-    line-height: 55px;
+    font-size: 45px !important;
+    line-height: 55px !important;
   }
 
   .navigation-style-v2 .container-fluid{
@@ -311,13 +311,13 @@
   }
 
   .pricing-item .pricing-head h2.price{
-    font-size: 34px;
-    line-height: 45px;
+    font-size: 34px !important;
+    line-height: 45px !important;
   }
 
   .blog-area-v2 .blog-post-item .entry-content h3.title{
-    font-size: 22px;
-    line-height: 34px;
+    font-size: 22px !important;
+    line-height: 34px !important;
   }
 
   .process-area-v1 .process-item{
@@ -325,20 +325,20 @@
   }
 
   .post-nav-tag .post-nav-item .text h4{
-    font-size: 18px;
+    font-size: 18px !important;
   }
 
   .post-nav-tag .post-nav-item .text p{
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   .testimonial-area-v4 .testimonial-item .testimonial-content p{
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 20px !important;
+    line-height: 30px !important;
   }
 
   .counter-area-v3 .counter-item .text h2.number{
-    font-size: 32px;
+    font-size: 32px !important;
   }
 }
 
@@ -348,12 +348,12 @@
   }
 
   .contact-area-v1 .text-wrapper h2{
-    font-size: 60px;
-    line-height: 70px;
+    font-size: 60px !important;
+    line-height: 70px !important;
   }
 
   .cta-area-v1 .cta-wrapper{
-    padding: 80px 40px;
+    padding: 80px 20px;
   }
 
   .contact-area-v1 .img-holder{
@@ -395,8 +395,8 @@
   }
 
   .footer-widget .widget.newsletter-widget .newsletter-content h3{
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 30px !important;
+    line-height: 40px !important;
   }
 
   .cta-area-v2 .button-box{
@@ -404,8 +404,8 @@
   }
 
   .pricing-item .pricing-head h2.price{
-    font-size: 35px;
-    line-height: 45px;
+    font-size: 35px !important;
+    line-height: 45px !important;
   }
 
   .pricing-item-one{
@@ -419,8 +419,8 @@
 
   .contact-area-v2 .contact-form h2,
   .contact-area-v2 .text-wrapper h2{
-    font-size: 32px;
-    line-height: 45px;
+    font-size: 32px !important;
+    line-height: 45px !important;
   }
 
   .page-banner .page-title{
@@ -449,8 +449,8 @@
   }
 
   .page-banner .page-title h1{
-    font-size: 36px;
-    line-height: 45px;
+    font-size: 36px !important;
+    line-height: 45px !important;
   }
 
   .post-nav-tag .post-nav-item{
@@ -499,21 +499,26 @@
     max-height: 500px;
   }
 
-  .our-team-page .shape-one, .our-team-page .shape-two{
+  .hero-video .shape{
     display: none;
   }
   .page-banner .page-title{
-    font-size: 30px;
+    font-size: 30px !important;
   }
   .page-banner .page-title .breadcrumbs-link li{
-    font-size: 18px;
+    font-size: 18px !important;
+  }
+
+  .text-area h2.title, h2{
+    font-size: 35px !important;
+    line-height: 47px !important;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px){
   .hero-banner-v1 .hero-content h1{
-    font-size: 45px;
-    line-height: 55px;
+    font-size: 45px !important;
+    line-height: 55px !important;
   }
 
   .footer-top .text-wrapper{
@@ -521,8 +526,8 @@
   }
 
   .footer-top .text-wrapper h3{
-    line-height: 40px;
-    font-size: 30px;
+    line-height: 40px !important;
+    font-size: 30px !important;
   }
 
   .partners-wrapper .partner-item{
@@ -537,12 +542,12 @@
 
 @media (max-width: 767px){
   .section-title h2, .section-title h2 p, .team-area-v2 .section-title h2{
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 30px !important;
+    line-height: 40px !important;
   }
   .phrase-footer{
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
   }
 
   .hero-banner-v1{
@@ -556,8 +561,8 @@
 
   .hero-banner-v2 .hero-content h1,
   .hero-banner-v1 .hero-content h1{
-    font-size: 40px;
-    line-height: 50px;
+    font-size: 40px !important;
+    line-height: 50px !important;
   }
 
   .hero-banner-v1 .hero-img.hero-img-three{
@@ -589,8 +594,8 @@
   }
 
   .cta-area-v1 .cta-wrapper .section-title h2{
-    font-size: 26px;
-    line-height: 38px;
+    font-size: 26px !important;
+    line-height: 38px !important;
   }
 
   .footer-top .text-wrapper{
@@ -623,11 +628,11 @@
   }
 
   .post-nav-tag .post-nav-item .text h4{
-    font-size: 18px;
+    font-size: 18px !important;
   }
 
   .post-nav-tag .post-nav-item .text p{
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   .sidebar-widget-area .widget{
@@ -672,12 +677,12 @@
   }
 
   .contact-area-v2 .information-style-two .info h4{
-    font-size: 20px;
+    font-size: 20px !important;
   }
 
   .blog-area-v2 .blog-post-item .entry-content h3.title{
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 20px !important;
+    line-height: 30px !important;
   }
 
   .cta-area-v2 .button-box .main-btn{
@@ -697,7 +702,7 @@
   }
 
   .lang-dropdown .nice-select{
-    font-size: 16px;
+    font-size: 16px !important;
   }
 
   .navigation-style-v3 .primary-menu .site-branding .lang-dropdown:before{
@@ -709,8 +714,8 @@
   }
 
   .hero-banner-v3 .hero-content h1{
-    font-size: 40px;
-    line-height: 45px;
+    font-size: 40px !important;
+    line-height: 45px !important;
   }
 
   .navigation-style-v3 .header-right-nav ul li.nav-button{
@@ -722,8 +727,8 @@
   }
 
   .testimonial-area-v4 .testimonial-item .testimonial-content p{
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 18px !important;
+    line-height: 30px !important;
   }
 
   .process-area.process-area-v1.pt-90.pb-85{
@@ -764,6 +769,32 @@
   .team-area.team-area-v3{
     padding-top: 55px;
   }
+
+  .accordion-wrapper .card .card-header a{
+    font-size: 16px !important;
+  }
+  .faq-section-area .faq-content .subtitle{
+    font-size: 18px !important;
+  }
+
+  .faq-section-area{
+    padding-top: 65px;
+  }
+  .btn-partners{
+    margin-bottom: 20px;
+  }
+
+  .text-area{
+    padding-block: 30px 50px;
+  }
+
+  .text-area h2.title{
+    font-size: 30px !important;
+    line-height: 40px !important;
+  }
+  .page-banner .to-you-page .about-area.about-area-v3.pt-210.pb-50, .page-banner.bg_cover.position-relative.z-1.pb-150 + section{
+    padding-top: 60px !important;
+  }
 }
 
 @media (max-width: 400px){
@@ -774,13 +805,13 @@
 
   .footer-widget .widget.newsletter-widget .newsletter-content h3,
   .footer-top .text-wrapper h3{
-    line-height: 40px;
-    font-size: 30px;
+    line-height: 40px !important;
+    font-size: 30px !important;
   }
 
   .blog-standard-post-item .entry-content h3.title{
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 20px !important;
+    line-height: 30px !important;
   }
 
   .service-area-v2 .service-wrapper{
@@ -788,8 +819,8 @@
   }
 
   .service-item .text h3.title{
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 20px !important;
+    line-height: 30px !important;
   }
 
   .testimonial-area-v4 .testimonial-item .testimonial-content .author-title-thumb{

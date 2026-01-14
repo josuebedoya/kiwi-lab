@@ -9,24 +9,21 @@ interface Props {
   isActive?: boolean;
 }
 
-const { title, link, hasItems = false, isActive = false, id } = Astro.props;
+const {title, link, hasItems = false, isActive = false, id} = Astro.props;
 ---
 
 <li
   class={`menu-item ${hasItems ? "has-children" : ""}`}
   aria-label={id?.toString() || title}
 >
-  <a
-    class={`"nav-link" ${isActive ? "active" : ""}`}
-    href={toLink(link)}
-    target="_self">{title}</a
-  >
-
-  {
-    hasItems && (
-      <ul class="sub-menu">
-        <slot />
-      </ul>
-    )
-  }
+ <a
+   class={`nav-link ${isActive ? "active" : ""}`}
+   href={toLink(link)}
+   target="_self">{title}
+ </a>
+  {hasItems && (
+    <ul class="sub-menu">
+     <slot/>
+    </ul>
+  )}
 </li>

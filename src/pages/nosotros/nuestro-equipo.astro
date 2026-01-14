@@ -1,7 +1,7 @@
 ---
 import LayoutPage from "@/layouts/layoutPage.astro";
 import {getData} from "@/server/services/getData.ts";
-import HeroVideo from "@/components/organisms/about/heroVideo.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
 import Hero03 from "@/components/organisms/about/hero03.astro";
 import {getTeamData} from "@/server/services/getTeamData.ts";
 import Team from "@/components/organisms/about/team.astro";
@@ -24,7 +24,7 @@ const heroData = {
 }
 
 if (errPage || errTeam) {
-  return Astro.redirect('/404');
+  return Astro.redirect('/500');
 }
 ---
 <LayoutPage

@@ -14,7 +14,8 @@ interface Props {
 
 const { menuItems = [] } = Astro.props;
 const isActive = (slug: string): boolean => {
-  return Astro.url.pathname === slug || slug === "/";
+  console.log(slug, Astro.url.pathname === slug, slug==="/");
+  return Astro.url.pathname === slug || slug === "/" && Astro.url.pathname === "";
 };
 ---
 

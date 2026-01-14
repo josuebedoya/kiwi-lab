@@ -1,0 +1,119 @@
+
+.portfolio-filter-button .filter-btn li{
+  display: inline-block;
+  font-weight: 700;
+  color: var(--heading);
+  padding: 5px 15px;
+  background-color: transparent;
+  line-height: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+.portfolio-filter-button .filter-btn li.active,
+.portfolio-filter-button .filter-btn li:hover{
+  background-color: #fff;
+  -webkit-box-shadow: 0px 10px 30px 0px var(--blue-dark);
+  box-shadow: 0px 10px 30px 0px var(--blue-dark);
+}
+
+.portfolio-style-one:hover .img-holder .portfolio-hover{
+  visibility: visible;
+  opacity: .7;
+}
+
+.portfolio-style-one:hover .img-holder .portfolio-hover .hover-content{
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+.portfolio-style-one .img-holder{
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-style-two .img-holder img,
+.portfolio-style-one .img-holder img{
+  width: 100%;
+}
+
+.portfolio-style-one .img-holder .portfolio-hover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blue-dark);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+.portfolio-style-one .img-holder .portfolio-hover .hover-content{
+  -webkit-transform: translateY(-40px);
+  -ms-transform: translateY(-40px);
+  transform: translateY(-40px);
+  -webkit-transition: all .4s;
+  -o-transition: all .4s;
+  transition: all .4s;
+}
+
+.portfolio-style-one .img-holder .portfolio-hover .hover-content i{
+  color: #fff;
+  font-size: 34px;
+}
+
+.portfolio-style-one .text{
+  padding-top: 30px;
+}
+
+.portfolio-style-one .text h3.title{
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.portfolio-style-one .text h3.title:hover,
+.portfolio-style-one .text .cat-link:hover{
+  color: var(--blue-dark);
+}
+
+.portfolio-style-one .text .cat-link{
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.portfolio-carousel{
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.portfolio-carousel .portfolio-style-one{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.portfolio-carousel .slick-dots{
+  margin-top: 50px;
+}
+.portfolio-carousel .slick-dots li{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.portfolio-style-one a.cat-link{
+  color: var(--text-color) !important;
+}
