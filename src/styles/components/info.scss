@@ -19,13 +19,13 @@
 
 .features-area .features-item .text h4:before{
   content: '\f00c';
-  font-weight: 400;
+  font-weight: 600;
   font-family: 'Font Awesome 5 Pro';
   width: 25px;
   height: 25px;
   border-radius: 50%;
   background-color: var(--blue-dark);
-  color: #fff;
+  color: var(--heading);
   line-height: 1;
   font-size: 13px;
   display: -webkit-box;
