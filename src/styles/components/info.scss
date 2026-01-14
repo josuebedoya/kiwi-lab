@@ -1,0 +1,53 @@
+.features-area .text-wrapper p{
+  margin-bottom: 30px;
+}
+
+.features-list{
+  padding: 55px 70px 25px;
+  border: 1px solid rgba(88, 86, 233, 0.149);
+}
+
+.features-area .features-item .text h4{
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.features-area .features-item .text h4:before{
+  content: '\f00c';
+  font-weight: 400;
+  font-family: 'Font Awesome 5 Pro';
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: var(--blue-dark);
+  color: #fff;
+  line-height: 1;
+  font-size: 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.title-list-info strong{
+  color: var(--heading) !important;
+  margin: 0;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 34px !important;
+}
+
+.title-list-info{
+  margin-left: -25px;
+}

@@ -12,36 +12,35 @@ interface Props {
   menuItems: MenuItem[];
 }
 
-const { menuItems = [] } = Astro.props;
+const {menuItems = []} = Astro.props;
 const isActive = (slug: string): boolean => {
-  console.log(slug, Astro.url.pathname === slug, slug==="/");
   return Astro.url.pathname === slug || slug === "/" && Astro.url.pathname === "";
 };
 ---
 
 <nav class="main-menu">
-  <ul class="mb-0 mt-0">
-    {
-      menuItems?.map((item) => {
-        const renderMenuItem = (menuItem: MenuItem): any[] => {
-          const hasItems =
-            !!menuItem?.sub_items && menuItem?.sub_items?.length > 0;
+ <ul class="mb-0 mt-0">
+   {
+     menuItems?.map((item) => {
+       const renderMenuItem = (menuItem: MenuItem): any[] => {
+         const hasItems =
+           !!menuItem?.sub_items && menuItem?.sub_items?.length > 0;
 
-          return (
-            <ItemMenu
-              id={menuItem?.id ? parseInt(menuItem?.id) : undefined}
-              title={menuItem?.title}
-              link={menuItem?.link}
-              hasItems={hasItems}
-              isActive={isActive(menuItem?.link)}
-            >
-              {menuItem?.sub_items?.map((subItem) => renderMenuItem(subItem))}
-            </ItemMenu>
-          );
-        };
+         return (
+           <ItemMenu
+             id={menuItem?.id ? parseInt(menuItem?.id) : undefined}
+             title={menuItem?.title}
+             link={menuItem?.link}
+             hasItems={hasItems}
+             isActive={isActive(menuItem?.link)}
+           >
+             {menuItem?.sub_items?.map((subItem) => renderMenuItem(subItem))}
+           </ItemMenu>
+         );
+       };
 
-        return renderMenuItem(item);
-      })
-    }
-  </ul>
+       return renderMenuItem(item);
+     })
+   }
+ </ul>
 </nav>

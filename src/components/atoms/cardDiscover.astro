@@ -1,0 +1,19 @@
+---
+interface Props {
+  summary: string;
+}
+const {summary} = Astro.props;
+---
+
+<div class="process-column to-green">
+ <div
+   class="process-item text-center wow fadeInUp"
+   data-wow-delay=".15s"
+ >
+  <div class="text">
+   <p>
+     {summary}
+   </p>
+  </div>
+ </div>
+</div>

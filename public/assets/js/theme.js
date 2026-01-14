@@ -229,6 +229,40 @@
             }
         ]
     });
+    $('.discover-carousel').slick({
+		dots: false,
+		arrows: false,
+        infinite: true,
+		speed: 1500,
+        autoplay: true,
+		slidesToShow: 3,
+        slidesToScroll: 1,
+        prevArrow: '<div class="prev"><i class="far fa-angle-left"></i></div>',
+		nextArrow: '<div class="next"><i class="far fa-angle-right"></i></div>',
+        responsive: [
+          {
+            breakpoint: 2500,
+            settings: {
+              arrows: false,
+              slidesToShow: 3
+            }
+          },
+            {
+                breakpoint: 992,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 2
+                }
+            }
+        ]
+    });
 
     // $('.testimonial-slider-one').slick({
 		// dots: true,

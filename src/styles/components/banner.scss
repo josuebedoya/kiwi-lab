@@ -1,7 +1,9 @@
 .page-banner{
   padding: 250px 0 170px;
-  background-image: -ms-linear-gradient( 0deg, rgb(89,86,233) 0%, rgb(0,208,156) 100%);
+  background-image: -ms-linear-gradient(0deg, rgb(89, 86, 233) 0%, rgb(0, 208, 156) 100%);
+  margin-bottom: 100px;
 }
+
 .page-banner:after{
   position: absolute;
   top: 0;
@@ -15,41 +17,51 @@
   opacity: 0.102;
   z-index: -1;
 }
+
 .page-banner .shape{
   position: absolute;
   z-index: -1;
 }
+
 .page-banner .shape.shape-one{
   top: 165px;
   left: 90px;
 }
+
 .page-banner .shape.shape-two{
   top: 140px;
   left: 55%;
 }
+
 .page-banner .shape.shape-three{
   bottom: 60px;
   left: 35%;
 }
+
 .page-banner .shape.shape-four{
   bottom: 15%;
   right: 8%;
 }
+
 .page-banner .page-title h1{
   margin-bottom: 10px;
 }
+
 .page-banner .page-title .breadcrumbs-link li{
   display: inline-block;
   font-size: 22px;
   font-weight: 700;
 }
+
 .page-banner .page-title .breadcrumbs-link li:hover a{
   color: var(--blue-dark);
 }
+
 .page-banner .page-title .breadcrumbs-link li.active{
   color: var(--blue-dark);
   text-decoration: underline;
 }
+
 .page-banner .page-title .breadcrumbs-link li:after{
   display: inline-block;
   content: '\f105';
@@ -58,17 +70,21 @@
   margin-left: 15px;
   margin-right: 12px;
 }
+
 .page-banner .page-title .breadcrumbs-link li:last-child:after{
   display: none;
 }
+
 .page-banner .page-banner-img{
   position: relative;
   margin-bottom: -250px;
 }
+
 .page-banner .page-banner-img img{
   border-radius: 9px;
   width: 100%;
 }
+
 .page-banner .page-banner-img .play-content{
   position: absolute;
   top: 0;
@@ -87,6 +103,7 @@
   -ms-flex-pack: center;
   justify-content: center;
 }
+
 .page-banner .page-banner-img .play-content .video-popup{
   width: 100px;
   height: 100px;
@@ -103,4 +120,16 @@
   background-color: var(--blue-dark);
   color: #fff;
   font-size: 24px;
+}
+
+.page-banner .page-banner-img img{
+  max-height: 420px;
+}
+
+.about-page-section .about-area.about-area-v3.pt-210.pb-50{
+  padding-top: 100px !important;
+}
+
+.our-team-page .skill-area.skill-area-v2.pt-130.pb-80.position-relative.z-1{
+  padding-top: 80px !important;
 }

@@ -1,0 +1,52 @@
+---
+import '@/styles/components/info.scss';
+
+type Item = {
+  title: string;
+  summary: string;
+}
+interface Props {
+  title?: string;
+  subtitle?: string;
+  subtitle2?: string;
+  summary?: string;
+  summaryList?: string;
+  items?: Item[];
+}
+const {title, summary, subtitle2, subtitle, summaryList, items} = Astro.props;
+---
+
+<section class="features-area pt-100">
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-6">
+    <div class="text-wrapper mb-50 wow fadeInLeft">
+     <div class="section-title mb-30">
+       {title && <span class="sub-title st-one">{title}</span>}
+       {subtitle && <h2>{subtitle}</h2>}
+       {subtitle2 &&
+         <div class="bg-primary text-heading font-600 p-2 block-bg">{subtitle2}</div>}
+     </div>
+     <div set:html={summary}></div>
+    </div>
+   </div>
+   <div class="col-lg-6">
+    <div class="features-list mb-50 wow fadeInRight">
+     <div class="features-item mb-40">
+      <div class="text title-list-info" set:html={summaryList}/>
+     </div>
+      {
+        items?.map((item) => (
+          <div class="features-item mb-30">
+           <div class="text">
+            <h4>{item.title}</h4>
+            <p>{item.summary}</p>
+           </div>
+          </div>
+        ))
+      }
+    </div>
+   </div>
+  </div>
+ </div>
+</section>

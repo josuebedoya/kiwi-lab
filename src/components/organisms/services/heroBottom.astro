@@ -1,0 +1,65 @@
+---
+import CustomImage from "@/components/atoms/customImage.astro";
+import type {Hero} from "@/resources/defuaultTypes";
+
+interface Props extends Hero {
+}
+
+const {title, subtitle, summary, img} = Astro.props;
+
+if (!title && !subtitle && !summary) {
+  return null;
+}
+---
+
+<section class="fancy-text-block fancy-text-block-v2 pt-140 pb-20">
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-6">
+    <div class="img-holder mb-50 wow fadeInLeft" data-wow-delay=".2s">
+     <CustomImage
+       id={img}
+       alt="Sello kiwi"
+       width={600}
+       height={565}
+     />
+    </div>
+   </div>
+   <div class="col-lg-6">
+    <div class="text-wrapper mb-50 wow fadeInRight" data-wow-delay=".4s">
+     <div class="section-title mb-30">
+       {
+         title && <span class="sub-title st-one">{title}</span>
+       }
+       {
+         subtitle && <h2 class="mb-40">{subtitle}</h2>
+       }
+     </div>
+      {
+        summary &&
+        <div class="pt-20" set:html={summary}/>
+      }
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<style>
+  .fancy-text-block-v2 .text-wrapper{
+    padding-left: 70px;
+  }
+  .fancy-text-block-v2 img{
+    border-radius: 4rem;
+  }
+
+  @media (max-width: 992px){
+    .fancy-text-block-v2 .text-wrapper{
+      padding-left: 0;
+    }
+    .fancy-text-block-v2 img{
+      border-radius: 2rem;
+    }
+  }
+
+</style>

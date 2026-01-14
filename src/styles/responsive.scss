@@ -795,6 +795,24 @@
   .page-banner .to-you-page .about-area.about-area-v3.pt-210.pb-50, .page-banner.bg_cover.position-relative.z-1.pb-150 + section{
     padding-top: 60px !important;
   }
+
+  .pt-100.pb-100.container-text-area, .discover-area{
+    padding-block: 50px;
+  }
+
+  .hero-video{
+    padding-top: 150px !important;
+  }
+  .features-list{
+    padding: 40px 38px 25px !important;
+    margin-top: 30px;
+  }
+  .discover-area .section-title{
+    margin-bottom: 0;
+  }
+  .fancy-text-block.fancy-text-block-v2.pt-140.pb-20{
+    padding-top: 50px;
+  }
 }
 
 @media (max-width: 400px){

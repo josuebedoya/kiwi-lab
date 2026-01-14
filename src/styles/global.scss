@@ -109,6 +109,10 @@ textarea{
   display: inherit;
 }
 
+strong{
+  color: var(--heading);
+}
+
 input:focus,
 textarea:focus{
   outline: none;
@@ -163,7 +167,13 @@ ul.social-link li{
 }
 
 .section-title .st-one{
-  font-size: 24px;
+  font-size: 28px;
+  padding: 17px 35px;
+  z-index: 1;
+  margin-bottom: 25px;
+}
+.section-title .st-one{
+  font-size: 28px;
   padding: 17px 35px;
   z-index: 1;
   margin-bottom: 25px;
@@ -228,7 +238,7 @@ ul.social-link li{
 
 .section-title p{
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .section-title-white .st-one:after{
@@ -1045,6 +1055,16 @@ button{
 .process-area-v1 .process-item .text h4{
   margin-bottom: 10px;
 }
+.process-area-v1 .discover-item .process-item{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.process-area-v1 .discover-item .process-item .text{
+  max-width: 210px;
+  color: var(--heading);
+  font-weight: 500;
+}
 
 /* Process Area v1 */
 
@@ -1442,4 +1462,8 @@ button{
 }
 .primary-menu .header-right-nav > ul{
   margin-bottom: 0;
+}
+
+.discover-area{
+  background: #F7FFE9;
 }

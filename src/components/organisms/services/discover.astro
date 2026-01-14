@@ -1,0 +1,42 @@
+---
+import Carousel from "@/components/species/carousel.astro";
+import CardCarousel from "@/components/atoms/cardCarousel.astro";
+import CardDiscover from "@/components/atoms/cardDiscover.astro";
+
+type Item = {
+  summary: string;
+};
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  summary?: string;
+  items?: Item[];
+}
+
+const {title, subtitle, summary, items} = Astro.props;
+---
+
+<section class="process-area process-area-v1 pt-90 pb-110 discover-area">
+ <div class="container">
+  <div class="row justify-content-center mb-90">
+   <div class="col-lg-7">
+    <div class="section-title text-center mb-55 wow fadeInUp">
+      {title && <span class="sub-title st-one">{title}</span>}
+      {subtitle && <h2>{subtitle}</h2>}
+      {summary &&
+        <div set:html={summary}/>}
+    </div>
+   </div>
+  </div>
+  <Carousel id="discover">
+    {
+      items?.map((item: Item) => (
+        <CardCarousel id="discover">
+         <CardDiscover {...item}/>
+        </CardCarousel>
+      ))
+    }
+  </Carousel>
+ </div>
+</section>

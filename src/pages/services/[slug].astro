@@ -1,0 +1,48 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+import {getServicesData} from "@/server/services/getServicesData.ts";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import Info from "@/components/organisms/services/info.astro";
+import Discover from "@/components/organisms/services/discover.astro";
+import toLink from "@/utils/toLink.ts";
+import HeroBottom from "@/components/organisms/services/heroBottom.astro";
+
+const {slug} = Astro.params;
+
+const {hero_data, info_data, discover_data, btn_data, bottom_data,error, notFound} = await getServicesData(["*"], slug);
+
+if (notFound) {
+  return Astro.redirect('/404');
+}
+
+if (error) {
+  return Astro.redirect('/500');
+}
+---
+
+<LayoutPage
+  title="Servicio"
+  description="servicios"
+  className="service-page"
+>
+ <HeroVideo {...hero_data}/>
+ <Info {...info_data}/>
+ <Discover {...discover_data}/>
+ <HeroBottom {...bottom_data}/>
+ <section>
+  <div class="container pt-100 pb-100 container-text-area">
+   <div class="row justify-content-center pr-10 pl-10">
+     {
+       btn_data && (
+         <a
+           href={toLink(btn_data?.link)}
+           class="main-btn   arrow-btn col-auto"
+         >
+           {btn_data?.label}
+         </a>
+       )
+     }
+   </div>
+  </div>
+ </section>
+</LayoutPage>
