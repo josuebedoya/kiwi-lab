@@ -1,0 +1,45 @@
+---
+import type {Hero} from "@/resources/defuaultTypes";
+import CustomImage from "@/components/atoms/customImage.astro";
+
+interface Props extends Hero {
+}
+
+const {title, subtitle, subtitle2, summary, btn, img} = Astro.props;
+---
+
+<section class="about-area about-area-v3 pt-210 pb-50">
+ <div class="container">
+  <div class="row">
+   <div class="col-lg-6">
+    <div class="img-holder mb-50 wow fadeInLeft">
+     <CustomImage
+       id={img}
+       alt={title ?? summary ?? "About Image"}
+       width={709}
+       height={669}
+     />
+    </div>
+   </div>
+   <div class="col-lg-6">
+    <div class="text-wrapper mb-50 wow fadeInRight">
+     <div class="section-title mb-25">
+       {title && <span class="sub-title st-one">{title}</span>}
+       {subtitle && <h2>{subtitle}</h2>}
+       {
+         subtitle2 && <div class="bg-primary text-heading font-600 p-2 block-bg">{subtitle2}</div>
+       }
+     </div>
+     <div set:html={summary}/>
+      {
+        btn && (
+          <a href={btn.link} class="main-btn bordered-btn btn-blue arrow-btn text-hover-white">
+            {btn.label}
+          </a>
+        )
+      }
+    </div>
+   </div>
+  </div>
+ </div>
+</section>

@@ -1,0 +1,41 @@
+---
+import CustomImage from "@/components/atoms/customImage.astro";
+import toLink from "@/utils/toLink.ts";
+import type {SocialItem} from "@/resources/defuaultTypes";
+
+
+interface Props {
+  name: string;
+  position: string;
+  img: string;
+  social?: SocialItem[];
+  slug: string;
+}
+
+const {name, position, img, social, slug} = Astro.props;
+---
+
+<div class="col-lg-3 col-sm-6">
+ <div class="team-item mb-55 wow fadeInUp" data-wow-delay=".10s">
+  <div class="img-holder">
+   <CustomImage
+     id={img}
+     defaultSrc="/assets/images/default-image-profile.webp"
+     alt={name}
+     width={270}
+     height={325}
+   />
+  </div>
+  <div class="text text-center">
+   <ul class="social-link">
+     {social?.map(({icon, link}) => (
+       <li><a href={link}><i class={icon}></i></a></li>
+     ))}
+   </ul>
+   <div class="mt-40">
+    <h4><a href={toLink(`/equipo/${slug}`)}>{name}</a></h4>
+    <p class="position">{position}</p>
+   </div>
+  </div>
+ </div>
+</div>

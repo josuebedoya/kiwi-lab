@@ -1,0 +1,13 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+
+const {slug} = Astro.params;
+---
+<LayoutPage
+  title={slug}
+  description={slug}
+  className="team-member-page"
+>
+
+ <h4>HOLAAAAA: {slug}😊</h4>
+</LayoutPage>

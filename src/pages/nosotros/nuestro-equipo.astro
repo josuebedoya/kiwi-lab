@@ -1,0 +1,41 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+import {getData} from "@/server/services/getData.ts";
+import HeroVideo from "@/components/organisms/about/heroVideo.astro";
+import Hero03 from "@/components/organisms/about/hero03.astro";
+import {getTeamData} from "@/server/services/getTeamData.ts";
+import Team from "@/components/organisms/about/team.astro";
+import Team2 from "@/components/organisms/about/team2.astro";
+import '@/styles/components/team.scss';
+import Hero01 from "@/components/organisms/hero01.astro";
+
+const {data: pageData, error: errPage} = await getData('our_team', ['title_main_hero', 'img_main_hero', 'video']);
+const {
+  kiwi_data,
+  team_data,
+  they_data,
+  starting_data,
+  error: errTeam
+} = await getTeamData(['kiwi', 'team', 'they', 'starting']);
+const heroData = {
+  title: pageData?.title_main_hero,
+  img: pageData?.img_main_hero,
+  videoSrc: pageData?.video,
+}
+
+if (errPage || errTeam) {
+  return Astro.redirect('/404');
+}
+---
+<LayoutPage
+  title={pageData?.title_main_hero}
+  description={pageData?.title_main_hero}
+  className="our-team-page"
+>
+
+ <HeroVideo {...heroData}/>
+ <Hero03 {...kiwi_data}/>
+ <Team {...team_data}/>
+ <Team2 {...they_data}/>
+ <Hero01 {...starting_data}/>
+</LayoutPage>

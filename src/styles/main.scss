@@ -1,0 +1,24 @@
+@use './global.scss';
+@use 'default.scss';
+
+/** Vendor styles **/
+@use "./vendor/animate.css";
+@use "./vendor/bootstrap.min.css";
+@use "./vendor/magnific-popup.css";
+@use "./vendor/nice-select.css";
+@use "./vendor/slick.css";
+
+/** Component styles **/
+@use "./components/form.scss";
+@use "./components/header.scss";
+@use "./components/footer.scss";
+@use './components/hero.scss';
+@use './components/about.scss';
+@use './components/services.scss';
+@use './components/counter.scss';
+@use './components/impact.scss';
+@use './components/partners.scss';
+@use './components/cta.scss';
+
+/** Responsive styles **/
+@use './responsive.scss';

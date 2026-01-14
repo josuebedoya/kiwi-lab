@@ -6,7 +6,7 @@ import Footer from "@/components/organisms/footer.astro";
 import InfoModal from "@/components/organisms/infoModal.astro";
 import Preloader from "@/components/organisms/preloader.astro";
 
-const { title, description, keywords, image } = Astro.props;
+const { title, description, keywords, image, className } = Astro.props;
 ---
 
 <html lang="es">
@@ -22,7 +22,9 @@ const { title, description, keywords, image } = Astro.props;
         <Preloader />
         <InfoModal />
         <Header />
-        <slot />
+       <div class={className}>
+        <slot/>
+       </div>
         <Footer />
         <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
       </main>

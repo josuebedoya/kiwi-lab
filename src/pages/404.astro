@@ -1,3 +1,29 @@
-<div class="404">
-  Error 404 - Page Not Found
-</div>
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+---
+<LayoutPage
+  title="Error 404 - Página No Encontrada"
+  description="La página que buscas no existe."
+  keywords="error 404, página no encontrada, error"
+  className="error-404-page">
+ <div class="pb-150 pt-250  container">
+  <div class="row">
+   <div class="col-lg-6">
+    <img src="/assets/images/404.webp" alt="Error 404"/>
+   </div>
+   <div class="col-lg-6">
+    <div class="section-title mb-30">
+     <h1 class="mb-30">Error 404</h1>
+     <p>Lo sentimos, la página que buscas no existe.</p>
+     <p>Es posible que la URL esté mal escrita o que la página haya sido eliminada.</p>
+    </div>
+    <a
+      href="/"
+      class="main-btn bordered-btn btn-heading-hover arrow-btn col-auto bg-white"
+    >
+     Volver a inicio
+    </a>
+   </div>
+  </div>
+ </div>
+</LayoutPage>

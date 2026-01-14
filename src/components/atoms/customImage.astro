@@ -1,6 +1,6 @@
 ---
 import readFile from "@/server/readFile";
-import type { HTMLAttributes } from "astro/types";
+import type {HTMLAttributes} from "astro/types";
 
 interface Props extends HTMLAttributes<"img"> {
   id: string | undefined;
@@ -9,6 +9,7 @@ interface Props extends HTMLAttributes<"img"> {
   height?: number;
   lazy?: boolean;
   params?: Record<string, string>;
+  defaultSrc?: string;
 }
 
 const {
@@ -18,16 +19,18 @@ const {
   height: hP,
   lazy = true,
   params,
+  defaultSrc,
   ...props
 } = Astro.props;
 
 const queryParams = {
-  ...(wP ? { width: String(wP).trim() } : {}),
-  ...(hP ? { height: String(hP).trim() } : {}),
+  ...(wP ? {width: String(wP).trim()} : {}),
+  ...(hP ? {height: String(hP).trim()} : {}),
   ...params,
 };
+const file = await readFile({id: id ?? "", name: alt, params: queryParams});
 
-const src = await readFile({ id: id ?? "", name: alt, params: queryParams });
+const src = () => file?.trim() || (defaultSrc ?? '/assets/images/image-default.webp');
 ---
 
-<img {...props} src={src} alt={alt} loading={lazy ? "lazy" : "eager"} />
+<img {...props} src={src()} alt={alt} loading={lazy ? "lazy" : "eager"}/>

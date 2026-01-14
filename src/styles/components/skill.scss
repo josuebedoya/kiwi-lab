@@ -1,0 +1,34 @@
+.skill-area-v2 .shape{
+  position: absolute;
+  z-index: -1;
+}
+
+.skill-area-v2 .shape.shape-one{
+  top: 60px;
+  right: 100px;
+}
+
+.skill-area-v2 .shape.shape-two{
+  bottom: 55px;
+  left: 100px;
+}
+
+.skill-area-v2 .img-holder{
+  padding-right: 40px;
+}
+
+.skill-area-v2 .text-wrapper{
+  padding-left: 20px;
+}
+
+.skill-area-v2 .text-wrapper .section-title h2{
+  margin-bottom: 5px;
+}
+
+.skill-area-v2 .img-holder .shape.shape-one{
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: -200px;
+}

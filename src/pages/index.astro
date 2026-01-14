@@ -7,9 +7,9 @@ import Impact from "@/components/organisms/home/impact.astro";
 import LetsWork from "@/components/organisms/home/letsWork.astro";
 import MainHero from "@/components/organisms/home/mainHero.astro";
 import Partners from "@/components/organisms/home/partners.astro";
-import RealImpact from "@/components/organisms/home/realImpact.astro";
 import LayoutPage from "@/layouts/layoutPage.astro";
-import { getHomeData } from "@/server/services/getHomeData.ts";
+import {getHomeData} from "@/server/services/getHomeData.ts";
+import Hero02 from "@/components/organisms/hero02.astro";
 
 // Data
 const {
@@ -44,14 +44,15 @@ if (error) {
   title="Inicio"
   description="Página de inicio"
   keywords="inicio, proyecto, migraciones"
+  className="home-page"
 >
-  <MainHero {...main_hero_data} />
-  <AboutHero {...about_data} />
-  <Differentials {...differentials_data} />
-  <Impact {...impact_data} />
-  <RealImpact {...real_impact_data} />
-  <Partners {...partners_data} />
-  <Experience {...experience_data} />
-  <Faq {...faq_data} />
-  <LetsWork {...letswork_data} />
+ <MainHero {...main_hero_data}/>
+ <AboutHero {...about_data}/>
+ <Differentials {...differentials_data}/>
+ <Impact {...impact_data}/>
+ <Hero02 {...real_impact_data}/>
+ <Partners {...partners_data}/>
+ <Experience {...experience_data}/>
+ <Faq {...faq_data}/>
+ <LetsWork {...letswork_data}/>
 </LayoutPage>

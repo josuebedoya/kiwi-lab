@@ -2,7 +2,7 @@
 import directus from "@/server/directus";
 import readFile from "@/server/readFile";
 import {readSettings} from "@directus/sdk";
-import '@/styles/main.css';
+import '@/styles/main.scss';
 
 interface Props {
   title: string;
@@ -14,7 +14,7 @@ interface Props {
 const {title, description, image, keywords} = Astro.props;
 const siteSettings = await directus.request(readSettings());
 const favicon = await readFile({id: siteSettings?.public_favicon, name: title});
-const img = image?.startsWith('http') ? image : await readFile({id: image, name: title});
+const img = image?.startsWith('http') ? image : (image && await readFile({id: image, name: title}));
 
 const url = Astro.request.url;
 ---
@@ -51,7 +51,7 @@ const url = Astro.request.url;
 
  <!-- Others -->
  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta property="og:locale" content="en_US"/>
+ <meta property="og:locale" content="en_US"/>
 
   {img && (
     <link rel="preload" as="image" href={img}/>)}

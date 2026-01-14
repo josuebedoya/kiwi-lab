@@ -1,0 +1,51 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/about/heroVideo.astro";
+import Hero01 from "@/components/organisms/hero01.astro";
+import Hero02 from "@/components/organisms/hero02.astro";
+import {getHistoryData} from "@/server/services/getHistoryData.ts";
+import type {Hero as HeroType} from "@/resources/defuaultTypes.ts";
+import {getData} from "@/server/services/getData.ts";
+import routes from "@/server/routes.ts";
+
+type Item = {
+  history_id: HeroType;
+}
+
+const {history} = Astro.params;
+
+const collection = history === 'conocenos' ? 'about' : 'approach';
+
+export function getStaticPaths() {
+  return Object.values(routes.about_us).map(v => ({
+    params: {history: v}
+  }));
+}
+if (!['conocenos', 'nuestro-enfoque'].includes(history)) {
+  return Astro.redirect('/404');
+}
+
+const {data: items} = await getHistoryData(collection);
+const {data: pageData} = await getData(collection, ['title_main_hero', 'img_main_hero', 'video']);
+
+const heroData = {
+  title: pageData?.title_main_hero,
+  img: pageData?.img_main_hero,
+  videoSrc: pageData?.video,
+}
+---
+<LayoutPage
+  title={pageData?.title_main_hero}
+  description={pageData?.title_main_hero}
+  className={`${collection}-page`}
+>
+ <HeroVideo {...heroData}/>
+  {
+    items?.map(({history_id: item}: Item, i: number) => {
+      const isEven = i % 2 === 0;
+      return isEven ?
+        <Hero01 {...item}/> :
+        <Hero02 {...item}/>;
+    })
+  }
+</LayoutPage>
