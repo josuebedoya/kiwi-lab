@@ -13,8 +13,19 @@ interface Props {
 
 const {title, description, image, keywords} = Astro.props;
 const siteSettings = await directus.request(readSettings());
-const favicon = await readFile({id: siteSettings?.public_favicon, name: title});
-const img = image?.startsWith('http') ? image : (image && await readFile({id: image, name: title}));
+
+let favicon: string | undefined;
+if (siteSettings?.public_favicon) {
+  favicon = await readFile({id: siteSettings.public_favicon, name: title});
+}
+
+let img: string | undefined;
+
+if (image?.startsWith("http") || image?.startsWith("/")) {
+  img = image;
+} else if (image) {
+  img = await readFile({id: image, name: title});
+}
 
 const url = Astro.request.url;
 ---

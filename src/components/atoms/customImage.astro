@@ -3,7 +3,7 @@ import readFile from "@/server/readFile";
 import type {HTMLAttributes} from "astro/types";
 
 interface Props extends HTMLAttributes<"img"> {
-  id: string | undefined;
+  id?: string;
   alt: string;
   width?: number;
   height?: number;
@@ -28,9 +28,13 @@ const queryParams = {
   ...(hP ? {height: String(hP).trim()} : {}),
   ...params,
 };
-const file = await readFile({id: id ?? "", name: alt, params: queryParams});
 
-const src = () => file?.trim() || (defaultSrc ?? '/assets/images/image-default.webp');
+let file: string | undefined;
+if (id) {
+  file = await readFile({id, name: alt, params: queryParams});
+}
+
+const src = () => file?.trim() || (defaultSrc ?? "/assets/images/image-default.webp");
 ---
 
 <img {...props} src={src()} alt={alt} loading={lazy ? "lazy" : "eager"}/>
