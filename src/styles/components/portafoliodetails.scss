@@ -1,0 +1,39 @@
+.portfolio-details-wrapper .portfolio-item{
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(89, 86, 233, 0.15);
+}
+
+.portfolio-details-wrapper .portfolio-item .text .content{
+  margin-bottom: 45px;
+}
+
+.portfolio-details-wrapper .portfolio-item .text .content h3.title, .portfolio-details-wrapper .portfolio-item .text .content h3{
+  font-size: 40px !important;
+  line-height: 50px !important;
+  margin-bottom: 15px;
+}
+
+.portfolio-details-wrapper .portfolio-item .text .content p{
+  margin-bottom: 15px;
+}
+
+.portfolio-details-wrapper .portfolio-item .text .content img{
+  margin-bottom: 50px;
+}
+
+.portfolio-details-wrapper .portfolio-info{
+  border: 1px solid var(--blue-dark);
+  padding: 10px;
+}
+
+.portfolio-details-wrapper .portfolio-info ul li{
+  margin-bottom: 25px;
+}
+
+.portfolio-details-wrapper .portfolio-info ul li:last-child{
+  margin-bottom: 0;
+}
+
+.portfolio-details-wrapper .portfolio-info ul li h4{
+  margin-bottom: 5px;
+}

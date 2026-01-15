@@ -5,6 +5,9 @@ import CardDiscover from "@/components/atoms/cardDiscover.astro";
 
 type Item = {
   summary: string;
+  img: {
+    key: string;
+  }
 };
 
 interface Props {
@@ -31,9 +34,9 @@ const {title, subtitle, summary, items} = Astro.props;
   </div>
   <Carousel id="discover">
     {
-      items?.map((item: Item) => (
+      items?.map(({img, ...item}: Item) => (
         <CardCarousel id="discover">
-         <CardDiscover {...item}/>
+         <CardDiscover {...item} img={img?.key}/>
         </CardCarousel>
       ))
     }

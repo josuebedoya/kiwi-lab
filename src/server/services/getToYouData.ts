@@ -66,7 +66,12 @@ export const getToYouData = async (field?: f[]) => {
     title: data?.title_know,
     subtitle: data?.subtitle_know,
     summary: data?.summary_know,
-    items: data?.items_services
+    items: data?.items_services?.map((item: any) => ({
+      item_id: {
+        ...item?.services_id,
+        slug: `servicios/${item?.services_id?.slug}`,
+      }
+    }))
   }
 
   return {

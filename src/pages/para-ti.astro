@@ -1,11 +1,7 @@
 ---
-import LayoutPage from "@/layouts/layoutPage.astro";
-import HeroVideo from "@/components/organisms/heroVideo.astro";
 import {getData} from "@/server/services/getData.ts";
-import Hero01 from "@/components/organisms/hero01.astro";
 import {getToYouData} from "@/server/services/getToYouData.ts";
-import Text from "@/components/organisms/to_you/text.astro";
-import Know from "@/components/organisms/to_you/know.astro";
+import Template01 from "@/templates/template01.astro";
 
 const {data: pageData, error: errPage} = await getData('to_you', ['title_main_hero', 'img_main_hero', 'video']);
 const {services_data, text_data, know_data, error: errData} = await getToYouData(['services', 'text', 'know']);
@@ -19,13 +15,10 @@ if (errPage || errData) {
   return Astro.redirect('/500');
 }
 ---
-<LayoutPage
-  title="Para ti"
-  description="Para ti"
-  className="to-you-page"
->
- <HeroVideo {...heroData}/>
- <Hero01 {...services_data}/>
- <Text {...text_data}/>
- <Know {...know_data}/>
-</LayoutPage>
+
+<Template01
+  banner_data={heroData}
+  hero_data={services_data}
+  text_data={text_data}
+  bottom_data={know_data}
+/>

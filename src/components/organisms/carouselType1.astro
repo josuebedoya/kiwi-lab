@@ -1,7 +1,7 @@
 ---
 import Carousel from "@/components/species/carousel.astro";
 import CardCarousel from "@/components/atoms/cardCarousel.astro";
-import CardKnow from "@/components/atoms/cardKnow.astro";
+import CardCarouselType1 from "@/components/atoms/cardCarouselType1.astro";
 import '@/styles/components/portafolio.scss';
 
 type Item = {
@@ -19,6 +19,7 @@ interface Props {
 }
 
 const {title, subtitle, summary, items} = Astro.props;
+console.log(title, subtitle, items);
 ---
 <section class="portfolio-area pb-50">
  <div class="container">
@@ -33,9 +34,9 @@ const {title, subtitle, summary, items} = Astro.props;
   </div>
   <Carousel id="portfolio">
     {
-      items?.map(({services_id: item}: Item) => (
+      items?.map(({item_id: item}: Item) => (
         <CardCarousel id="portfolio">
-         <CardKnow {...item}/>
+         <CardCarouselType1 {...item}/>
         </CardCarousel>
       ))
     }

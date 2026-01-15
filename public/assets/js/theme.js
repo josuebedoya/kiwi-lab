@@ -244,7 +244,7 @@
             breakpoint: 2500,
             settings: {
               arrows: false,
-              slidesToShow: 3
+              slidesToShow: 5
             }
           },
             {

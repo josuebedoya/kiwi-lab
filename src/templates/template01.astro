@@ -1,0 +1,27 @@
+---
+import Hero01 from "@/components/organisms/hero01.astro";
+import Text from "@/components/organisms/to_you/text.astro";
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import CarouselType1 from "@/components/organisms/carouselType1.astro";
+
+interface Props {
+  banner_data: object,
+  hero_data: object,
+  text_data: object,
+  bottom_data: object,
+}
+
+const {banner_data, bottom_data, hero_data, text_data} = Astro.props;
+---
+
+<LayoutPage
+  title={banner_data?.title}
+  description={banner_data?.title}
+  className="to-you-page"
+>
+ <HeroVideo {...banner_data}/>
+ <Hero01 {...hero_data}/>
+ <Text {...text_data}/>
+ <CarouselType1 {...bottom_data}/>
+</LayoutPage>

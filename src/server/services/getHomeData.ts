@@ -151,6 +151,7 @@ export const getHomeData = async (field?: f[]) => {
       label: data?.btn_real_impact_label,
       link: data?.btn_real_impact_link,
     },
+    img: data?.img_real_impact,
   }
   
   const partners_data = {

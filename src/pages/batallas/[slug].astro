@@ -1,0 +1,77 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import {getBattlesData} from "@/server/services/getBattlesData.ts";
+import '@/styles/components/portafoliodetails.scss';
+import Info from "@/components/organisms/info.astro";
+import CustomImage from "@/components/atoms/customImage.astro";
+
+const {slug} = Astro.params;
+
+
+const {info2_data, position_data, info_data, hero_data, error, notFound} = await getBattlesData(["*"], slug);
+
+if (notFound) {
+  return Astro.redirect('/404');
+}
+
+if (error) {
+  return Astro.redirect('/500');
+}
+---
+<LayoutPage
+  title="Para ti"
+  description="Para ti"
+  className="battle-item-page"
+>
+ <HeroVideo {...hero_data}/>
+ <section class="portfolio-details-section pt-100 pb-130">
+  <div class="container">
+   <div class="portfolio-details-wrapper wow fadeInUp">
+    <div class="portfolio-item">
+     <div class="text">
+      <div class="row justify-content-center">
+       <div class="col-12 col-lg-8">
+        <div class="content" set:html={info_data?.description}/>
+       </div>
+        {info_data?.img2 && (
+          <div class="col-sm-8 col-lg-4">
+           <div class="portfolio-info mb-45">
+            <CustomImage
+              id={info_data?.img2}
+              alt={hero_data?.title}
+              width={385}
+              height={520}
+            />
+           </div>
+          </div>
+        )}
+      </div>
+       {info_data?.img && (
+         <div class="row">
+          <div class="col-12 justify-content-center d-flex mb-50">
+           <CustomImage
+             id={info_data?.img}
+             alt={hero_data?.title}
+             width={1280}
+             height={700}
+           />
+          </div>
+         </div>
+       )}
+      <div class="row">
+       <div class="col-12">
+        <Info {...position_data}/>
+       </div>
+      </div>
+      <div class="row pt-130 pb-20 bottom-summary">
+       <div class="col-lg-12">
+        <div class="content" set:html={info2_data?.description}/>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+</LayoutPage>

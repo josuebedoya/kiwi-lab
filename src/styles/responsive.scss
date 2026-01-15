@@ -813,6 +813,26 @@
   .fancy-text-block.fancy-text-block-v2.pt-140.pb-20{
     padding-top: 50px;
   }
+
+  .row.pt-130.pb-20.bottom-summary{
+    padding-top: 60px !important;
+  }
+
+  .battle-item-page .page-banner.bg_cover.position-relative.z-1.pb-150 + section{
+    padding-bottom: 25px;
+  }
+  .battle-item-page h2, .battle-item-page h3, .battle-item-page h1, .portfolio-details-wrapper .portfolio-item .text .row .content h3{
+    font-size: 28px !important;
+  }
+  .battle-item-page .features-area.pt-100{
+    padding-top: 40px;
+  }
+  .battle-item-page .features-area.pt-100 .col-lg-6{
+    padding-inline: 0 !important;
+  }
+  .battle-item-page .features-list.mb-50{
+    margin-bottom: 0 !important;
+  }
 }
 
 @media (max-width: 400px){

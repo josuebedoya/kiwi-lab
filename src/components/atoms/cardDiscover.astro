@@ -1,8 +1,10 @@
 ---
+import CustomImage from "@/components/atoms/customImage.astro";
 interface Props {
   summary: string;
+  img?: string;
 }
-const {summary} = Astro.props;
+const {summary, img} = Astro.props;
 ---
 
 <div class="process-column to-green">
@@ -10,10 +12,20 @@ const {summary} = Astro.props;
    class="process-item text-center wow fadeInUp"
    data-wow-delay=".15s"
  >
-  <div class="text">
-   <p>
-     {summary}
-   </p>
+  <div class="row justify-content-center">
+    {
+      img && (
+        <div class="icon col-12 justify-content-center">
+         <div>
+          <CustomImage id={img} alt={summary?.slice(1, 10) || 'Icon'} width={80} height={80} class="mx-auto"/>
+         </div>
+        </div>
+      )
+    }
+   <div class="text col-12 justify-content-center">
+    <p>
+      {summary}
+    </p>
+   </div>
   </div>
  </div>
-</div>

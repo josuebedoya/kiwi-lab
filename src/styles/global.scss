@@ -1298,6 +1298,10 @@ button{
   -moz-filter: sepia(164%) brightness(150%) hue-rotate(27deg) saturate(974%);
 }
 
+.discover-item  .process-column.to-green::after{
+  content: none;
+}
+
 /** ACcordion */
 @media (min-width: 1300px){
   .container.custom-container-01{
@@ -1466,4 +1470,8 @@ button{
 
 .discover-area{
   background: #F7FFE9;
+}
+
+.imagina{
+  color: #dc3545 !important;
 }

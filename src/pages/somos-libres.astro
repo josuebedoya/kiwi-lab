@@ -1,0 +1,30 @@
+---
+import {getData} from "@/server/services/getData.ts";
+import {getWeFreeData} from "@/server/services/getWeFreeData.ts";
+import Template01 from "@/templates/template01.astro";
+
+const {data: pageData, error: errPage} = await getData('we_free', ['title_main_hero', 'img_main_hero', 'video']);
+const {
+  battles_data,
+  text_data,
+  battles_carousel_data,
+  error: errData
+} = await getWeFreeData(['battles', 'text', 'battles_carousel']);
+
+const banner_data = {
+  title: pageData?.title_main_hero,
+  img: pageData?.img_main_hero,
+  videoSrc: pageData?.video,
+}
+
+if (errPage || errData) {
+  return Astro.redirect('/500');
+}
+---
+
+<Template01
+  banner_data={banner_data}
+  hero_data={battles_data}
+  text_data={text_data}
+  bottom_data={battles_carousel_data}
+/>
