@@ -80,7 +80,9 @@
   .header-right-nav ul li.navbar-toggle-btn{
     display: block !important;
   }
-
+  .our-team-page .page-banner.only-text{
+    padding: 140px 0 100px;
+  }
   .hero-banner-v2 .hero-img .hero-shape,
   .footer-gradient-bg .shape{
     display: none;
@@ -479,7 +481,7 @@
     margin-bottom: 60px;
   }
   .page-banner.bg_cover.position-relative.z-1.pb-150.only-text{
-    padding-block: 150px 90px;
+    padding-block: 115px 30px;
   }
   .team-area.team-area-v2.pb-130{
     padding-bottom: 60px;
@@ -554,7 +556,13 @@
     padding-bottom: 70px;
     padding-top: 130px;
   }
-
+  .our-team-page .about-area.about-area-v3{
+    padding-bottom: 0 !important;
+    padding-top: 50px !important;
+  }
+  .our-team-page .team-area.team-area-v3{
+    padding-bottom: 50px !important;
+  }
   .hero-banner-v1 .hero-content p{
     padding-right: 0%;
   }
@@ -733,7 +741,7 @@
 
   .process-area.process-area-v1.pt-90.pb-85{
     padding-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
   }
   .partners-area.pt-125.pb-130, .fancy-text-block.light-gray-bg.pb-90.fancy-text-block-v1.pt-90{
     padding-bottom: 50px;
@@ -873,7 +881,7 @@
     max-width: 90%;
   }
   .page-banner.bg_cover.position-relative.z-1.pb-150.only-text{
-    padding-block: 140px 50px;
+    padding-block: 140px 0;
   }
 }
 

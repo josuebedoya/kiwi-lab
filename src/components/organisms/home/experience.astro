@@ -1,6 +1,6 @@
 ---
 import CardExperience from "@/components/atoms/cardExperience.astro";
-import type { Btn } from "@/resources/defuaultTypes";
+import type {Btn} from "@/resources/defuaultTypes";
 
 type Item = {
   experience_id: {
@@ -17,35 +17,35 @@ interface Props {
   btn: Btn;
 }
 
-const { title, subtitle, summary, items, btn } = Astro.props;
+const {title, subtitle, summary, items, btn} = Astro.props;
 ---
 
-<section class="process-area process-area-v1 pt-90 pb-85">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-7">
-        <div class="section-title text-center mb-55 wow fadeInUp">
-          {title && <span class="sub-title st-one">{title}</span>}
-          {subtitle && <h2>{subtitle}</h2>}
-          {summary && <p>{summary}</p>}
-        </div>
-      </div>
+<section class="process-area process-area-v1 pt-30 pb-20">
+ <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-lg-10">
+    <div class="section-title text-center mb-55 wow fadeInUp">
+      {title && <span class="sub-title st-one">{title}</span>}
+      {subtitle && <h2>{subtitle}</h2>}
+      {summary && <p>{summary}</p>}
     </div>
-    <div class="row">
-      {
-        items?.map(({ experience_id: item }: Item) => (
-          <CardExperience {...item} />
-        ))
-      }
-    </div>
-    <div class="btn-partners row justify-content-center mt-60 mb-100">
-      {
-        btn && (
-          <a href={btn.link} class="main-btn arrow-btn col-auto">
-            {btn.label}
-          </a>
-        )
-      }
-    </div>
+   </div>
   </div>
+  <div class="row">
+    {
+      items?.map(({experience_id: item}: Item) => (
+        <CardExperience {...item}/>
+      ))
+    }
+  </div>
+  <div class="btn-partners row justify-content-center mt-60 mb-100">
+    {
+      btn && (
+        <a href={btn.link} class="main-btn arrow-btn col-auto">
+          {btn.label}
+        </a>
+      )
+    }
+  </div>
+ </div>
 </section>
