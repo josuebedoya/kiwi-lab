@@ -1,5 +1,5 @@
 import directus from "@/server/directus";
-import { readItems } from "@directus/sdk";
+import {readItems} from "@directus/sdk";
 
 const nullDataResponse = {
   main_hero_data: null,
@@ -10,6 +10,7 @@ const nullDataResponse = {
   partners_data: null,
   experience_data: null,
   faq_data: null,
+  SEO_data: null,
   letswork_data: null,
   error: "Data not found",
 };
@@ -83,6 +84,11 @@ const fields = {
     "btn_letswork_label",
     "btn_letswork_link",
     "img_letswork"
+  ],
+  SEO: [
+    "title_page",
+    "description_page",
+    "keywords"
   ]
 };
 
@@ -93,11 +99,12 @@ export const getHomeData = async (field?: f[]) => {
   let error = null;
 
   const joinedFields = field?.reduce<string[]>((acc, curr) => {
-    const fieldList = fields[ curr ] ?? [];
-    return [ ...acc, ...fieldList ];
+    const fieldList = fields[curr] ?? [];
+    return [...acc, ...fieldList];
   }, []) as string[] | null;
 
-  const data = await directus?.request(readItems("home", { fields: joinedFields ?? [ "*" ] })) as any;
+  // @ts-ignore
+  const data = await directus?.request(readItems("home", {fields: [...joinedFields, ...fields.SEO] ?? ["*", ...fields.SEO]})) as any;
 
   if (!data) {
     return nullDataResponse;
@@ -153,7 +160,7 @@ export const getHomeData = async (field?: f[]) => {
     },
     img: data?.img_real_impact,
   }
-  
+
   const partners_data = {
     title: data?.title_partners,
     items: data?.items_partners,
@@ -187,6 +194,15 @@ export const getHomeData = async (field?: f[]) => {
     img: data?.img_letswork,
   }
 
+  const SEO_data = {
+    title: data?.title_page,
+    description: data?.description_page,
+    keywords: data?.keywords,
+    image: data?.img_main_hero,
+  }
+
+  console.log(data)
+
   return {
     main_hero_data,
     about_data,
@@ -196,6 +212,7 @@ export const getHomeData = async (field?: f[]) => {
     partners_data,
     experience_data,
     faq_data,
+    SEO_data,
     letswork_data,
     error,
   };

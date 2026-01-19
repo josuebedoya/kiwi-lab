@@ -3,7 +3,7 @@ import {getData} from "@/server/services/getData.ts";
 import {getToYouData} from "@/server/services/getToYouData.ts";
 import Template01 from "@/templates/template01.astro";
 
-const {data: pageData, error: errPage} = await getData('to_you', ['title_main_hero', 'img_main_hero', 'video']);
+const {data: pageData, error: errPage} = await getData('to_you', ['title_main_hero', 'img_main_hero', 'video', 'description_page', 'keywords']);
 const {services_data, text_data, know_data, error: errData} = await getToYouData(['services', 'text', 'know']);
 const heroData = {
   title: pageData?.title_main_hero,
@@ -11,12 +11,20 @@ const heroData = {
   videoSrc: pageData?.video,
 }
 
+const SEO = {
+  title: pageData?.title_main_hero,
+  description: pageData?.description_page,
+  keywords: pageData?.keywords,
+  image: pageData?.img_main_hero,
+};
+
 if (errPage || errData) {
   return Astro.redirect('/500');
 }
 ---
 
 <Template01
+  seo={SEO}
   banner_data={heroData}
   hero_data={services_data}
   text_data={text_data}

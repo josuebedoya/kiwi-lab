@@ -7,6 +7,7 @@ const nullResponse = {
   info_data: null,
   position_data: null,
   info2_data: null,
+  SEO_data: null,
   error: 'Directus client not initialized',
   notFound: true
 };
@@ -25,8 +26,6 @@ export async function getBattlesData(fields?: string[], slug?: string) {
       fields: fields ?? ["*"],
     }),
   );
-
-  console.log(data)
 
   if (!data || data.length === 0) {
     notFound = true;
@@ -60,12 +59,20 @@ export async function getBattlesData(fields?: string[], slug?: string) {
     description: dataItem?.description2,
   }
 
+  const SEO_data = {
+    title: dataItem?.title,
+    description: dataItem?.description_page,
+    keywords: dataItem?.keywords,
+    image: dataItem?.img
+  }
+
   return {
     data,
     hero_data,
     info_data,
     position_data,
     info2_data,
+    SEO_data,
     error,
     notFound
   };

@@ -26,7 +26,7 @@ if (!['conocenos', 'nuestro-enfoque'].includes(history)) {
 }
 
 const {data: items} = await getHistoryData(collection);
-const {data: pageData} = await getData(collection, ['title_main_hero', 'img_main_hero', 'video']);
+const {data: pageData} = await getData(collection, ['title_main_hero', 'img_main_hero', 'video', 'description_page', 'keywords']);
 
 const heroData = {
   title: pageData?.title_main_hero,
@@ -36,7 +36,9 @@ const heroData = {
 ---
 <LayoutPage
   title={pageData?.title_main_hero}
-  description={pageData?.title_main_hero}
+  description={pageData?.description_page}
+  keywords={pageData?.keywords}
+  image={pageData?.img_main_hero}
   className={`${collection}-page about-page-section`}
 >
  <HeroVideo {...heroData}/>

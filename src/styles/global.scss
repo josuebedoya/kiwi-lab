@@ -1424,6 +1424,7 @@ button{
 
 .block-bg{
   max-width: max-content;
+  hyphens:auto;
 }
 
 .text-area h2.title{
@@ -1478,4 +1479,13 @@ button{
 
 .our-team-page .about-area.about-area-v3{
   padding-top: 100px !important;
+}
+
+.to-you-page .about-area.about-area-v3.pt-210.pb-50{
+  padding-top: 100px;
+}
+
+.to-you-page .text-area.pt-100.pb-130{
+  padding-top: 30px;
+  padding-bottom: 130px;
 }

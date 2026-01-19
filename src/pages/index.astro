@@ -20,6 +20,7 @@ const {
   real_impact_data,
   partners_data,
   experience_data,
+  SEO_data,
   faq_data,
   letswork_data,
   error,
@@ -41,9 +42,10 @@ if (error) {
 ---
 
 <LayoutPage
-  title="Inicio"
-  description="Página de inicio"
-  keywords="inicio, proyecto, migraciones"
+  title={SEO_data?.title || "Inicio"}
+  description={SEO_data?.description}
+  keywords={SEO_data?.keywords}
+  image={SEO_data?.image}
   className="home-page"
 >
  <MainHero {...main_hero_data}/>

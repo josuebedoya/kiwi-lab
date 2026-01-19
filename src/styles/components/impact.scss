@@ -23,6 +23,10 @@
   margin-bottom: 45px !important;
 }
 
+.fancy-text-block .text-wrapper p + ul{
+  margin-top: -15px;
+}
+
 .fancy-text-block-v1 .img-holder {
   position: relative;
   z-index: 1;

@@ -15,6 +15,7 @@ const {
   discover_data,
   btn_data,
   bottom_data,
+  SEO_data,
   error,
   notFound
 } = await getServicesData(["*"], slug);
@@ -26,13 +27,13 @@ if (notFound) {
 if (error) {
   return Astro.redirect('/500');
 }
-
-console.log(discover_data)
 ---
 
 <LayoutPage
-  title="Servicio"
-  description="servicios"
+  title={SEO_data?.title}
+  description={SEO_data?.description}
+  keywords={SEO_data?.keywords}
+  image={SEO_data?.image}
   className="service-page"
 >
  <HeroVideo {...hero_data}/>
@@ -40,7 +41,7 @@ console.log(discover_data)
  <Discover {...discover_data}/>
  <HeroBottom {...bottom_data}/>
  <section>
-  <div class="container pt-100 pb-100 container-text-area">
+  <div class="container pt-50 pb-50 container-text-area">
    <div class="row justify-content-center pr-10 pl-10">
      {
        btn_data && (

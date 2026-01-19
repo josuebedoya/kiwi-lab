@@ -59,6 +59,13 @@ export async function getServicesData(fields?: string[], slug?: string) {
     img: dataItem?.img_bottom,
   }
 
+  const SEO_data = {
+    title: dataItem?.title,
+    description: dataItem?.description_page,
+    keywords: dataItem?.keywords,
+    image: dataItem?.img
+  }
+
   return {
     data,
     hero_data,
@@ -66,6 +73,7 @@ export async function getServicesData(fields?: string[], slug?: string) {
     discover_data,
     btn_data,
     bottom_data,
+    SEO_data,
     error,
     notFound
   };

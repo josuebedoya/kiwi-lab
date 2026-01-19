@@ -9,7 +9,7 @@ import Team2 from "@/components/organisms/about/team2.astro";
 import '@/styles/components/team.scss';
 import Hero01 from "@/components/organisms/hero01.astro";
 
-const {data: pageData, error: errPage} = await getData('our_team', ['title_main_hero', 'img_main_hero', 'video']);
+const {data: pageData, error: errPage} = await getData('our_team', ['title_main_hero', 'img_main_hero', 'video','description_page', 'keywords']);
 const {
   kiwi_data,
   team_data,
@@ -29,7 +29,9 @@ if (errPage || errTeam) {
 ---
 <LayoutPage
   title={pageData?.title_main_hero}
-  description={pageData?.title_main_hero}
+  description={pageData?.description_page}
+  keywords={pageData?.keywords}
+  image={pageData?.img_main_hero}
   className="our-team-page"
 >
 

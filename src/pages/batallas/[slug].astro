@@ -9,7 +9,7 @@ import CustomImage from "@/components/atoms/customImage.astro";
 const {slug} = Astro.params;
 
 
-const {info2_data, position_data, info_data, hero_data, error, notFound} = await getBattlesData(["*"], slug);
+const {info2_data, position_data, info_data, hero_data, SEO_data,error, notFound} = await getBattlesData(["*"], slug);
 
 if (notFound) {
   return Astro.redirect('/404');
@@ -20,12 +20,14 @@ if (error) {
 }
 ---
 <LayoutPage
-  title="Para ti"
-  description="Para ti"
+  title={SEO_data?.title}
+  description={SEO_data?.description}
+  keywords={SEO_data?.keywords}
+  image={SEO_data?.image}
   className="battle-item-page"
 >
  <HeroVideo {...hero_data}/>
- <section class="portfolio-details-section pt-100 pb-130">
+ <section class="portfolio-details-section pt-100 pb-30">
   <div class="container">
    <div class="portfolio-details-wrapper wow fadeInUp">
     <div class="portfolio-item">
@@ -60,11 +62,11 @@ if (error) {
          </div>
        )}
       <div class="row">
-       <div class="col-12">
+       <div class="col-12 -mt-40">
         <Info {...position_data}/>
        </div>
       </div>
-      <div class="row pt-130 pb-20 bottom-summary">
+      <div class="row pt-70 pb-20 bottom-summary">
        <div class="col-lg-12">
         <div class="content" set:html={info2_data?.description}/>
        </div>

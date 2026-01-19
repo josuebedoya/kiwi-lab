@@ -10,14 +10,17 @@ interface Props {
   hero_data: object,
   text_data: object,
   bottom_data: object,
+  seo: object
 }
 
-const {banner_data, bottom_data, hero_data, text_data} = Astro.props;
+const {banner_data, bottom_data, hero_data, text_data, seo} = Astro.props;
 ---
 
 <LayoutPage
-  title={banner_data?.title}
-  description={banner_data?.title}
+  title={seo?.title}
+  description={seo?.description}
+  keywords={seo?.keywords}
+  image={seo?.image}
   className="to-you-page"
 >
  <HeroVideo {...banner_data}/>

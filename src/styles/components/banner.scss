@@ -2,6 +2,7 @@
   padding: 250px 0 170px;
   background-image: -ms-linear-gradient(0deg, rgb(89, 86, 233) 0%, rgb(0, 208, 156) 100%);
 }
+
 .page-banner.only-text{
   padding: 170px 0 98px;
 }
@@ -104,6 +105,9 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  a{
+    text-decoration: none;
+  }
 }
 
 .page-banner .page-banner-img .play-content .video-popup{
@@ -130,6 +134,40 @@
 
 .about-page-section .about-area.about-area-v3.pt-210.pb-50{
   padding-top: 100px !important;
+}
+
+.about-page-section :not(.page-banner) li{
+  list-style: disc;
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+.about-page-section .about-area-v3 li{
+  list-style: none;
+  display: flex;
+  align-items: start;
+  margin-left: 0;
+  margin-bottom: 15px;
+}
+
+.about-page-section .about-area-v3 li:before{
+  font-family: 'Font Awesome 5 Pro', serif;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: var(--blue-dark);
+  margin-right: 15px;
+  content: "\f00c";
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--heading);
+  padding: 5px;
+  left: -10px;
+  top: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .our-team-page .skill-area.skill-area-v2.pt-130.pb-80.position-relative.z-1{
