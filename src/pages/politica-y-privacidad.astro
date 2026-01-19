@@ -1,0 +1,37 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import {getData} from "@/server/services/getData.ts";
+
+const {
+  data,
+  error
+} = await getData('privac_policy', ['description_page', 'keywords', 'img_main_hero', 'video', 'title_page', 'description']);
+
+if (error) {
+  return Astro.redirect('/500');
+}
+const hero_data = {
+  title: data?.title_page,
+  img: data?.img_main_hero,
+  videoSrc: data?.video,
+};
+---
+<LayoutPage
+  title={data?.title_page || "Inicio"}
+  description={data?.description_page}
+  keywords={data?.keywords}
+  image={data?.img_main_hero}
+  className="policy-page"
+>
+ <HeroVideo {...hero_data}/>
+ <section class="infor">
+  <div class="container mb-40">
+   <div class="row pt-80 pb-50">
+    <div class="col-lg-9">
+     <div set:html={data.description}></div>
+    </div>
+   </div>
+  </div>
+ </section>
+</LayoutPage>

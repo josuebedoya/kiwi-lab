@@ -20,8 +20,8 @@ const { id, items } = Astro.props;
     {
       items?.map(({ faq_id: item }: Item, index) => (
         <ItemAcordion
-          title={item.title}
-          body={item.body}
+          title={item?.title}
+          body={item?.body}
           index={index + 1}
           parent={id}
         />

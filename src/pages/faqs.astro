@@ -1,0 +1,45 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import Acordion from "@/components/species/acordion.astro";
+import {getData} from "@/server/services/getData.ts";
+
+const {data: itemsData, error} = await getData('faq', ['title', 'body']);
+const {
+  data: faqData,
+  error: faqError
+} = await getData('faq_page', ['description_page', 'keywords', 'description', 'img_main_hero', 'video', 'title_page']);
+
+if (error || faqError) {
+  return Astro.redirect('/500');
+}
+const hero_data = {
+  title: faqData?.title_page,
+  img: faqData?.img_main_hero,
+  videoSrc: faqData?.video,
+};
+const items = itemsData?.map(item => ({faq_id: {title: item.title, body: item.body}}));
+---
+<LayoutPage
+  title={faqData?.title_page || "Inicio"}
+  description={faqData?.description_page}
+  keywords={faqData?.keywords}
+  image={faqData?.img_main_hero}
+  className="faq-page"
+>
+ <HeroVideo {...hero_data}/>
+ <section class="faqs">
+  <div class="container mb-40">
+   <div class="row pt-80 pb-50">
+    <div class="col-lg-9">
+     <div set:html={faqData.description}></div>
+    </div>
+   </div>
+   <div class="row justify-content-center">
+    <div class="col-10">
+     <Acordion id="accordionOne" items={items ?? []}/>
+    </div>
+   </div>
+  </div>
+ </section>
+</LayoutPage>
