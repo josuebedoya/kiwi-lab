@@ -1,84 +1,85 @@
 ---
-import { PUBLIC_RECAPTCHA_SITE_KEY as KEY } from "astro:env/client";
+import {PUBLIC_RECAPTCHA_SITE_KEY as KEY} from "astro:env/client";
 import Head from "@/layouts/head.astro";
 import Header from "@/components/organisms/header.astro";
 import Footer from "@/components/organisms/footer.astro";
 import InfoModal from "@/components/organisms/infoModal.astro";
 import Preloader from "@/components/organisms/preloader.astro";
 
-const { title, description, keywords, image, className } = Astro.props;
+const {title, description, keywords, image, className} = Astro.props;
 ---
 
 <html lang="es">
-  <Head
-    title={title}
-    description={description}
-    keywords={keywords}
-    image={image}
-  />
-  <body>
-    <div id="imContent">
-      <main class="page-wrapper">
-        <Preloader />
-        <InfoModal />
-        <Header />
-       <div class={className}>
-        <slot/>
-       </div>
-        <Footer />
-        <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
-      </main>
-    </div>
+<Head
+  title={title}
+  description={description}
+  keywords={keywords}
+  image={image}
+/>
+<body>
+<div id="imContent">
+ <main class="page-wrapper">
+  <Preloader/>
+  <InfoModal/>
+  <Header/>
+  <div class={className}>
+   <slot/>
+  </div>
+  <Footer/>
+  <a href="#" class="back-to-top"><i class="far fa-angle-up"></i></a>
+ </main>
+</div>
 
-    <!-- Scripts Load -->
-    <!-- Font Awesome -->
-    <script
-      src="https://kit.fontawesome.com/56d3d5dce0.js"
-      crossorigin="anonymous"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/v4-shims.min.js"
-      integrity="sha512-pd9YFLsGdZIRG1ChLLdpxgGT+xR7rVjsHqm6RP0toUadPB4XZZ7LlqzX3IhnpMd2Cb8b2s8yVFwY21epgr84qw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
+<!-- Scripts Load -->
+<!-- Font Awesome -->
+<script
+  src="https://kit.fontawesome.com/56d3d5dce0.js"
+  crossorigin="anonymous"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/v4-shims.min.js"
+  integrity="sha512-pd9YFLsGdZIRG1ChLLdpxgGT+xR7rVjsHqm6RP0toUadPB4XZZ7LlqzX3IhnpMd2Cb8b2s8yVFwY21epgr84qw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
 
-    <!-- ReCAPTCHA -->
-    <script
-      is:inline
-      defer
-      src={`https://www.google.com/recaptcha/enterprise.js?render=${KEY}`}
-    ></script>
+<!-- ReCAPTCHA -->
+<script
+  is:inline
+  defer
+  src={`https://www.google.com/recaptcha/enterprise.js?render=${KEY}`}
+></script>
 
-    <!-- custom scripts -->
-    <script is:inline src="/assets/vendor/jquery-3.6.0.min.js"></script>
-    <!--====== Bootstrap js ======-->
-    <script is:inline src="/assets/vendor/popper/popper.min.js"></script>
-    <!--====== Bootstrap js ======-->
-    <script is:inline src="/assets/vendor/bootstrap/js/bootstrap.min.js"
-    ></script>
-    <!--====== Slick js ======-->
-    <script is:inline src="/assets/vendor/slick/slick.min.js"></script>
-    <!--====== Magnific js ======-->
-    <script
-      is:inline
-      src="/assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"
-    ></script>
-    <!--====== Isotope js ======-->
-    <script is:inline src="/assets/vendor/isotope.min.js"></script>
-    <!--====== Imagesloaded js ======-->
-    <script is:inline src="/assets/vendor/imagesloaded.min.js"></script>
-    <!--====== Counterup js ======-->
-    <script is:inline src="/assets/vendor/jquery.counterup.min.js"></script>
-    <!--====== Waypoints js ======-->
-    <script is:inline src="/assets/vendor/jquery.waypoints.js"></script>
-    <!--====== Nice-select js ======-->
-    <script
-      is:inline
-      src="/assets/vendor/nice-select/js/jquery.nice-select.min.js"></script>
-    <!--====== WOW js ======-->
-    <script is:inline src="/assets/vendor/wow.min.js"></script>
-    <!--====== Parallax js ======-->
-    <script is:inline src="/assets/vendor/parallax.min.js"></script>
-    <!--====== Main js ======-->
-    <script is:inline src="/assets/js/theme.js"></script>
-  </body>
+<!-- custom scripts -->
+<script is:inline src="/assets/vendor/jquery-3.6.0.min.js"></script>
+<!--====== Bootstrap js ======-->
+<script is:inline src="/assets/vendor/popper/popper.min.js"></script>
+<!--====== Bootstrap js ======-->
+<script is:inline src="/assets/vendor/bootstrap/js/bootstrap.min.js"
+></script>
+<!--====== Slick js ======-->
+<script is:inline src="/assets/vendor/slick/slick.min.js"></script>
+<!--====== Magnific js ======-->
+<script
+  is:inline
+  src="/assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"
+></script>
+<!--====== Isotope js ======-->
+<script is:inline src="/assets/vendor/isotope.min.js"></script>
+<!--====== Imagesloaded js ======-->
+<script is:inline src="/assets/vendor/imagesloaded.min.js"></script>
+<!--====== Counterup js ======-->
+<script is:inline src="/assets/vendor/jquery.counterup.min.js"></script>
+<!--====== Waypoints js ======-->
+<script is:inline src="/assets/vendor/jquery.waypoints.js"></script>
+<!--====== Nice-select js ======-->
+<script
+  is:inline
+  src="/assets/vendor/nice-select/js/jquery.nice-select.min.js"></script>
+<!--====== WOW js ======-->
+<script is:inline src="/assets/vendor/wow.min.js"></script>
+<!--====== Parallax js ======-->
+<script is:inline src="/assets/vendor/parallax.min.js"></script>
+<!--====== Main js ======-->
+<script is:inline src="/assets/js/theme.js"></script>
+<script is:inline src="/assets/js/form.js"></script>
+</body>
 </html>

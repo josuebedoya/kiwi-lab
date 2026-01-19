@@ -1,56 +1,67 @@
-.form #message {
-  display: none;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
+.form-wrapper{
+  position: relative;
 }
-.form #message.show {
-  display: block;
-  opacity: 1;
-}
-.form .message {
-  color: #fff;
-  background-color: var(--main-color-one);
+
+.form-wrapper #message{
+  color: var(--heading);
+  background-color: var(--blue-dark);
   max-width: max-content;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 17px;
   margin: 10px;
-  border-radius: 10px;
-  font-weight: 600;
+  border-radius: 8px;
+  font-weight: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s ease, visibility .4s ease, transform .7s ease;
+  transform: translateY(10px);
 }
-.form .loading {
-  width: 110%;
+
+.form-wrapper #loading{
+  width: 105%;
   height: 110%;
   position: absolute;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.3333333333);
+  background: rgba(2, 2, 2, .2);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   inset: 0;
-  transform: translateX(-5%) translateY(-5%);
-  border-radius: 10px;
-  display: flex;
+  transform: translateX(-2.5%) translateY(-5%);
+  border-radius: 7px;
   justify-content: center;
   align-items: center;
+  transition: opacity .4s ease, visibility .4s ease;
 }
-.form .loader {
+
+.form-wrapper #loader{
   width: 40px;
   height: 40px;
   border: 5px solid #ddd;
-  border-top-color: var(--main-color-one);
+  border-top-color: var(--blue-dark);
   border-radius: 50%;
   margin: 10px auto;
 }
-.form .loader.show {
+
+.form-wrapper #loader.show{
   animation: spinLoading 1s linear infinite;
-  opacity: 1;
-}
-.form .loading.show {
-  opacity: 1;
-  pointer-events: all;
 }
 
-@keyframes spinLoading {
-  to {
+.form-wrapper #loading.show{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  display: flex;
+}
+
+.form-wrapper #message.show{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@keyframes spinLoading{
+  to{
     transform: rotate(360deg);
   }
 }

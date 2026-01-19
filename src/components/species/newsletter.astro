@@ -1,26 +1,31 @@
 ---
+import Form from "@/components/species/form.astro";
 interface Props {
   title?: string;
   summary?: string;
 }
-const { title, summary } = Astro.props;
+const {title, summary} = Astro.props;
 ---
 
 <div class="widget newsletter-widget mb-40 wow fadeInUp" data-wow-delay=".30s">
-  <div class="newsletter-content">
-    {title && <h4 class="widget-title">{title}</h4>}
-    {summary && <p>{summary}</p>}
-    <form>
-      <div class="form_group">
-        <input
-          type="email"
-          class="form_control"
-          placeholder="Correo..."
-          name="email"
-          required
-        />
-        <button class="main-btn">Registrarse</button>
-      </div>
-    </form>
-  </div>
+ <div class="newsletter-content">
+   {title && <h4 class="widget-title">{title}</h4>}
+   {summary && <p>{summary}</p>}
+  <Form
+    id="newsletter"
+    model="form_newsletter"
+    api="/api/form/submit"
+  >
+   <div class="form_group">
+    <input
+
+      class="form_control"
+      placeholder="Correo..."
+      name="email"
+
+    />
+    <button class="main-btn">Registrarse</button>
+   </div>
+  </Form>
+ </div>
 </div>

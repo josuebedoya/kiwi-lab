@@ -3,6 +3,7 @@ import directus from "@/server/directus";
 import readFile from "@/server/readFile";
 import {readSettings} from "@directus/sdk";
 import '@/styles/main.scss';
+import {PUBLIC_RECAPTCHA_SITE_KEY as KEY} from "astro:env/client";
 
 interface Props {
   title: string;
@@ -66,4 +67,8 @@ const url = Astro.request.url;
 
   {img && (
     <link rel="preload" as="image" href={img}/>)}
+
+ <!-- ReCAPTCHA -->
+ <script defer src={`https://www.google.com/recaptcha/api.js?render=${KEY}`}
+ ></script>
 </head>
