@@ -38,21 +38,6 @@
   justify-content: flex-end;
 }
 
-.partners-area-v1 .partners-arrows .slick-arrow {
-  width: 30px;
-  height: 30px;
-  border-radius: 5px;
-  background-color: #323b8a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 12px;
-  color: #fff;
-  transition: all .3s;
-  z-index: 1;
-}
-
 .partners-area-v1 .partners-arrows .slick-arrow:hover {
   background-color: var(--blue-dark);
 }

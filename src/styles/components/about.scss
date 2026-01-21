@@ -32,6 +32,13 @@
 .about-area-v3 .img-holder{
   margin-left: -150px;
 }
+.our-team-page .about-area-v3 .st-one{
+  padding-left: 0;
+  font-size: 45px;
+}
+.our-team-page .about-area-v3 .st-one::after{
+  content: none;
+}
 
 .about-area-v3 .text-wrapper{
   padding-left: 40px;
@@ -39,6 +46,9 @@
 
 .about-area-v3 .text-wrapper p{
   margin-bottom: 20px;
+}
+.about-page-section .about-area-v3 .text-wrapper p, .about-page-section ul{
+  margin-bottom: 35px;
 }
 
 .about-area-v3 .text-wrapper ul.list-style-one li{

@@ -25,7 +25,7 @@ const {title, summary, subtitle2, subtitle, summaryList, items} = Astro.props;
        {title && <span class="sub-title st-one">{title}</span>}
        {subtitle && <h2>{subtitle}</h2>}
        {subtitle2 &&
-         <div class="bg-primary text-heading font-600 p-2 block-bg">{subtitle2}</div>}
+         <div class="bg-primary text-heading font-600 p-2 block-bg"><span>{subtitle2}</span></div>}
      </div>
      <div set:html={summary}></div>
     </div>

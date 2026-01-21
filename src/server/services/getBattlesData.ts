@@ -31,7 +31,7 @@ export async function getBattlesData(fields?: string[], slug?: string) {
     notFound = true;
   }
 
-  if (error || !data) {
+  if (!data) {
     return nullResponse;
   }
 
@@ -49,7 +49,7 @@ export async function getBattlesData(fields?: string[], slug?: string) {
   }
 
   const position_data = {
-    title: dataItem?.title_position,
+    subtitle: dataItem?.title_position,
     summary: dataItem?.summary_position,
     summaryList: dataItem?.title_position_list,
     items: dataItem?.items_position,

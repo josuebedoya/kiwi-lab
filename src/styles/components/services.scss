@@ -85,7 +85,7 @@
 
 .service-style-three{
   -webkit-box-shadow: 0 6px 8px 0 rgba(89, 86, 233, 0.1);
-  box-shadow:  0 6px 25px 0 rgba(89, 86, 233, 0.1);
+  box-shadow: 0 6px 25px 0 rgba(89, 86, 233, 0.1);
   border: none;
   min-height: -webkit-fill-available;
   cursor: pointer;
@@ -101,9 +101,11 @@
   min-height: -webkit-fill-available;
   height: 100%;
 }
+
 .differentials-carousel .slick-track, .differentials-item{
   display: flex !important;
 }
+
 .service-style-three:hover .text .btn-link-two,
 .service-style-three:hover .text p,
 .service-style-three:hover .text .list-style-two li,
@@ -121,6 +123,12 @@
   z-index: 2;
   padding: 80px 90px 50px;
   border-radius: 7px;
+}
+
+.home-page{
+  .service-area-v2 .service-wrapper{
+    padding-top: 20px !important;
+  }
 }
 
 .service-style-three:hover .text .btn-link-two:before{

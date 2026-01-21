@@ -12,7 +12,6 @@ interface Props {
 
 const {img, title, summary, slug} = Astro.props;
 
-const modalImg = await readFile({id: img, name: title, params: {width: 500, height: 500}});
 ---
 <div class="portfolio-style-one">
  <div class="img-holder">
@@ -22,7 +21,7 @@ const modalImg = await readFile({id: img, name: title, params: {width: 500, heig
     width={370}
     height={370}
   />
-  <a href={modalImg} class="portfolio-hover img-popup">
+  <a href={toLink(slug)} class="portfolio-hover">
    <div class="hover-content">
     <i class="far fa-plus"></i>
    </div>

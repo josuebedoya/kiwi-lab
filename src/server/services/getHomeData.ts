@@ -54,7 +54,8 @@ const fields = {
     "subtitle_real_impact",
     "summary_real_impact",
     "btn_real_impact_label",
-    "btn_real_impact_link"
+    "btn_real_impact_link",
+    "img_real_impact"
   ],
   partners: [
     "title_partners",
