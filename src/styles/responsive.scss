@@ -515,6 +515,34 @@
     font-size: 35px !important;
     line-height: 47px !important;
   }
+  .container-1350.light-gray-bg-2.pt-70.pb-80.pl-80.pr-80{
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .join-kiwi-page table tr{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .join-kiwi-page table,
+  .join-kiwi-page colgroup,
+  .join-kiwi-page colgroup col,
+  .join-kiwi-page table tbody,
+  .join-kiwi-page table tr td, .join-kiwi-page table tr td > *,
+  .container-1350.light-gray-bg-2.pt-70.pb-80.pl-80.pr-80,
+  .join-kiwi-page table tr{
+    width: 100% !important;
+  }
+
+  .join-kiwi-page table tr td{
+    padding: 0 !important;
+  }
+  .join-kiwi-page table tr td:first-child{
+    margin-bottom: 40px;
+  }
+  .join-kiwi-page img{
+    border-radius: 15px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px){
@@ -839,6 +867,18 @@
   }
   .battle-item-page .features-list.mb-50{
     margin-bottom: 0 !important;
+  }
+
+  .nice-select .list{
+    min-width: 100% !important;
+    position: relative;
+    top: 10px;
+    margin: 0 -30px;
+  }
+
+  .nice-select .list li{
+    overflow-x: auto;
+    padding-block: 10px;
   }
 }
 

@@ -65,3 +65,84 @@
     transform: rotate(360deg);
   }
 }
+
+form .nice-select,
+form .form_control{
+  margin-bottom: 40px;
+  height: 60px;
+  border-radius: 5px;
+  padding: 0 30px;
+  font-weight: 400;
+  color: var(--text-color);
+  border: 1px solid rgba(88, 86, 233, 0.2);
+  width: 100%;
+}
+
+form .nice-select{
+  line-height: 60px;
+}
+
+form .form_control::-webkit-input-placeholder, form .nice-select ul li{
+  color: var(--heading);
+}
+
+form .form_control::-moz-placeholder{
+  color: var(--text-color);
+}
+
+form .form_control:-ms-input-placeholder{
+  color: var(--text-color);
+}
+
+form .form_control::-ms-input-placeholder{
+  color: var(--text-color);
+}
+
+form .form_control::placeholder{
+  color: var(--text-color);
+}
+
+form textarea.form_control{
+  padding-top: 15px;
+  height: 140px;
+}
+
+form .form_control:focus{
+  border-color: var(--blue-dark);
+}
+
+.form_group label{
+  font-weight: 600;
+  font-size: 19px;
+  color: var(--heading);
+  line-height: 120%;
+  margin-bottom: 20px;
+}
+
+form .nice-select ul li, form .nice-select span.current{
+  font-size: 18px;
+}
+
+form .nice-select ul li{
+  font-size: 18px;
+  padding-block: 7px;
+}
+
+form .nice-select .current{
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.form_group{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+form small{
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 100%;
+  color: var(--heading);
+}

@@ -24,12 +24,12 @@ const submitForm = async ( form ) => {
   const dataForm = new FormData( form );
 
   const valueKeys = {
-    recaptcha: await generateToken( form.dataset.recaptcha ), model: form.dataset.model, api: form.dataset.api,
+    recaptcha: await generateToken( form.dataset.recaptcha ), formId: form.dataset.id, api: form.dataset.api,
   }
 
   try {
     dataForm.append( "recaptchaToken", valueKeys.recaptcha ); // Added token to form data
-    dataForm.append( "model", valueKeys.model ); // model
+    dataForm.append( "formId", valueKeys.formId ); // id of the form directus
 
     const res = await fetch( valueKeys.api, {
       method: "POST", body: dataForm,
@@ -69,6 +69,8 @@ document.addEventListener( "submit", async ( e ) => {
   msg.textContent = message;
   toggleClass( [ msg ], true );
   toggleClass( [ loading, loader ], false );
+
+  form.reset();
 
   if ( !ok ) {
     console.error( message );

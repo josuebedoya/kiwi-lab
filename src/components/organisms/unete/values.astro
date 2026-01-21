@@ -1,0 +1,45 @@
+---
+import type {SocialItem} from "@/resources/defuaultTypes";
+import CardDifferential from "@/components/atoms/cardDifferential.astro";
+
+type Item = {
+  title: string;
+  summary: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle: string;
+  items?: Item [];
+  label: string;
+  titleButton?: string;
+}
+const {title, subtitle, label, titleButton, items} = Astro.props;
+---
+
+<section class="team-area team-area-v2 pb-70 pt-100 light-gray-bg-2">
+ <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-lg-8">
+    <div class="section-title text-center mb-55 wow fadeInUp">
+      {title && <h2>{title}</h2>}
+      {subtitle && <p>{subtitle}</p>}
+    </div>
+   </div>
+  </div>
+  <div class="row justify-content-center">
+    {
+      items?.map((item: Item) => (
+        <div class="col-sm-6 col-lg-4 mb-40">
+         <CardDifferential {...item}/>
+        </div>
+      ))
+    }
+  </div>
+  <div class="row justify-content-center">
+   <div class="col-auto text-center mt-60">
+    <h3 class="text-center mb-4">{titleButton}</h3>
+    <a href="/unete-a-kiwi/formulario" class="main-btn">{label}</a>
+   </div>
+  </div>
+</section>

@@ -1,24 +1,23 @@
 ---
-import {PUBLIC_RECAPTCHA_SITE_KEY} from "astro:env/client";
+import {PUBLIC_RECAPTCHA_SITE_KEY as KEY} from "astro:env/client";
+import {getFormData} from "@/server/services/getFormData.ts";
 
 interface Props {
   id: string;
-  model: string;
   class?: string;
   api: string;
 }
 
-const {id, model, class: className, api} = Astro.props;
+const {id, class: className, api} = Astro.props;
 ---
 
 <div class="form-wrapper">
  <form
-   id={id}
    class={className}
+   data-id={id}
    data-form
-   data-model={model}
    data-api={api}
-   data-recaptcha={PUBLIC_RECAPTCHA_SITE_KEY}
+   data-recaptcha={KEY}
  >
   <slot/>
 

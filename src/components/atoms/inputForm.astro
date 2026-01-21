@@ -1,0 +1,29 @@
+---
+import slugify from "@/utils/slugify.ts";
+type InputProps = JSX.IntrinsicElements["input"];
+
+interface Props {
+  label?: boolean,
+  description?: boolean,
+}
+
+const {type = 'text', name, label = true, description, ...item} = Astro.props as InputProps;
+---
+<div class="form_group wow fadeInUp" data-wow-delay=".2s">
+  {
+    description &&
+    <small class="form-text mb-4 mt-3 pb-lg-4">
+      {description}
+    </small>
+  }
+ <div class="control">
+   {label && <label for={slugify(name)}>{name}</label>}
+  <input
+    {...item}
+    type={type}
+    name={name}
+    class="form_control"
+    id={slugify(name)}
+  />
+ </div>
+</div>

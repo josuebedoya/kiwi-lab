@@ -1,0 +1,31 @@
+---
+import slugify from "@/utils/slugify.ts";
+type InputProps = JSX.IntrinsicElements["select"];
+
+interface Props {
+  label?: boolean,
+  type?: string,
+  placeholder?: string,
+  options: string[];
+  description?: string;
+}
+
+const {type = 'text', name, label = true, placeholder, options, description, ...item} = Astro.props as InputProps;
+---
+
+<div class="form_group wow fadeInUp" data-wow-delay=".2s">
+  {
+    description &&
+    <small class="form-text mb-4 mt-3 pb-lg-4">
+      {description}
+    </small>
+  }
+  {label && <label for={slugify(name)}>{name}</label>}
+ <select id={slugify(name)} name={name} {...item} class="form_control">
+   {placeholder &&
+     <option value="" disabled selected>{placeholder}</option>}
+   {options?.map((op: string) => (
+     <option value={op}>{op}</option>
+   ))}
+ </select>
+</div>

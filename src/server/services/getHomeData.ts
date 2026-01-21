@@ -104,7 +104,7 @@ export const getHomeData = async (field?: f[]) => {
   }, []) as string[] | null;
 
   // @ts-ignore
-  const data = await directus?.request(readItems("home", {fields: [...joinedFields, ...fields.SEO] ?? ["*", ...fields.SEO]})) as any;
+  const data = await directus?.request(readItems("home", {fields: [...joinedFields, ...fields.SEO ?? '"*"']})) as any;
 
   if (!data) {
     return nullDataResponse;
@@ -200,8 +200,6 @@ export const getHomeData = async (field?: f[]) => {
     keywords: data?.keywords,
     image: data?.img_main_hero,
   }
-
-  console.log(data)
 
   return {
     main_hero_data,

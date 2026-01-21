@@ -1,0 +1,41 @@
+---
+import {getData} from "@/server/services/getData.ts";
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import Text from "@/components/organisms/to_you/text.astro";
+import FormSection from "@/components/organisms/formSection.astro";
+import {getFormData} from "@/server/services/getFormData.ts";
+
+const {
+  data: pageData,
+  error: errPage
+} = await getData('talk', ['title_page', 'img_main_hero', 'video', 'description_page', 'keywords', 'description']);
+
+const {data: formData, error: errorForm} = await getFormData(3);
+
+const heroData = {
+  title: pageData?.title_page,
+  img: pageData?.img_main_hero,
+  videoSrc: pageData?.video,
+}
+
+const SEO = {
+  title: pageData?.title_page,
+  description: pageData?.description_page,
+  keywords: pageData?.keywords,
+  image: pageData?.img_main_hero,
+};
+
+if (errPage || errorForm) {
+  return Astro.redirect('/500');
+}
+---
+
+<LayoutPage
+  {...SEO}
+  className="talk-page"
+>
+ <HeroVideo {...heroData}/>
+ <Text summary={pageData?.description}/>
+ <FormSection {...formData}/>
+</LayoutPage>

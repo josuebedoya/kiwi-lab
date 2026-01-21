@@ -1,0 +1,69 @@
+---
+import {getData} from "@/server/services/getData.ts";
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import Text from "@/components/organisms/to_you/text.astro";
+import FormSection from "@/components/organisms/talk/formSection.astro";
+import {getFormData} from "@/server/services/getFormData.ts";
+import {formatterHTML} from "@/utils/formatterHTML.ts";
+import Values from "@/components/organisms/unete/values.astro";
+
+const {
+  data: pageData,
+  error: errPage
+} = await getData('join',
+  ['title_page', 'img_main_hero', 'video', 'description_page',
+    'keywords', 'description', 'subtitle', 'title_values', 'subtitle_values',
+    'items_values', 'items_values', 'label_btn_bottom', 'title_bottom']);
+
+if (errPage) {
+  return Astro.redirect('/500');
+}
+
+const heroData = {
+  title: pageData?.title_page,
+  img: pageData?.img_main_hero,
+  videoSrc: pageData?.video,
+}
+
+const SEO = {
+  title: pageData?.title_page,
+  description: pageData?.description_page,
+  keywords: pageData?.keywords,
+  image: pageData?.img_main_hero,
+};
+
+const content = formatterHTML(pageData?.description || '');
+
+const valuesData = {
+  title: pageData?.title_values,
+  subtitle: pageData?.subtitle_values,
+  items: pageData?.items_values,
+  titleButton: pageData?.title_bottom,
+  label: pageData?.label_btn_bottom,
+};
+---
+
+<LayoutPage
+  {...SEO}
+  className="join-kiwi-page"
+>
+ <HeroVideo {...heroData}/>
+ <section class="text-area pt-100 pb-80">
+  <div class="container">
+   <div class="row justify-content-center">
+    <div class="col-lg-12">
+     <div class="text-wrapper text-justify wow fadeInUp" data-wow-delay="0.3s">
+      <div class="section-title d-flex flex-column align-items-center">
+       <span class="sub-title st-one text-center">{SEO.title}</span>
+        {pageData?.subtitle && <h2 class="title text-center mb-4 mb-lg-5">{pageData?.subtitle}</h2>}
+      </div>
+       {content &&
+         <div set:html={content}></div>}
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+ <Values {...valuesData}/>
+</LayoutPage>

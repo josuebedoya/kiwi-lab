@@ -1,52 +1,68 @@
-import directus from '@/server/directus';
+import type {APIContext, APIRoute} from "astro";
+import resApi from "@/server/resApi.ts";
+import {createAssessment} from "@/server/recaptcha.ts";
+import directus from "@/server/directus.ts";
 import {createItems} from "@directus/sdk";
-import type {APIRoute} from "astro";
-import {createAssessment} from "@/server/recaptcha";
-import {Record} from "immutable";
 
-const resFetch = (content = {}, message = '', status = 200) => {
-  return new Response(JSON.stringify({...content, message}), {status});
+const errorResponse = (msg: string, err: string) => {
+  console.error(err, msg);
+  return resApi({
+    success: false,
+    error: err,
+    message: msg,
+    data: null,
+    status: 400
+  })
+};
+
+const messages = {
+  missingToken: "Missing reCAPTCHA token",
+  formId: "Missing form ID",
+  lowScore: "Error: ReCAPTCHA score too low",
+  directus: "Error: Saving data into Directus",
+  errorRequest: "Error: Error in the request",
+  error: "Error: algo salió mal.",
+  success: "Enviado exitosamente",
 }
+const model = 'form_submissions';
 
-const errorMessage = 'Error trying get data' as const;
-
-export const POST: APIRoute = async ({request}): Promise<Response> => {
+export const POST: APIRoute = async ({request}: APIContext): Promise<Response> => {
   try {
     const formData = await request.formData() as FormData;
-    const model = formData.get("model") as string;
-    const token = formData.get("recaptchaToken") as string;
+    const token = formData.get("recaptchaToken") as string || null;
+    const formId = formData.get("formId") as string || null;
 
-    if (!token) {
-      return resFetch({success: false, error: "Missing reCAPTCHA token"}, errorMessage, 400);
-    }
-    if (!model) {
-      return resFetch({success: false, error: "Missing model. Is Required"}, errorMessage, 400);
-    }
+    if (!token) return errorResponse(messages.missingToken, messages.error);
+    if (!formId) return errorResponse(messages.formId, messages.error);
 
+    // reCaptcha validation
     const score = await createAssessment({token});
+    if (!score || score < 0.7) return errorResponse(messages.lowScore, `${messages.error} __ Score: ${score}`);
 
-    if (!score || score < 0.7) {
-      console.log("Error ReCAPTCHA score too low", score);
-      return resFetch({success: false, error: "Invalid reCAPTCHA", score}, errorMessage, 403);
-    }
+    // Data
+    const payload = {
+      form: formId,
+      leads: Array.from(formData.entries())
+        .filter(([key]) => key !== "formId" && key !== "recaptchaToken")
+        .map(([key, value]) => ({
+          field: key,
+          value
+        }))
+    } as Record<string, any>;
 
-    const payload: Record<string, any> = {};
+    const res = await directus.request(createItems(model, [payload]));
+    if (!res || !Object.keys(res).length) return errorResponse(messages.directus, messages.error);
 
-    formData.forEach((value, key) => {
-      if (key !== "model") {
-        payload[key] = value;
-      }
-    });
+    return resApi({
+      success: true,
+      error: null,
+      message: messages.success,
+      data: res,
+      status: 200
+    })
 
-    const res = await directus.request(createItems(model as string, payload as any[]));
-    if (!res || !Object.keys(res).length) {
-      return resFetch({success: false, error: res}, errorMessage, 500);
-    }
-
-    return resFetch({success: true, error: null}, 'Enviado Exitosamente', 200);
-
-  } catch (err) {
-    console.log("Error", err);
-    return resFetch({success: false, error: "Server error.", errors: err}, errorMessage, 500);
+  } catch (error) {
+    console.error(error);
+    return errorResponse(messages.errorRequest, messages.error);
   }
 };

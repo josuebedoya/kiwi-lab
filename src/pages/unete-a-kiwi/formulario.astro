@@ -1,0 +1,56 @@
+---
+import {getData} from "@/server/services/getData.ts";
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import FormSection from "@/components/organisms/formSection.astro";
+import {getFormData} from "@/server/services/getFormData.ts";
+import {formatterHTML} from "@/utils/formatterHTML.ts";
+
+const {
+  data: pageData,
+  error: errPage
+} = await getData('join',
+  ['title_page', 'img_main_hero', 'video', 'description_page',
+    'keywords', 'description_form', 'subtitle', 'bottom_message_form']);
+
+const {data: formData, error: errorForm} = await getFormData(6);
+
+if (errPage || errorForm) {
+  return Astro.redirect('/500');
+}
+
+const heroData = {
+  title: pageData?.title_page,
+  img: pageData?.img_main_hero,
+  videoSrc: pageData?.video,
+}
+
+const SEO = {
+  title: pageData?.title_page,
+  description: pageData?.description_page,
+  keywords: pageData?.keywords,
+  image: pageData?.img_main_hero,
+};
+
+const content = formatterHTML(pageData?.description_form || '');
+---
+
+<LayoutPage
+  {...SEO}
+  className="formulario-kiwi-page"
+>
+ <HeroVideo {...heroData}/>
+ <section class="text-area pt-100 pb-80">
+  <div class="container">
+   <div class="row justify-content-center">
+    <div class="col-lg-12">
+     <div class="text-wrapper text-justify wow fadeInUp" data-wow-delay="0.3s">
+       {content &&
+         <div set:html={content}></div>}
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+ <FormSection {...formData} message={pageData?.bottom_message_form}/>
+</LayoutPage>

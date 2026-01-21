@@ -1,0 +1,80 @@
+---
+import Form from "@/components/species/form.astro";
+import InputForm from "@/components/atoms/inputForm.astro";
+import TextareaForm from "@/components/atoms/textareaForm.astro";
+import SelectForm from "@/components/atoms/selectForm.astro";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  fields: Array<{
+    name: string;
+    placeholder: string;
+    type: string;
+    required: boolean;
+    width?: string;
+  }>;
+  label: string;
+  message?: string;
+}
+
+const {title, subtitle, fields, label, message} = Astro.props;
+---
+
+<section class="form-section mb-40">
+ <div class="container-1350 light-gray-bg-2 pt-70 pb-80 pl-80 pr-80">
+  <div class="row justify-content-center">
+   <div class="col-lg-8">
+    <div class="section-title text-center mb-55 wow fadeInUp">
+      {title && <span class="sub-title st-one">{title}</span>}
+      {subtitle && <h2>{subtitle}</h2>}
+    </div>
+   </div>
+  </div>
+  <Form
+    id="3"
+    api="/api/form/submit"
+  >
+   <div class="row">
+     {fields?.map((field) => {
+       let component = null;
+       switch (field.type) {
+         case "textarea":
+           component =
+             <TextareaForm {...field}/>;
+           break;
+
+         case "text":
+         case "email":
+         case "number":
+           component =
+             <InputForm {...field}/>;
+           break;
+
+         case "select":
+         case "select_multiple":
+           component =
+             <SelectForm {...field}/>;
+           break;
+
+       }
+
+       return component ? (
+         <div class={`col-lg-${field?.width ?? '12'}`}>
+           {component}
+         </div>
+       ) : null;
+     })}
+   </div>
+   <div class="row justify-content-center mt-30">
+    <button class="main-btn">{label}</button>
+   </div>
+  </Form>
+
+  <div class="row">
+   <div class="col-lg-12">
+    <div class="bottom-message text-center" set:html={message}/>
+   </div>
+  </div>
+ </div>
+</section>
