@@ -1,0 +1,53 @@
+.pagination-container .pg-pagination {
+  max-width: 160px;
+  flex-wrap: nowrap;
+  display: inline-flex !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+.pagination-container .container-pg {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  max-width: max-content;
+  margin-inline: auto;
+}
+
+.pagination-wrapper .container-pg a {
+  width: 40px;
+  height: 40px;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  background: #ebf4fc;
+  margin: 0 5px;
+  text-decoration: none;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-container a[aria-disabled=true] {
+  cursor: not-allowed;
+}
+
+.pagination-wrapper .container-pg a:not([aria-disabled=true]):hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+  color: var(--heading);
+}
+
+@media (max-width: 991px) {
+  .pagination-wrapper .container-pg a {
+    font-size: 15px;
+  }
+}
+
+/*# sourceMappingURL=pagination.css.map */

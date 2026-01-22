@@ -21,6 +21,7 @@ const fields = [
   'description_seo',
   "category.slug",
   "category.title",
+  "user_created.id",
 ];
 
 type filterParams = {

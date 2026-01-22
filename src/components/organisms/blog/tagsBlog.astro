@@ -1,15 +1,36 @@
 ---
-interface Props {
-  items: string[];
-}
-const {items} = Astro.props;
+import {getPostsBlog} from "@/server/services/getPostsBlog.ts";
+import type {ItemPost} from "@/resources/defuaultTypes";
 
 const tagUrl = decodeURIComponent(Astro.url.searchParams.get("tag") ?? '');
+
+// Tags
+const configTags = {
+  limit: 12,
+  page: 1,
+  sort: ["date_created"]
+}
+const {data: postsTags, error: errorTags} = await getPostsBlog({...configTags});
+const {items: itemsTags} = postsTags;
+
+// build unique tags set
+const tagsSet = new Set<string>();
+itemsTags.forEach((post: ItemPost) => {
+  post?.keywords_seo?.forEach((tag: string) => {
+    tagsSet.add(tag);
+  });
+});
+
+const tagsArray = Array.from(tagsSet);
+
+if (errorTags) {
+  return Astro.redirect('/500');
+}
 ---
 <div class="widget tag-cloud-widget mb-30 wow fadeInUp">
  <h4 class="widget-title">Más Populares</h4>
   {
-    items.map((tag) => (
+    tagsArray?.map((tag) => (
       <a href={`/blog?tag=${tag}`} class={tag === tagUrl ? 'active' : ''}>{tag}</a>
     ))
   }

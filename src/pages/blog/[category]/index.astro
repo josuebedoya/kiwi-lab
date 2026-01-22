@@ -8,10 +8,16 @@ if (!category) {
   return Astro.redirect('/404');
 }
 
-// Categories data
-const {data: categories, error: errorCategories} = await getCategoriesBlog();
+const queryCategory = {
+  slug: {
+    _eq: category
+  }
+}
 
-const currentCategory = categories?.find((c: any) => c.slug === category);
+// Categories data
+const {data: categories, error: errorCategories} = await getCategoriesBlog({filter: queryCategory});
+
+const currentCategory = categories?.[0];
 if (!currentCategory) {
   return Astro.redirect('/404');
 }
@@ -25,11 +31,6 @@ const config = {
   filter: {
     category: currentCategory?.id,
   }
-}
-const configTags = {
-  limit: 12,
-  page: 1,
-  sort: ["date_created"]
 }
 
 const heroData = {
@@ -51,9 +52,7 @@ if (errorCategories) {
 
 <TemplateBlog
   description={currentCategory?.description}
-  categories={categories}
   config={config}
-  configTags={configTags}
   SEO={SEO}
   heroData={heroData}
 />

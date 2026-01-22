@@ -1,29 +1,19 @@
 ---
 import '@/styles/components/blog.scss';
 import type {ItemPost} from "@/resources/defuaultTypes";
-import SearchEngine from "@/components/organisms/blog/searchEngine.astro";
 import LayoutPage from "@/layouts/layoutPage.astro";
-import ContactBlock from "@/components/organisms/blog/contactBlock.astro";
 import Paginate from "@/components/species/paginate.astro";
-import TagsBlog from "@/components/organisms/blog/tagsBlog.astro";
-import RecentPosts from "@/components/organisms/blog/recentPosts.astro";
 import CardPost1 from "@/components/atoms/cardPost1.astro";
-import CategoriesList from "@/components/organisms/blog/categoriesList.astro";
 import HeroVideo from "@/components/organisms/heroVideo.astro";
 import CardPost2 from "@/components/atoms/cardPost2.astro";
 import CardPost3 from "@/components/atoms/cardPost3.astro";
 import {getPostsBlog} from "@/server/services/getPostsBlog.ts";
+import Sidebar from "@/components/organisms/blog/sidebar.astro";
 
 interface Props {
-  categories: any[];
   config: {
     limit: number;
     page: number;
-  },
-  configTags: {
-    limit: number;
-    page: number;
-    sort: string[];
   },
   SEO: {
     title: string;
@@ -38,9 +28,7 @@ interface Props {
 }
 
 const {
-  categories,
   config,
-  configTags,
   SEO,
   description,
   heroData
@@ -51,26 +39,11 @@ const {
 const {data: posts, error: errorPosts} = await getPostsBlog({...config});
 const {items, total_count} = posts;
 
-// tags from posts
-// Posts data
-const {data: postsTags, error: errorTags} = await getPostsBlog({...configTags});
-const {items: itemsTags} = postsTags;
-
-// build unique tags set
-const tagsSet = new Set<string>();
-itemsTags.forEach((post: ItemPost) => {
-  post?.keywords_seo?.forEach((tag: string) => {
-    tagsSet.add(tag);
-  });
-});
-
-const tagsArray = Array.from(tagsSet);
-
 const tag = decodeURIComponent(Astro.url.searchParams.get("tag") ?? '');
 
 const itemsFilteredByTag = tag ? items?.filter((item: ItemPost) => item.keywords_seo && item.keywords_seo.includes(tag)) : items;
 
-if (errorPosts || errorTags) {
+if (errorPosts) {
   return Astro.redirect('/500');
 }
 ---
@@ -112,15 +85,9 @@ if (errorPosts || errorTags) {
       />
      </div>
     </div>
-    <div class="col-xl-4 col-lg-5">
-     <div class="sidebar-widget-area">
-      <SearchEngine/>
-      <CategoriesList items={categories}/>
-      <ContactBlock/>
-      <RecentPosts items={items}/>
-      <TagsBlog items={tagsArray}/>
-     </div>
-    </div>
+    <Sidebar
+      items={items}
+    />
    </div>
   </div>
  </section>

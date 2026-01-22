@@ -6,7 +6,7 @@ type Item = {
   img: string;
   slug: string;
   category: {
-    name: string;
+    title: string;
     slug: string;
   };
 }
@@ -22,12 +22,12 @@ const {items} = Astro.props;
  <h4 class="widget-title">Recientes</h4>
  <ul class="recent-post-list">
    {
-     items.map(({title, img, category, slug}) => (
+     items?.map(({title, img, category, slug}) => (
        <li class="post-thumbnail-content">
         <CustomImage id={img} alt={title} width={90} height={90}/>
         <div class="post-title-date">
          <h6><a href={toLink(`blog/${category.slug}/${slug}`)}>{title}</a></h6>
-         <span class="posted-on"><a href={toLink(`blog/${category.slug}`)}>{category.name}</a></span>
+         <span class="posted-on"><a href={toLink(`blog/${category.slug}`)}>{category.title}</a></span>
         </div>
        </li>
      ))

@@ -1,20 +1,133 @@
 ---
+import '@/styles/components/blog.scss';
 import LayoutPage from "@/layouts/layoutPage.astro";
 import HeroVideo from "@/components/organisms/heroVideo.astro";
+import Sidebar from "@/components/organisms/blog/sidebar.astro";
+import {getPostsBlog} from "@/server/services/getPostsBlog.ts";
+import CustomImage from "@/components/atoms/customImage.astro";
+import formattedDate from "@/utils/formattedDate.ts";
+import toLink from "@/utils/toLink.ts";
+import {getUsers} from "@/server/services/getUsers.ts";
+
+const {slug} = Astro.params;
+
+const query = {
+  filter: {
+    slug: {
+      _eq: slug,
+    }
+  }
+}
+
+const queryRelated = {
+  limit: 4,
+  filter: {
+    slug: {_neq: slug},
+  },
+}
+
+const {data: posts, error: errorPosts} = await getPostsBlog(query);
+const {data: relatedPosts, error: errorRelatedPosts} = await getPostsBlog(queryRelated);
+
+if (errorPosts || errorRelatedPosts) {
+  return Astro.redirect('/500');
+}
+
+//Post data
+const post = posts?.items?.[0];
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+// User info
+const {data: userData, error: errorUser} = await getUsers(post?.user_created?.id);
+if (errorUser) {
+  return Astro.redirect('/500');
+}
+const user = userData?.[0];
 
 const heroData = {
-  title: "Sample Blog Post",
-  img: "/path/to/image.jpg",
-  videoSrc: "https://www.example.com/video.mp4",
+  title: post?.title
 }
 
 const SEO = {
-  title: "Sample Blog Post",
-  description: "This is a sample blog post description.",
-  keywords: "blog, sample, post",
-  image: "/path/to/image.jpg",
+  title: post.title_seo || post.title,
+  description: post.description_seo || post.description?.substring(0, 160),
+  keywords: post.keywords_seo || [],
+  image: post.img
 };
 ---
 <LayoutPage {...SEO} className="blog-post-page">
  <HeroVideo {...heroData}/>
+ <section class="blog-details-section pt-130 pb-100">
+  <div class="container">
+   <div class="row">
+    <div class="col-xl-8 col-lg-7">
+     <div class="blog-details-wrapper wow fadeInUp">
+      <div class="blog-post-item">
+       <div class="post-thumbnail mb-30">
+        <CustomImage
+          id={post.img}
+          alt={post.title}
+          width={770}
+          height={505}
+        />
+       </div>
+       <div class="entry-content">
+        <div class="post-meta">
+         <ul>
+          <li><span><a href={toLink(`blog/${post?.category?.slug}`)} class="cat-link">{post?.category?.title}</a></span>
+          </li>
+          <li><span><i class="far fa-calendar-alt"></i>{formattedDate(post?.date_created)}</span></li>
+         </ul>
+        </div>
+        <h3 class="title">{post?.title}</h3>
+        <div class="list-style-one" set:html={post?.description}></div>
+        <div class="post-share-tag mb-30 mt-4 mt-lg-5">
+         <div class="row pt-lg-5">
+          <div class="col-lg-6">
+           <div class="post-tag-cloud mb-30">
+            <h5 class="item-heading">Etiquetas :</h5>
+            <ul class="tags-post row">
+              {
+                post.keywords_seo?.map((tag: string) => (
+                  <li><a href={`/blog?tag=${encodeURIComponent(tag)}`}>{tag}</a></li>
+                ))
+              }
+            </ul>
+           </div>
+          </div>
+          <div class="col-lg-6">
+           <div class="social-share float-lg-right mb-30">
+            <h5 class="item-heading">Compartir :</h5>
+            <div class="sharethis-inline-share-buttons st-left st-lang-es  st-inline-share-buttons st-animated"></div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="post-author-box mb-70">
+       <div class="author-thumb">
+        <CustomImage
+          alt={user?.first_name}
+          id={user?.avatar}
+          width={100}
+          height={100}
+        />
+       </div>
+       <div class="author-content">
+        <h4>{user?.first_name} {user?.last_name}</h4>
+        <p>{user?.description}</p>
+        <div class="social mt-4">
+         <div class="sharethis-inline-share-buttons st-left st-lang-es  st-inline-share-buttons st-animated"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <Sidebar items={relatedPosts?.items}/>
+   </div>
+  </div>
+ </section>
 </LayoutPage>

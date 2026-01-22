@@ -1,0 +1,24 @@
+---
+import SearchEngine from "@/components/organisms/blog/searchEngine.astro";
+import CategoriesList from "@/components/organisms/blog/categoriesList.astro";
+import ContactBlock from "@/components/organisms/blog/contactBlock.astro";
+import RecentPosts from "@/components/organisms/blog/recentPosts.astro";
+import TagsBlog from "@/components/organisms/blog/tagsBlog.astro";
+
+interface Props {
+  items: any[];
+}
+
+const { items} = Astro.props as Props;
+---
+
+
+<div class="col-xl-4 col-lg-5">
+ <div class="sidebar-widget-area">
+  <SearchEngine/>
+  <CategoriesList/>
+  <ContactBlock/>
+  <RecentPosts items={items}/>
+  <TagsBlog/>
+ </div>
+</div>

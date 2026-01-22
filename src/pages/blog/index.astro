@@ -1,9 +1,5 @@
 ---
-import {getCategoriesBlog} from "@/server/services/getCategoriesBlog.ts";
 import TemplateBlog from "@/templates/templateBlog.astro";
-
-// Categories data
-const {data: categories, error: errorCategories} = await getCategoriesBlog();
 
 // Config to filter post request
 const query = Astro.url.searchParams.get("blog");
@@ -23,12 +19,6 @@ const config = {
   } : {})
 }
 
-const configTags = {
-  limit: 12,
-  page: 1,
-  sort: ["date_created"]
-}
-
 const heroData = {
   title: 'Blog',
 }
@@ -38,16 +28,10 @@ const SEO = {
   description: 'Blog kiwi lab',
   keywords: ['blog', 'kiwi', 'nuevos blog']
 };
-
-if (errorCategories) {
-  return Astro.redirect('/500');
-}
 ---
 
 <TemplateBlog
   config={config}
-  categories={categories}
-  configTags={configTags}
   SEO={SEO}
   heroData={heroData}
 />
