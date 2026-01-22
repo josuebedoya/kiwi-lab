@@ -1,0 +1,59 @@
+---
+import {getCategoriesBlog} from "@/server/services/getCategoriesBlog.ts";
+import TemplateBlog from "@/templates/templateBlog.astro";
+
+// Category Slug
+const {category} = Astro.params;
+if (!category) {
+  return Astro.redirect('/404');
+}
+
+// Categories data
+const {data: categories, error: errorCategories} = await getCategoriesBlog();
+
+const currentCategory = categories?.find((c: any) => c.slug === category);
+if (!currentCategory) {
+  return Astro.redirect('/404');
+}
+
+// Config to filter post request
+const query = Astro.url.searchParams.get("blog");
+
+const config = {
+  limit: 5,
+  page: query ? Number(query) : 1,
+  filter: {
+    category: currentCategory?.id,
+  }
+}
+const configTags = {
+  limit: 12,
+  page: 1,
+  sort: ["date_created"]
+}
+
+const heroData = {
+  title: currentCategory?.title,
+  img: currentCategory?.img
+}
+
+const SEO = {
+  title: currentCategory?.title_seo || currentCategory?.title,
+  description: currentCategory?.description_seo || currentCategory?.description?.substring(0, 160),
+  keywords: currentCategory?.keywords_seo || [],
+  image: currentCategory?.img
+};
+
+if (errorCategories) {
+  return Astro.redirect('/500');
+}
+---
+
+<TemplateBlog
+  description={currentCategory?.description}
+  categories={categories}
+  config={config}
+  configTags={configTags}
+  SEO={SEO}
+  heroData={heroData}
+/>

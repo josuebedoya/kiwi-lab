@@ -1,0 +1,35 @@
+---
+import {getInfoData} from "@/server/services/getInfoData.ts";
+import readFile from "@/server/readFile.ts";
+import {getCustomData} from "@/server/services/getCustomData.ts";
+
+const {data, error} = await getInfoData(["phones", "emails"]);
+const {data: dataImg, error: errorIMg} = await getCustomData(["img_blog_contact"]);
+
+const phone = data?.phones[0]?.code + data?.phones[0]?.number;
+const email = data?.emails[0]?.email;
+const img = await readFile({
+  id: dataImg?.img_blog_contact,
+  name: 'Imagen de contacto blog',
+  params: {width: 370, height: 400}
+});
+
+if (error || errorIMg) {
+  console.error('Error loading contact info widget data:', {error, errorIMg});
+  return null;
+}
+---
+
+<div class="widget contact-info-widget bg_cover mb-30 wow fadeInUp"
+     style={`background-image: url(${img});`}>
+ <div class="contact-info-box text-center">
+  <div class="icon">
+   <i class="far fa-phone text-heading"></i>
+  </div>
+  <div class="info">
+   <h4><a href={`tel:${phone}`}>{phone}</a></h4>
+   <h5><a href={`mailto:${email}`}>{email}</a></h5>
+   <a href="/hablemos" class="main-btn bordered-btn">Contáctanos</a>
+  </div>
+ </div>
+</div>

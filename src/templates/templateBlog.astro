@@ -1,0 +1,127 @@
+---
+import '@/styles/components/blog.scss';
+import type {ItemPost} from "@/resources/defuaultTypes";
+import SearchEngine from "@/components/organisms/blog/searchEngine.astro";
+import LayoutPage from "@/layouts/layoutPage.astro";
+import ContactBlock from "@/components/organisms/blog/contactBlock.astro";
+import Paginate from "@/components/species/paginate.astro";
+import TagsBlog from "@/components/organisms/blog/tagsBlog.astro";
+import RecentPosts from "@/components/organisms/blog/recentPosts.astro";
+import CardPost1 from "@/components/atoms/cardPost1.astro";
+import CategoriesList from "@/components/organisms/blog/categoriesList.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+import CardPost2 from "@/components/atoms/cardPost2.astro";
+import CardPost3 from "@/components/atoms/cardPost3.astro";
+import {getPostsBlog} from "@/server/services/getPostsBlog.ts";
+
+interface Props {
+  categories: any[];
+  config: {
+    limit: number;
+    page: number;
+  },
+  configTags: {
+    limit: number;
+    page: number;
+    sort: string[];
+  },
+  SEO: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+  heroData: {
+    title: string;
+    img?: string;
+  };
+  description?: string;
+}
+
+const {
+  categories,
+  config,
+  configTags,
+  SEO,
+  description,
+  heroData
+} = Astro.props as Props;
+
+
+// Posts data
+const {data: posts, error: errorPosts} = await getPostsBlog({...config});
+const {items, total_count} = posts;
+
+// tags from posts
+// Posts data
+const {data: postsTags, error: errorTags} = await getPostsBlog({...configTags});
+const {items: itemsTags} = postsTags;
+
+// build unique tags set
+const tagsSet = new Set<string>();
+itemsTags.forEach((post: ItemPost) => {
+  post?.keywords_seo?.forEach((tag: string) => {
+    tagsSet.add(tag);
+  });
+});
+
+const tagsArray = Array.from(tagsSet);
+
+const tag = decodeURIComponent(Astro.url.searchParams.get("tag") ?? '');
+
+const itemsFilteredByTag = tag ? items?.filter((item: ItemPost) => item.keywords_seo && item.keywords_seo.includes(tag)) : items;
+
+if (errorPosts || errorTags) {
+  return Astro.redirect('/500');
+}
+---
+<LayoutPage {...SEO} className="blog-page">
+ <HeroVideo {...heroData as any}/>
+ <section class="blog-standard-section pt-100 pb-70">
+  <div class="container">
+   <div class="row">
+     {description && (
+       <div class="col-12 pb-50">
+        <div set:html={description}>
+        </div>
+       </div>
+     )}
+    <div class="col-xl-8 col-lg-7">
+     <div class="blog-standard-wrapper">
+       {
+         itemsFilteredByTag ? itemsFilteredByTag?.map((item: ItemPost, index: number) => {
+             const isThird = (index + 1) % 3 === 0;
+             const isLast = index === itemsFilteredByTag.length - 1 && itemsFilteredByTag.length > 2;
+             return (
+               isThird ? (
+                   <CardPost2 {...item}/>) :
+                 isLast ? (
+                     <CardPost3 {...item}/>) :
+                   (
+                     <CardPost1 {...item}/>)
+             )
+           }) :
+           <div class="row text-center title pt-30 pb-30">
+            <h5>No hay elementos para mostar</h5>
+           </div>
+       }
+      <Paginate
+        pageId="blog"
+        pageActive={config.page}
+        itemsByPage={config.limit}
+        itemsLength={tag ? itemsFilteredByTag.length : total_count}
+      />
+     </div>
+    </div>
+    <div class="col-xl-4 col-lg-5">
+     <div class="sidebar-widget-area">
+      <SearchEngine/>
+      <CategoriesList items={categories}/>
+      <ContactBlock/>
+      <RecentPosts items={items}/>
+      <TagsBlog items={tagsArray}/>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+</LayoutPage>

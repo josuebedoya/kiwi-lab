@@ -1,0 +1,53 @@
+---
+import {getCategoriesBlog} from "@/server/services/getCategoriesBlog.ts";
+import TemplateBlog from "@/templates/templateBlog.astro";
+
+// Categories data
+const {data: categories, error: errorCategories} = await getCategoriesBlog();
+
+// Config to filter post request
+const query = Astro.url.searchParams.get("blog");
+const tag = decodeURIComponent(Astro.url.searchParams.get("tag") ?? '');
+
+const config = {
+  limit: 5,
+  page: query ? Number(query) : 1,
+  ...(tag ? {
+    filter: {
+      keywords_seo: {
+        _some: {
+          _icontains: tag
+        }
+      }
+    }
+  } : {})
+}
+
+const configTags = {
+  limit: 12,
+  page: 1,
+  sort: ["date_created"]
+}
+
+const heroData = {
+  title: 'Blog',
+}
+
+const SEO = {
+  title: 'Blog',
+  description: 'Blog kiwi lab',
+  keywords: ['blog', 'kiwi', 'nuevos blog']
+};
+
+if (errorCategories) {
+  return Astro.redirect('/500');
+}
+---
+
+<TemplateBlog
+  config={config}
+  categories={categories}
+  configTags={configTags}
+  SEO={SEO}
+  heroData={heroData}
+/>

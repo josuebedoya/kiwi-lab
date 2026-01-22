@@ -1,0 +1,34 @@
+---
+import type {ItemPost} from "@/resources/defuaultTypes";
+import CustomImage from "@/components/atoms/customImage.astro";
+import toLink from "@/utils/toLink.ts";
+import formattedDate from "@/utils/formattedDate.ts";
+
+interface Props extends ItemPost {
+}
+
+const {title, img, date_created, slug, summary, category} = Astro.props;
+const url = toLink(`blog/${category?.slug}/${slug}`);
+---
+
+<div class="blog-standard-post-item mb-60 wow fadeInUp" data-wow-delay=".15s">
+ <div class="post-thumbnail">
+  <CustomImage
+    id={img}
+    alt={title}
+    width={770}
+    height={510}
+  />
+ </div>
+ <div class="entry-content">
+  <div class="post-meta">
+   <ul class="row">
+    <li><span><a href={toLink(`blog/${category?.slug}`)} class="cat-link col-sm-auto">{category?.title}</a></span></li>
+    <li><span><i class="far fa-calendar-alt"></i><a href={url}>{formattedDate(date_created)}</a></span></li>
+   </ul>
+  </div>
+  <h3 class="title"><a href={url}>{title}</a></h3>
+  <p>{summary}</p>
+  <a href={url} class="main-btn bordered-btn btn-blue arrow-btn">Ver más</a>
+ </div>
+</div>

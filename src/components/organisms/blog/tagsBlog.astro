@@ -1,0 +1,16 @@
+---
+interface Props {
+  items: string[];
+}
+const {items} = Astro.props;
+
+const tagUrl = decodeURIComponent(Astro.url.searchParams.get("tag") ?? '');
+---
+<div class="widget tag-cloud-widget mb-30 wow fadeInUp">
+ <h4 class="widget-title">Más Populares</h4>
+  {
+    items.map((tag) => (
+      <a href={`/blog?tag=${tag}`} class={tag === tagUrl ? 'active' : ''}>{tag}</a>
+    ))
+  }
+</div>

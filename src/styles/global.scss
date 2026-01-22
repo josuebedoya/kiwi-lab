@@ -1352,7 +1352,7 @@ button{
           transform: translateY(-50%);
           color: var(--heading);
           content: "\f067";
-          font-family: "fontawesome 6 pro", serif;
+          font-family: "Font Awesome 6 Pro", serif;
           font-weight: 900;
           font-size: 18px;
         }
@@ -1491,4 +1491,27 @@ button{
 .join-kiwi-page ul, .join-kiwi-page ol{
   list-style-type: disc;
   padding-left: 20px;
+}
+
+.post-meta ul li{
+  display: inline-block;
+}
+.post-meta ul li span i{
+  margin-right: 7px;
+}
+
+.post-meta ul li span:hover a{
+  color: var(--blue-dark);
+}
+
+.cat-link{
+  font-size: 20px;
+  font-weight: 700;
+}
+.cat-btn{
+  background-color: var(--blue-dark);
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px 15px;
+  line-height: 21px;
 }

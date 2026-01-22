@@ -880,6 +880,17 @@
     overflow-x: auto;
     padding-block: 10px;
   }
+
+  .blog-standard-post-item .entry-content{
+    width: 95% !important;
+    margin-top: -40px;
+    padding: 30px 25px 30px !important;
+  }
+
+  .blog-standard-post-item.post-with-bg .post-thumbnail .post-hover{
+    padding: 20px !important;
+    background: linear-gradient(0deg, #CCFF6E 0%, #CCFF6E 18%, transparent 140%) !important;
+  }
 }
 
 @media (max-width: 400px){

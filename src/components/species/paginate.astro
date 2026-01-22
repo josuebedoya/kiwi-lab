@@ -1,0 +1,64 @@
+---
+import buildPageUrl from "@/utils/buildPageUrl.ts";
+import '@/styles/components/pagination.scss';
+
+interface Props {
+  itemsLength: number;
+  itemsByPage: number;
+  pageActive?: number;
+  pageId: string;
+}
+
+const {
+  itemsLength = 1,
+  itemsByPage = 2,
+  pageActive = 1,
+  pageId,
+} = Astro.props;
+
+const totalPages = Math.max(1, Math.ceil(itemsLength / itemsByPage));
+
+function buildPageUrl(page: number) {
+  const params = new URLSearchParams(Astro.url.search);
+  params.set(pageId, String(page));
+  return `${Astro.url.pathname}?${params.toString()}`;
+}
+---
+
+
+<div class="pagination-wrapper pagination-container pt-4">
+ <div class="container-pg">
+  <div class={pageActive === 1 ? "disabled" : ""} aria-label="Previous">
+   <a
+     href={buildPageUrl(pageActive - 1)}
+     aria-disabled={pageActive === 1}
+     class="prev"
+   >
+    <i class="fa fa-angle-left"></i></a
+   >
+  </div>
+  <ul class="pg-pagination">
+    {
+      [...Array(totalPages)].map((_, i) => {
+        const page = i + 1;
+        const isActive = pageActive === page;
+
+        return (
+          <li class={isActive ? "active" : ""}>
+           <a href={buildPageUrl(page)}>{page}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <div class={pageActive === totalPages ? "disabled" : ""} aria-label="Next">
+   <a
+     href={buildPageUrl(pageActive + 1)}
+     aria-disabled={pageActive === totalPages}
+     class="next"
+   >
+    <i class="fa fa-angle-right"></i>
+   </a>
+  </div>
+ </div>
+</div>

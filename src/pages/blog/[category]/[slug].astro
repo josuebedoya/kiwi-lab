@@ -1,0 +1,20 @@
+---
+import LayoutPage from "@/layouts/layoutPage.astro";
+import HeroVideo from "@/components/organisms/heroVideo.astro";
+
+const heroData = {
+  title: "Sample Blog Post",
+  img: "/path/to/image.jpg",
+  videoSrc: "https://www.example.com/video.mp4",
+}
+
+const SEO = {
+  title: "Sample Blog Post",
+  description: "This is a sample blog post description.",
+  keywords: "blog, sample, post",
+  image: "/path/to/image.jpg",
+};
+---
+<LayoutPage {...SEO} className="blog-post-page">
+ <HeroVideo {...heroData}/>
+</LayoutPage>

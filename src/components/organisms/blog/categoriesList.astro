@@ -1,0 +1,24 @@
+---
+import toLink from "@/utils/toLink.ts";
+type Item = {
+  title: string;
+  slug: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const {items} = Astro.props;
+---
+
+<div class="widget category-widget mb-30 wow fadeInUp">
+ <h4 class="widget-title">Categorias</h4>
+ <ul class="category-nav">
+   {
+     items.map(({title, slug}) => (
+       <li><a href={toLink(`blog/${slug}`)}>{title}<span><i class="far fa-arrow-right"></i></span></a></li>
+     ))
+   }
+ </ul>
+</div>
