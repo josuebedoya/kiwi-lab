@@ -1,18 +1,18 @@
 ---
-import { getMenuData } from "@/server/services/getMenuData";
+import {getMenuData} from "@/server/services/getMenuData";
 import MenuVertical from "@/components/species/menuVertical.astro";
 import SocialList from "@/components/species/socialList.astro";
-import { getInfoData } from "@/server/services/getInfoData";
+import {getInfoData} from "@/server/services/getInfoData";
 import MenuHorizontal from "../species/menuHorizontal.astro";
-import { getCustomData } from "@/server/services/getCustomData";
+import {getCustomData} from "@/server/services/getCustomData";
 import Newsletter from "../species/newsletter.astro";
 import Logo from "../atoms/logo.astro";
 
-const { data: mainMenuData, error: errorLinks } = await getMenuData(0);
-const { data: servicesData, error: errorServices } = await getMenuData(1);
-const { data: bottonMenuData, error: errorBottom } = await getMenuData(2);
-const { data: socialsData, error: errorSocials } = await getInfoData("social");
-const { data: customData, error: errorCustom } = await getCustomData([
+const {data: mainMenuData, error: errorLinks} = await getMenuData(0);
+const {data: servicesData, error: errorServices} = await getMenuData(1);
+const {data: bottonMenuData, error: errorBottom} = await getMenuData(2);
+const {data: socialsData, error: errorSocials} = await getInfoData("social");
+const {data: customData, error: errorCustom} = await getCustomData([
   "phrase_footer",
   "title_newsletter",
   "summary_newsletter",
@@ -24,62 +24,62 @@ if (errorLinks || errorServices || errorSocials || errorBottom || errorCustom) {
 ---
 
 <footer class="footer-area">
-  <div class="container">
-    <div class="footer-top pt-75 pb-40">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="footer-logo wow fadeInLeft">
-            <Logo width={350} height={135}/>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="text-wrapper wow fadeInRight phrase-footer">
-            <div set:html={customData?.phrase_footer} class="fadeInRight" />
-          </div>
-        </div>
-      </div>
+ <div class="container">
+  <div class="footer-top pt-75 pb-40">
+   <div class="row align-items-center">
+    <div class="col-md-6">
+     <div class="footer-logo wow fadeInLeft">
+      <Logo width={350} height={135}/>
+     </div>
     </div>
-    <div class="footer-widget pt-70 pb-40">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <MenuVertical title="Services" items={servicesData} delay=".15s" />
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <MenuVertical title="Links" items={mainMenuData} delay=".15s" />
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-12">
-          <SocialList items={socialsData?.social} />
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <Newsletter
-            title={customData?.title_newsletter}
-            summary={customData?.summary_newsletter}
-          />
-        </div>
-      </div>
+    <div class="col-md-6">
+     <div class="text-wrapper wow fadeInRight phrase-footer">
+      <div set:html={customData?.phrase_footer} class="fadeInRight"/>
+     </div>
     </div>
-    <div class="footer-copyright">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="copyright-text">
-            <p>
-              &copy; {new Date().getFullYear()}. Todos los derechos reservados.
-              Realizado por <a
-                class="bussines-link"
-                href="https://www.imaginacolombia.com/"
-                target="_blank"
-                rel="noopener noreferrer"><strong class="imagina">Imagina</strong></a
-              >.
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <MenuHorizontal
-            items={bottonMenuData}
-            classes="footer-nav float-lg-right"
-          />
-        </div>
-      </div>
-    </div>
+   </div>
   </div>
+  <div class="footer-widget pt-70 pb-40">
+   <div class="row">
+    <div class="col-lg-3 col-6  order-4 order-lg-1">
+     <MenuVertical title="Services" items={servicesData} delay=".15s"/>
+    </div>
+    <div class="col-lg-3 col-6 order-3 order-lg-2">
+     <MenuVertical title="Links" items={mainMenuData} delay=".15s"/>
+    </div>
+    <div class="col-lg-2 col-6 order-2 order-lg-3">
+     <SocialList items={socialsData?.social}/>
+    </div>
+    <div class="col-lg-4 col-md-6 order-0 order-lg-4">
+     <Newsletter
+       title={customData?.title_newsletter}
+       summary={customData?.summary_newsletter}
+     />
+    </div>
+   </div>
+  </div>
+  <div class="footer-copyright">
+   <div class="row">
+    <div class="col-lg-6">
+     <div class="copyright-text">
+      <p>
+       &copy; {new Date().getFullYear()}. Todos los derechos reservados.
+       Realizado por <a
+        class="bussines-link"
+        href="https://www.imaginacolombia.com/"
+        target="_blank"
+        rel="noopener noreferrer"><strong class="imagina">Imagina</strong></a
+      >.
+      </p>
+     </div>
+    </div>
+    <div class="col-lg-6">
+     <MenuHorizontal
+       items={bottonMenuData}
+       classes="footer-nav float-lg-right"
+     />
+    </div>
+   </div>
+  </div>
+ </div>
 </footer>

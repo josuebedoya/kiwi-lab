@@ -67,11 +67,13 @@
 .page-banner .page-banner-img{
   position: relative;
   margin-bottom: -250px;
+  max-height: 400px;
 }
 
 .page-banner .page-banner-img img{
   border-radius: 9px;
   width: 100%;
+  max-height: 400px !important;
 }
 
 .page-banner .page-banner-img .play-content{
