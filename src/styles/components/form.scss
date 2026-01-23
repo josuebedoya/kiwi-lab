@@ -54,16 +54,56 @@
   display: flex;
 }
 
-.form-wrapper #message.show{
+.form-wrapper #message.show, form #result.show{
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+form #result{
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, .01);
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  top: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s ease, visibility .4s ease, transform .7s ease;
+  transform: translateY(10px);
+  flex-direction: column;
+  z-index: 999;
+  max-height: 450px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+form #result .error{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  & i{
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: var(--heading);
+  }
 }
 
 @keyframes spinLoading{
   to{
     transform: rotate(360deg);
   }
+}
+
+form{
+  position: relative;
 }
 
 form .nice-select,

@@ -1,8 +1,27 @@
+---
+import '@/styles/components/form.scss'
+
+const modelsConfig = {
+  blog_items: {
+    in: ["title", "summary", 'description',],
+    get: ["title", "slug", "category.slug", "category.title"],
+  }
+}
+---
+
 <div class="widget search-widget mb-30 wow fadeInUp">
- <form>
+ <form
+   action="/api/form/search"
+   method="GET"
+   data-form-search
+   data-api="/api/form/search"
+   data-models-config={JSON.stringify(modelsConfig)}
+ >
   <div class="form_group">
-   <input type="email" class="form_control" placeholder="Search here" name="email" required>
+   <input type="text" class="form_control" placeholder="Buscar" name="q" required>
    <button class="search-btn"><i class="far fa-search"></i></button>
+
+   <div id="result"></div>
   </div>
  </form>
 </div>

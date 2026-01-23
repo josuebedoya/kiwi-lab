@@ -11,10 +11,10 @@ const resApi = ({data, error, ...rest}: ResApi) => {
   return new Response(JSON.stringify({
     data: data ?? [],
     error: error ?? null,
-    success: !!error,
+    success: rest?.success,
     message: rest?.message,
     status: rest?.status
-  }))
+  }), {headers: {"Content-Type": "application/json"}})
 }
 
 export default resApi;

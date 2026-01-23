@@ -50,9 +50,11 @@ export const POST: APIRoute = async ({request}: APIContext): Promise<Response> =
         }))
     } as Record<string, any>;
 
+    // Save into Directus
     const res = await directus.request(createItems(model, [payload]));
     if (!res || !Object.keys(res).length) return errorResponse(messages.directus, messages.error);
 
+    // Response
     return resApi({
       success: true,
       error: null,
@@ -63,6 +65,6 @@ export const POST: APIRoute = async ({request}: APIContext): Promise<Response> =
 
   } catch (error) {
     console.error(error);
-    return errorResponse(messages.errorRequest, messages.error);
+    return errorResponse(messages.errorRequest, JSON.stringify(error));
   }
 };

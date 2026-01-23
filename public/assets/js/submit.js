@@ -37,9 +37,10 @@ const submitForm = async ( form ) => {
 
     const data = await res.json();
 
-    if ( data.success ) form.reset();
+    if ( !data.success ) return { ok: false, message: data.message || "Error: No se pudo enviar." };
 
-    return { ok: data.success, message: data.message || "Error al enviar" };
+    form.reset();
+    return { ok: data.success, message: data.message || "¡Enviado!" };
 
   } catch ( err ) {
     console.error( err );
@@ -51,7 +52,7 @@ document.addEventListener( "submit", async ( e ) => {
   const form = e?.target?.matches( "[data-form]" ) ? e.target : null;
 
   if ( !form ) {
-    console.error( "Form not found" );
+    console.info( "Form Submit no send" );
     return;
   }
 
