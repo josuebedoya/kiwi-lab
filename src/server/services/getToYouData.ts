@@ -54,7 +54,7 @@ export const getToYouData = async (field?: f[]) => {
     subtitle: data?.subtitle_services,
     subtitle2: data?.subtitle2_services,
     summary: data?.summary_services,
-    img: data?.img_kiwi,
+    img: data?.img_services,
   };
 
   const text_data = {

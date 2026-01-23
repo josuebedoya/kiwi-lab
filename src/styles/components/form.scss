@@ -15,6 +15,8 @@
   visibility: hidden;
   transition: opacity .4s ease, visibility .4s ease, transform .7s ease;
   transform: translateY(10px);
+  height: 0;
+  margin-bottom: 0;
 }
 
 .form-wrapper #loading{
@@ -58,6 +60,11 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  height: auto;
+}
+
+.form-wrapper #message.show{
+  margin-bottom: 20px;
 }
 
 form #result{

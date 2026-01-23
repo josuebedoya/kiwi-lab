@@ -1,6 +1,8 @@
 ---
 import CardExperience from "@/components/atoms/cardExperience.astro";
 import type {Btn} from "@/resources/defuaultTypes";
+import Carousel from "@/components/species/carousel.astro";
+import CardCarousel from "@/components/atoms/cardCarousel.astro";
 
 type Item = {
   experience_id: {
@@ -9,6 +11,7 @@ type Item = {
     summary: string;
   };
 };
+
 interface Props {
   title?: string;
   subtitle?: string;
@@ -32,20 +35,22 @@ const {title, subtitle, summary, items, btn} = Astro.props;
    </div>
   </div>
   <div class="row">
-    {
-      items?.map(({experience_id: item}: Item) => (
-        <CardExperience {...item}/>
-      ))
-    }
+   <div class="col-12">
+    <Carousel id="experience">
+      {items?.map(({experience_id: item}: Item) => (
+        <CardCarousel id="experience">
+         <CardExperience {...item}/>
+        </CardCarousel>
+      ))}
+    </Carousel>
+   </div>
   </div>
   <div class="btn-partners row justify-content-center mt-60 mb-100">
-    {
-      btn && (
-        <a href={btn.link} class="main-btn arrow-btn col-auto">
-          {btn.label}
-        </a>
-      )
-    }
+    {btn && (
+      <a href={btn.link} class="main-btn arrow-btn col-auto">
+        {btn.label}
+      </a>
+    )}
   </div>
  </div>
 </section>

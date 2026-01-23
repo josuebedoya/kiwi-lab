@@ -1,5 +1,7 @@
 ---
 import CardCounter from "@/components/atoms/cardCounter.astro";
+import Carousel from "@/components/species/carousel.astro";
+import CardCarousel from "@/components/atoms/cardCarousel.astro";
 
 type Item = {
   impact_id: {
@@ -16,22 +18,30 @@ interface Props {
   items?: Item[];
 }
 
-const { title, subtitle, summary, items } = Astro.props;
+const {title, subtitle, summary, items} = Astro.props;
 ---
 
 <section class="counter-area counter-area-v1 pt-100 pb-90">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="section-title text-center mb-55 wow fadeInUp">
-          {title && <span class="sub-title st-one">{title}</span>}
-          {subtitle && <h2>{subtitle}</h2>}
-          {summary && <p>{summary}</p>}
-        </div>
-      </div>
+ <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-lg-10">
+    <div class="section-title text-center mb-55 wow fadeInUp">
+      {title && <span class="sub-title st-one">{title}</span>}
+      {subtitle && <h2>{subtitle}</h2>}
+      {summary && <p>{summary}</p>}
     </div>
-    <div class="row no-gutters">
-      {items?.map((item: Item) => <CardCounter {...item?.impact_id} />)}
-    </div>
+   </div>
   </div>
+  <div class="row no-gutters">
+   <div class="col-12">
+    <Carousel id="impact">
+      {items?.map((item: Item) => (
+        <CardCarousel id="impact">
+         <CardCounter {...item?.impact_id}/>
+        </CardCarousel>
+      ))}
+    </Carousel>
+   </div>
+  </div>
+ </div>
 </section>

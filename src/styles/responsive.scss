@@ -452,10 +452,6 @@
     display: none;
   }
 
-  .process-area-v1 .process-column:after{
-    display: none;
-  }
-
   .process-area-v1 .process-item{
     padding: 0 15px;
   }
@@ -585,13 +581,23 @@
 }
 
 @media (max-width: 767px){
+  .main-btn{
+    padding: 12px 12px;
+    font-size: 14.5px !important;
+  }
+  .section-title .st-one{
+    font-size: 20px;
+    padding: 25px;
+    margin-bottom: 10px;
+  }
   .section-title h2, .section-title h2 p, .team-area-v2 .section-title h2{
     font-size: 30px !important;
     line-height: 40px !important;
   }
   .phrase-footer{
-    font-size: 1.5rem !important;
+    font-size: 1.3rem !important;
     line-height: 2rem !important;
+    text-align: center;
   }
 
   .hero-banner-v1{
@@ -611,8 +617,8 @@
 
   .hero-banner-v2 .hero-content h1,
   .hero-banner-v1 .hero-content h1{
-    font-size: 40px !important;
-    line-height: 50px !important;
+    font-size: 34px !important;
+    line-height: 42px !important;
   }
 
   .hero-banner-v1 .hero-img.hero-img-three{
@@ -621,7 +627,7 @@
 
   .hero-banner-v1 .hero-img:is(.hero-img-two) img{
     left: 0;
-    max-width: 95%;
+    max-width: 85%;
     margin-inline: auto;
     display: flex;
   }
@@ -640,7 +646,11 @@
   }
 
   .service-item{
-    padding: 50px 35px 40px;
+    padding: 27px 20px 15px;
+  }
+  .service-style-three:after, .service-style-two:after{
+    width: 130px;
+    height: 130px;
   }
 
   .cta-area-v1 .cta-wrapper .section-title h2{
@@ -789,7 +799,7 @@
     padding-bottom: 30px;
   }
   .partners-area.pt-125.pb-130, .fancy-text-block.light-gray-bg.pb-90.fancy-text-block-v1.pt-90{
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     padding-top: 50px;
   }
   .service-area.service-area-v2.pt-100, .footer-top.pt-75.pb-40, .counter-area.counter-area-v1.pt-100.pb-90{
@@ -800,7 +810,7 @@
   }
 
   .fancy-text-block-v1 .shape-one img{
-    max-width: 100px;
+    max-width: 100px !important;
   }
   .fancy-text-block-v1 .img-holder{
     padding-left: 40px;
@@ -831,10 +841,18 @@
   }
 
   .faq-section-area{
-    padding-top: 65px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+  .home-page section.cta-area.cta-area-v1.pt-130.pb-160{
+    padding-top: 40px;
+    padding-bottom: 0;
+  }
+  .home-page .cta-area-v1 .cta-wrapper{
+    padding-block: 35px;
   }
   .btn-partners{
-    margin-bottom: 20px;
+    margin-block: 0 20px;
   }
 
   .text-area{
@@ -908,6 +926,72 @@
     padding: 20px !important;
     background: linear-gradient(0deg, #CCFF6E 0%, #CCFF6E 18%, transparent 140%) !important;
   }
+  .home-page .hero-banner-v1{
+    padding-top: 130px;
+  }
+  .home-page .hero-banner-v1 .shape.shape-one.scene{
+    display: none;
+  }
+  .home-page section#about{
+    padding-top: 42px;
+  }
+  .home-page section#about .animate-float-y img{
+    max-width: 115px;
+  }
+  .home-page section#about .animate-float-y img{
+    max-width: 115px;
+  }
+  .home-page .section-title.text-center.mb-55.wow.fadeInUp{
+    margin-bottom: 20px;
+  }
+  .home-page section.counter-area.counter-area-v1.pt-100.pb-90{
+    padding-bottom: 10px;
+  }
+  .home-page.counter-item.mb-40.wow.fadeInUp{
+    padding: 30px;
+  }
+  .home-page .counter-item.mb-40.wow.fadeInUp{
+    padding: 20px 25px;
+  }
+  .home-page .counter-item.mb-40.wow.fadeInUp img{
+    max-width: 80px !important;
+    margin-bottom: -15px;
+  }
+  .home-page section.fancy-text-block.light-gray-bg.pb-90.fancy-text-block-v1.pt-90 img{
+    max-height: 500px;
+    max-width: 90%;
+  }
+  .home-page section.partners-area.pt-90.pb-130{
+    padding-block: 45px 30px;
+  }
+  .footer-area .footer-logo{
+    display: flex;
+    justify-content: center;
+  }
+  .footer-area .footer-logo img{
+    max-width: 200px;
+    margin-bottom: 10px;
+    margin-inline: auto;
+  }
+  .footer-top.pt-75.pb-40{
+    padding-bottom: 10px;
+  }
+  .footer-widget.pt-70.pb-40{
+    padding-top: 30px;
+  }
+  .footer-widget .widget.footer-nav-widget .widget-nav li{
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+  .footer-widget .widget h4.widget-title, footer form .form_control{
+    margin-bottom: 10px;
+  }
+  .widget.newsletter-widget.mb-40.wow.fadeInUp{
+    margin-bottom: 0;
+  }
+  .service-area-v2 .service-wrapper{
+    padding: 30px 20px 15px;
+  }
 }
 
 @media (max-width: 400px){
@@ -928,7 +1012,7 @@
   }
 
   .service-area-v2 .service-wrapper{
-    padding: 40px 15px 10px;
+    padding: 20px 0 10px;
   }
 
   .service-item .text h3.title{
