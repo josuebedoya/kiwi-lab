@@ -1,5 +1,5 @@
 import {parse} from "node-html-parser";
-import  {PUBLIC_DIRECTUS_URL as ADMIN} from "astro:env/server";
+import {PUBLIC_DIRECTUS_URL as ADMIN} from "astro:env/client";
 
 export function formatterHTML(html: string): string {
   if (!html) return html;

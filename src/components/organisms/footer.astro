@@ -12,11 +12,7 @@ const {data: mainMenuData, error: errorLinks} = await getMenuData(0);
 const {data: servicesData, error: errorServices} = await getMenuData(1);
 const {data: bottonMenuData, error: errorBottom} = await getMenuData(2);
 const {data: socialsData, error: errorSocials} = await getInfoData("social");
-const {data: customData, error: errorCustom} = await getCustomData([
-  "phrase_footer",
-  "title_newsletter",
-  "summary_newsletter",
-]);
+const {data: customData, error: errorCustom} = await getCustomData(["phrase_footer"]);
 
 if (errorLinks || errorServices || errorSocials || errorBottom || errorCustom) {
   return Astro.redirect("/500");
@@ -51,10 +47,7 @@ if (errorLinks || errorServices || errorSocials || errorBottom || errorCustom) {
      <SocialList items={socialsData?.social}/>
     </div>
     <div class="col-lg-4 col-md-6 order-0 order-lg-4">
-     <Newsletter
-       title={customData?.title_newsletter}
-       summary={customData?.summary_newsletter}
-     />
+     <Newsletter/>
     </div>
    </div>
   </div>

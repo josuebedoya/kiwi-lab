@@ -38,7 +38,7 @@
   cursor: not-allowed;
 }
 
-.pagination-wrapper .container-pg a:not([aria-disabled="true"]):hover{
+.pagination-wrapper .container-pg a:not([aria-disabled="true"]):hover, .pagination-container li.active a{
   background: var(--blue-dark);
   border-color: var(--blue-dark);
   color: var(--heading);

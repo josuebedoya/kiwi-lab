@@ -1,4 +1,4 @@
-import {PUBLIC_DIRECTUS_URL as URL} from "astro:env/server";
+import {PUBLIC_DIRECTUS_URL as URL} from "astro:env/client";
 import slugify from "@/utils/slugify.ts";
 import buildQuery from "@/utils/buildQuery.ts";
 

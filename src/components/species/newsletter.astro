@@ -2,12 +2,10 @@
 import Form from "@/components/species/form.astro";
 import {getFormData} from "@/server/services/getFormData.ts";
 import InputForm from "@/components/atoms/inputForm.astro";
-interface Props {
-  title?: string;
-  summary?: string;
-}
-const {title, summary} = Astro.props;
 const {data, error} = await getFormData(4);
+if (error) {
+  return null;
+}
 ---
 
 <div class="widget newsletter-widget mb-40 wow fadeInUp" data-wow-delay=".30s">
@@ -19,10 +17,9 @@ const {data, error} = await getFormData(4);
     api="/api/form/submit"
   >
    <div class="form_group">
-     {data?.fields?.map((field) => field?.type === 'email' && (
-         <InputForm {...field} class="form_control" type="email" label={false}/>
-       )
-     )}
+     {data?.fields?.map((field: any) => field?.type === 'email' && (
+       <InputForm {...field} class="form_control" type="email" label={false}/>
+     ))}
     <button class="main-btn">{data?.label}</button>
    </div>
   </Form>

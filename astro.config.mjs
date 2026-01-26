@@ -11,7 +11,7 @@ export default defineConfig( {
   } ),
   env: {
     schema: {
-      PUBLIC_DIRECTUS_URL: envField.string( { context: "server", access: "secret" } ),
+      PUBLIC_DIRECTUS_URL: envField.string( { context: "client", access: "public" } ),
       SECRET_DIRECTUS_TOKEN: envField.string( { context: "server", access: "secret" } ),
       PUBLIC_RECAPTCHA_SITE_KEY: envField.string( { context: "client", access: "public" } ),
       SECRET_RECAPTCHA_API_KEY: envField.string( { context: "server", access: "secret" } ),
