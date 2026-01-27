@@ -9,7 +9,7 @@ interface Props {
   title: string;
   description: string;
   image?: string;
-  keywords?: string[];
+  keywords?: string[] | string;
 }
 
 const {title, description, image, keywords} = Astro.props;
@@ -20,53 +20,81 @@ if (siteSettings?.public_favicon) {
   favicon = await readFile({id: siteSettings.public_favicon, name: title});
 }
 
+const titleSite = siteSettings?.project_name || "Kiwi Lab";
+
 let img: string | undefined;
 
 if (image?.startsWith("http") || image?.startsWith("/")) {
   img = image;
 } else if (image) {
   img = await readFile({id: image, name: title});
+} else {
+  img = favicon;
 }
 
-const url = Astro.request.url;
+const url = Astro.url;
+const HTMLScape = description.replace(/<[^>]*>/g, '')?.replace(/&rsquo;/g, ' ');
 ---
 
 <head>
  <meta charset="UTF-8"/>
- <link rel="icon" type="image/png" href={favicon}/>
+ <link
+   rel="icon"
+   type="image/png"
+   href={favicon}
+ />
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <title>{title}</title>
- <meta name="description" content={description}/>
+ <title>{title} | {titleSite}</title>
+ <meta name="description" content={HTMLScape}/>
  <link rel="canonical" href={url}/>
+
+ <!--keywords-->
+  {keywords && (
+    <meta name="keywords" content={Array.isArray(keywords) ? keywords.join(', ') : keywords}/>)}
+
+ <!-- Author--->
+ <meta name="author" content='Imagina soluciones Web'/>
+ <meta name="copyright" content="Imagina Soluciones Web"/>
+ <meta name="publisher" content="Imagina Soluciones Web"/>
 
  <!-- Indexed robots-->
  <meta name="robots" content="index, follow"/>
  <meta name="googlebot" content="index, follow"/>
 
- <!-- Keywords -->
-  {keywords && (
-    <meta name="keywords" content={Array.isArray(keywords) ? keywords.join(', ') : keywords}/>)}
-
  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
  <meta property="og:title" content={title}/>
- <meta property="og:description" content={description}/>
+ <meta property="og:description" content={HTMLScape}/>
  <meta property="og:image" content={img}/>
  <meta property="og:url" content={url}/>
- <meta property="og:site_name" content={siteSettings?.public_project_name}/>
+ <meta property="og:site_name" content={titleSite}/>
  <meta property="og:type" content="website"/>
 
  <!-- Twitter Cards -->
  <meta name="twitter:card" content="summary_large_image"/>
  <meta name="twitter:title" content={title}/>
- <meta name="twitter:description" content={description}/>
+ <meta name="twitter:description" content={HTMLScape}/>
  <meta name="twitter:image" content={img}/>
 
  <!-- Others -->
  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
  <meta property="og:locale" content="en_US"/>
 
-  {img && (
-    <link rel="preload" as="image" href={img}/>)}
+ <link rel="preload" as="image" href={img}/>
+
+ <!-- Google Tag Manager -->
+ <script is:inline defer>
+   (function (w, d, s, l, i) {
+     w[l] = w[l] || [];
+     w[l].push({"gtm.start": new Date().getTime(), event: "gtm.js"});
+     var f = d.getElementsByTagName(s)[0],
+       j = d.createElement(s),
+       dl = l != "dataLayer" ? "&l=" + l : "";
+     j.async = true;
+     j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+     f.parentNode.insertBefore(j, f);
+   })(window, document, "script", "dataLayer", "GTM-KBVR27K2");
+ </script>
+ <!-- End Google Tag Manager -->
 
  <!-- ReCAPTCHA -->
  <script defer src={`https://www.google.com/recaptcha/api.js?render=${KEY}`}
