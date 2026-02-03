@@ -26,6 +26,8 @@ const fields = {
     "img_main_hero",
     "img2_main_hero",
     "seal_main_hero",
+    "wors_main_hero",
+    "subtitle_main_hero"
   ],
   about: [
     "title_about",
@@ -125,6 +127,8 @@ export const getHomeData = async (field?: f[]) => {
     img: data?.img_main_hero,
     img2: data?.img2_main_hero,
     sealImg: data?.seal_main_hero,
+    words: data?.wors_main_hero,
+    subtitle: data?.subtitle_main_hero,
   }
 
   const about_data = {

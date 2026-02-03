@@ -1123,6 +1123,12 @@
 }
 
 @media (max-width: 600px){
+  .site-branding .brand-logo{
+    max-width: 130px !important;
+  }
+  .header-navigation .navbar-toggler span{
+    width: 20px;
+  }
   section.page-banner.bg_cover.position-relative.z-1.pb-150.hero-video.mb-100 .page-banner-img{
     max-width: 360px;
   }

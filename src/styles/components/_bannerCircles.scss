@@ -1,0 +1,90 @@
+.banner-circles img{
+  border-radius: 999px;
+  position: relative;
+}
+
+.banner-circles img.img2{
+  left: -50px;
+  z-index: 2;
+}
+
+.banner-circles .title{
+  font-weight: 300 !important;
+  font-size: 48px;
+  line-height: 62px;
+  vertical-align: bottom;
+  margin-bottom: 24px;
+  position: relative;
+  padding: 15px 60px 15px 30px;
+  max-width: max-content;
+
+}
+
+.banner-circles .title::after{
+  position: absolute;
+  content: "";
+  inset: 0;
+  z-index: -1;
+  background: url("/assets/images/shape/shape-tag.png") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  max-width: -webkit-fill-available;
+}
+
+.banner-circles .summary{
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: justify;
+}
+
+@media (max-width: 1200px){
+  .banner-circles{
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+  .banner-circles .imgs-container{
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 992px){
+  .banner-circles{
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+  .banner-circles .imgs-container{
+    margin-bottom: 35px;
+  }
+  .banner-circles .title{
+    font-size: 30px !important;
+    line-height: 35px !important;
+  }
+
+}
+
+@media (max-width: 768px){
+  .banner-circles img{
+    max-width: 200px;
+    max-height: 200px;
+  }
+  .banner-circles .summary{
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+}
+
+@media (max-width: 500px){
+  .banner-circles .imgs-container{
+    left: 20px;
+    position: relative;
+  }
+  .banner-circles img{
+    max-width: 130px;
+    max-height: 130px;
+  }
+}

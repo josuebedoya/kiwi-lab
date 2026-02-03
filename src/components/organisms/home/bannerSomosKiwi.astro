@@ -1,0 +1,45 @@
+---
+import CustomImage from "@/components/atoms/customImage.astro";
+import '@/styles/components/_bannerCircles.scss'
+
+interface Props {
+  img: string;
+  img2: string;
+}
+const {img, img2} = Astro.props;
+---
+<section class="banner-circles pt-200 pb-150">
+ <div class="container">
+  <div class="row justify-content-between">
+   <div class="col-xl-6">
+    <div class="imgs-container">
+     <CustomImage
+       id={img}
+       alt="Somos kiwi imagen 1"
+       class="wow fadeInLeft img1"
+       width={240}
+       height={240}
+     />
+     <CustomImage
+       id={img}
+       alt="Somos kiwi imagen 2"
+       class="wow fadeInLeft img2"
+       width={240}
+       height={240}
+     />
+    </div>
+   </div>
+   <div class="col-xl-6">
+    <div class="content">
+     <h2 class="title">Somos Kiwi</h2>
+     <div class="summary">
+      KIWI es un laboratorio de bienestar, prevención y salud mental. Trabajamos con instituciones educativas que
+      quieren ir <strong>más allá de “lo de siempre” y construir estrategias de cuidado que sí conecten con niños,
+      adolescentes,
+      familias y equipos docentes.</strong>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>

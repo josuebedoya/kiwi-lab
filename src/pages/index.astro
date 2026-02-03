@@ -10,6 +10,8 @@ import Partners from "@/components/organisms/home/partners.astro";
 import LayoutPage from "@/layouts/layoutPage.astro";
 import {getHomeData} from "@/server/services/getHomeData.ts";
 import RealImpact from "@/components/organisms/home/realImpact.astro";
+import Banner from "@/components/organisms/home/banner.astro";
+import BannerSomosKiwi from "@/components/organisms/home/bannerSomosKiwi.astro";
 
 // Data
 const {
@@ -48,8 +50,10 @@ if (error) {
   image={SEO_data?.image}
   className="home-page"
 >
- <MainHero {...main_hero_data}/>
- <AboutHero {...about_data}/>
+ <Banner {...main_hero_data}/>
+ <BannerSomosKiwi {...about_data}/>
+ <!--<MainHero {...main_hero_data}/>-->
+ <!--<AboutHero {...about_data}/>-->
  <Differentials {...differentials_data}/>
  <Impact {...impact_data}/>
  <RealImpact {...real_impact_data}/>
