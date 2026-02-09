@@ -1,0 +1,27 @@
+---
+import CustomImage from "@/components/atoms/customImage.astro";
+import "@/styles/components/_bannerCircles.scss";
+
+interface Props {
+  img: string;
+  img2: string;
+}
+const { img, img2 } = Astro.props;
+---
+
+<div class="imgs-container">
+  <CustomImage
+    id={img}
+    alt="Somos kiwi imagen 1"
+    class="wow fadeInLeft img1"
+    width={240}
+    height={240}
+  />
+  <CustomImage
+    id={img2}
+    alt="Somos kiwi imagen 2"
+    class="wow fadeInLeft img2"
+    width={240}
+    height={240}
+  />
+</div>

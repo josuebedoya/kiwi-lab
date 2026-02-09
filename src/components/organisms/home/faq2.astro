@@ -1,0 +1,32 @@
+---
+import CustomImage from "@/components/atoms/customImage.astro";
+import Acordion from "@/components/species/acordion.astro";
+
+interface Props {
+  title?: string;
+  img?: string;
+  items?: {
+    title: string;
+    body: string;
+  }[];
+}
+const { items, title, img } = Astro.props;
+---
+
+<section id="faqArea" class="faq-section-area-2 pb-120">
+  <div class="container custom-container-01">
+    <div class="row align-items-center">
+      <div class="col-md-6 col-lg-7">
+        <div class="content-left">
+          <div class="theme-section-title">
+            <span class="subtitle">{title}</span>
+          </div>
+          <Acordion id="accordionOne" items={items ?? []} />
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-5 pt-140 sc-image">
+        <CustomImage id={img} width={450} height={615} alt={title} />
+      </div>
+    </div>
+  </div>
+</section>

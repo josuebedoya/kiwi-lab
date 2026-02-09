@@ -1,0 +1,35 @@
+---
+import type { Btn } from "@/resources/defuaultTypes";
+import "@/styles/components/impactText.scss";
+
+interface Props {
+  title?: string;
+  summary?: string;
+  btn: Btn;
+}
+
+const { title, summary, btn } = Astro.props;
+
+const twoFirstWords = title?.split(" ").slice(0, 2).join(" ");
+const titleWithoutTwoFirstWords = title?.split(" ").slice(2).join(" ");
+---
+
+<section id="impactText" class="container pb-70 pt-110">
+  <div class="row content">
+    <div class="col-12 text-center">
+      <h2 class="mb-4 title"><span>{twoFirstWords}</span> {titleWithoutTwoFirstWords}</h2>
+      <div class="summary" set:html={summary} />
+      {
+        btn && (
+          <div class="row mt-4">
+            <div class="col-12 text-center">
+              <a href={btn.link} class="main-btn rounded-pill">
+                {btn.label}
+              </a>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

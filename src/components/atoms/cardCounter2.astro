@@ -1,0 +1,24 @@
+---
+import { nullable } from "astro:schema";
+import CustomImage from "./customImage.astro";
+
+interface Props {
+  title?: string;
+  number?: string | number;
+  img?: string;
+  is_percentage?: boolean;
+}
+
+const { title, number, img, is_percentage } = Astro.props;
+---
+
+<div class="counter-item-2 mb-40 wow fadeInUp" data-wow-delay=".5s">
+  <div class="text">
+    <h2 class="number">
+      {Number(number) > 0 && !is_percentage && "+"}<span>{number}</span>{
+        Number(number) > 0 && is_percentage && "%"
+      }
+    </h2>
+    <p>{title}</p>
+  </div>
+</div>

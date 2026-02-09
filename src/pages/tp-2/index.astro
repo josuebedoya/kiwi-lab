@@ -1,0 +1,122 @@
+---
+import Differentials from "@/components/organisms/home/differentials.astro";
+import Experience from "@/components/organisms/home/experience.astro";
+import Faq from "@/components/organisms/home/faq.astro";
+import Impact from "@/components/organisms/home/impact.astro";
+import LetsWork from "@/components/organisms/home/letsWork.astro";
+import Partners from "@/components/organisms/home/partners.astro";
+import LayoutPage from "@/layouts/layoutPage.astro";
+import { getHomeData } from "@/server/services/getHomeData.ts";
+import RealImpact from "@/components/organisms/home/realImpact.astro";
+import Banner from "@/components/organisms/home/banner.astro";
+import BannerSomosKiwi from "@/components/organisms/home/bannerSomosKiwi.astro";
+import Battles from "@/components/organisms/home/battles.astro";
+import Faq2 from "@/components/organisms/home/faq2.astro";
+import Impact2 from "@/components/organisms/home/impact2.astro";
+import OurImpactText from "@/components/organisms/home/ourImpactText.astro";
+
+// Data
+const {
+  main_hero_data,
+  about_data,
+  differentials_data,
+  impact_data,
+  real_impact_data,
+  partners_data,
+  experience_data,
+  SEO_data,
+  faq_data,
+  letswork_data,
+  error,
+} = await getHomeData([
+  "main_hero",
+  "about",
+  "differentials",
+  "impact",
+  "real_impact",
+  "partners",
+  "experience",
+  "faq",
+  "letswork",
+]);
+
+if (error) {
+  return Astro.redirect("/500");
+}
+
+const kiwiDATA = {
+  title: "Somos Kiwi",
+  summary: `           KIWI es un laboratorio de bienestar, prevención y salud mental.
+            Trabajamos con instituciones educativas que quieren ir <strong
+              >más allá de “lo de siempre” y construir estrategias de cuidado
+              que sí conecten con niños, adolescentes, familias y equipos
+              docentes.</strong>`,
+  img: about_data?.img,
+  img2: about_data?.img2,
+};
+
+const faq2Data = {
+  title: faq_data?.title,
+  img: faq_data?.img,
+  items: faq_data?.items,
+};
+
+const battlesData = {
+  title: "Nuestras batallas",
+  items: ["Decimos lo que pensamos.", "Nos hacemos cargo.", "Cuidamos mejor."],
+  list: [
+    "No hacemos charlas genéricas",
+    "No vendemos recetas mágicas",
+    "Diseñamos procesos vivos, hechos a la medida, con impacto real",
+  ],
+  btn: {
+    label: "Nuestras batallas",
+    link: "/nosotros/conocenos",
+  },
+};
+
+const impact_data2 = {
+  title: "Lo que hemos logrado",
+  subtitle: "En poco tiempo",
+  items: impact_data?.items,
+};
+
+const ourImpactaData = {
+  title: "Nuestro impacto no se mide solo en horas dictadas",
+  summary: `<p><strong> Se mide en </strong>conversaciones que antes no existían.<br> En equipos que se sienten <strong>acompañados.</strong><br> En <strong>estudiantes que cuestionan</strong>, piensan y deciden mejor.<br> En instituciones que pasan del discurso al <strong>cuidado real.</strong> </p>`,
+  btn: {
+    label: "¡Eso es impacto para nosotros!",
+    link: "/nosotros/nuestro-enfoque",
+  },
+};
+---
+
+<LayoutPage
+  title={SEO_data?.title || "Inicio"}
+  description={SEO_data?.description}
+  keywords={SEO_data?.keywords}
+  image={SEO_data?.image}
+  className="home-page"
+>
+  <Banner {...main_hero_data} />
+  <BannerSomosKiwi {...kiwiDATA} />
+  <Battles {...battlesData} />
+  <Faq2 {...faq2Data} />
+  <Impact2 {...impact_data2} />
+  <OurImpactText {...ourImpactaData} />
+  <Partners {...partners_data} />
+
+  <style is:inline>
+    h2,
+    h1,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 300 !important;
+      span {
+        font-weight: 700 !important;
+      }
+    }
+  </style>
+</LayoutPage>

@@ -1,0 +1,55 @@
+---
+import type { Btn } from "@/resources/defuaultTypes";
+import "@/styles/components/battlesHome.scss";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  summary?: string;
+  btn?: Btn;
+  items: string[];
+  list?: string[];
+}
+
+const { title, subtitle, summary, btn, items, list } = Astro.props;
+---
+
+<section id="battles">
+  <div class="container my-5">
+    <!-- Barras horizontales -->
+    <div class="row text-center">
+      <div class="col-12 px-0">
+        {
+          list?.map((item, index) => (
+            <div class={`line-${index + 1} p-2 line`}>
+              <span>{item}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="row text-center mb-4 mb-lg-5 mt-4 mt-lg-5 cards">
+      {
+        items.map((item) => (
+          <div class="col-auto">
+            <div class="card p-1 p-sm-3">{item}</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Botón inferior -->
+    {
+      btn && (
+        <div class="row">
+          <div class="col-12 text-center">
+            <a href={btn.link} class="main-btn btn-headding rounded-pill">
+              {btn.label}
+            </a>
+          </div>
+        </div>
+      )
+    }
+  </div>
+</section>

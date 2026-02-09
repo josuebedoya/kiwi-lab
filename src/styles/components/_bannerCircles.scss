@@ -1,15 +1,15 @@
-.banner-circles img{
+.banner-circles img {
   border-radius: 999px;
   position: relative;
 }
 
-.banner-circles img.img2{
+.banner-circles img.img2 {
   left: -50px;
   z-index: 2;
 }
 
-.banner-circles .title{
-  font-weight: 300 !important;
+.banner-circles .title {
+  font-weight: 400 !important;
   font-size: 48px;
   line-height: 62px;
   vertical-align: bottom;
@@ -17,74 +17,182 @@
   position: relative;
   padding: 15px 60px 15px 30px;
   max-width: max-content;
-
+  display: inline-block;
 }
 
-.banner-circles .title::after{
+.banner-circles .title::after {
   position: absolute;
   content: "";
   inset: 0;
   z-index: -1;
   background: url("/assets/images/shape/shape-tag.png") no-repeat center center;
-  background-size: cover;
+  background-size: contain;
   width: 100%;
+  pointer-events: none;
   height: 100%;
-  max-width: -webkit-fill-available;
 }
 
-.banner-circles .summary{
-  font-weight: 400;
+.banner-circles .summary {
+  font-weight: 300;
   font-size: 18px;
   line-height: 30px;
   text-align: justify;
 }
 
-@media (max-width: 1200px){
-  .banner-circles{
+.banner-circles .summary strong {
+  font-weight: 500 !important;
+}
+
+@media (max-width: 1200px) {
+  .banner-circles {
     padding-top: 100px;
     padding-bottom: 50px;
   }
-  .banner-circles .imgs-container{
+
+  .banner-circles .imgs-container {
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
   }
+
+  .banner-circles .summary {
+    text-align: center !important;
+  }
 }
 
-@media (max-width: 992px){
-  .banner-circles{
+@media (max-width: 992px) {
+  .banner-circles {
     padding-top: 70px;
     padding-bottom: 40px;
   }
-  .banner-circles .imgs-container{
+
+  .banner-circles .imgs-container {
     margin-bottom: 35px;
+
   }
-  .banner-circles .title{
+
+  .banner-circles .content-mobile {
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  .banner-circles .imgs-container img {
+    max-width: 150px;
+  }
+
+  .banner-circles .title {
     font-size: 30px !important;
     line-height: 35px !important;
   }
 
 }
 
-@media (max-width: 768px){
-  .banner-circles img{
+@media (max-width: 768px) {
+  .banner-circles {
+    padding-top: 0;
+  }
+
+  .banner-circles img {
     max-width: 200px;
     max-height: 200px;
   }
-  .banner-circles .summary{
+
+  .banner-circles .summary {
     font-size: 16px;
     line-height: 24px;
   }
 
-}
-
-@media (max-width: 500px){
-  .banner-circles .imgs-container{
-    left: 20px;
+  .banner-circles .content-mobile {
+    margin-inline: 0;
+    margin-top: -20px;
+    z-index: 10;
     position: relative;
   }
-  .banner-circles img{
-    max-width: 130px;
-    max-height: 130px;
+
+  .banner-circles img.img2 {
+    left: -30px;
+  }
+
+  .banner-circles .title::after {
+    transform: scaleX(1) scaleY(1.3);
+  }
+}
+
+@media (max-width: 575px) {
+  .banner-circles .imgs-container {
+    position: relative;
+  }
+
+  .banner-circles img {
+    max-width: 90px;
+    max-height: 90px;
+  }
+
+  .banner-circles .title {
+    max-width: none;
+    font-size: 35px;
+    line-height: 36px;
+    margin-left: -15px;
+  }
+
+  .banner-circles .title span {
+    max-width: 50px;
+    padding-inline: 0 50px;
+    font-size: 36px;
+    line-height: 35px;
+    left: -10px;
+    position: relative;
+  }
+
+  .banner-circles .summary {
+    font-size: 15px;
+    margin-top: 15px;
+  }
+
+  /*   .banner-circles .content-mobile {
+    justify-content: start !important;
+  } */
+
+  .banner-circles .title::after {
+    transform: scaleX(2) scaleY(3.2);
+    margin-left: -15px;
+  }
+
+  .banner-circles img.img2 {
+    left: -10px;
+  }
+
+  .banner-circles .imgs-container {
+    top: 13px;
+    left: -10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .banner-circles img {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  .banner-circles .title span {
+    padding-left: 0 !important;
+    font-size: 30px !important;
+    line-height: 32px !important;
+    position: relative;
+    left: -20px;
+  }
+
+  .banner-circles .title {
+    padding-left: 40px !important;
+  }
+
+  .banner-circles .title::after {
+    transform: scaleX(1.2) scaleY(2.3);
+  }
+
+
+  .banner-circles .imgs-container {
+    top: 10px;
+    left: 0;
   }
 }
