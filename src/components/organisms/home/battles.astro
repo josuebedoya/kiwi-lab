@@ -1,28 +1,27 @@
 ---
 import type { Btn } from "@/resources/defuaultTypes";
 import "@/styles/components/battlesHome.scss";
+import toLink from "@/utils/toLink";
 
 interface Props {
-  title?: string;
-  subtitle?: string;
-  summary?: string;
   btn?: Btn;
-  items: string[];
-  list?: string[];
+  items?: { title: string }[];
+  list?: { text: string }[];
 }
 
-const { title, subtitle, summary, btn, items, list } = Astro.props;
+const { btn, items, list } = Astro.props;
+console.log("Battles Props:", Astro.props);
 ---
 
 <section id="battles">
-  <div class="container my-5">
+  <div class="container my-lg-5 mb-5 mt-3">
     <!-- Barras horizontales -->
     <div class="row text-center">
       <div class="col-12 px-0">
         {
-          list?.map((item, index) => (
+          list?.map(({ text }, index) => (
             <div class={`line-${index + 1} p-2 line`}>
-              <span>{item}</span>
+              <span>{text}</span>
             </div>
           ))
         }
@@ -31,9 +30,9 @@ const { title, subtitle, summary, btn, items, list } = Astro.props;
 
     <div class="row text-center mb-4 mb-lg-5 mt-4 mt-lg-5 cards">
       {
-        items.map((item) => (
-          <div class="col-auto">
-            <div class="card p-1 p-sm-3">{item}</div>
+        items?.map(({ title }) => (
+          <div class="col-auto py-3">
+            <div class="card p-1 p-sm-3">{title}</div>
           </div>
         ))
       }
@@ -44,7 +43,10 @@ const { title, subtitle, summary, btn, items, list } = Astro.props;
       btn && (
         <div class="row">
           <div class="col-12 text-center">
-            <a href={btn.link} class="main-btn btn-headding rounded-pill">
+            <a
+              href={toLink(btn.link)}
+              class="main-btn btn-headding rounded-pill"
+            >
               {btn.label}
             </a>
           </div>

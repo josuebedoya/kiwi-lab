@@ -1,5 +1,5 @@
 import directus from "@/server/directus";
-import {readItems} from "@directus/sdk";
+import { readItems } from "@directus/sdk";
 
 const nullDataResponse = {
   main_hero_data: null,
@@ -12,6 +12,8 @@ const nullDataResponse = {
   faq_data: null,
   SEO_data: null,
   letswork_data: null,
+  battles_data: null,
+  make_differentials_data: null,
   error: "Data not found",
 };
 
@@ -36,6 +38,19 @@ const fields = {
     "btn_about_label",
     "btn_about_link",
     "img_about",
+    "img_about2",
+    "summary_about2",
+  ],
+  battles: [
+    "list_battles",
+    "items_battles",
+    "btn_battles_label",
+    "btn_battles_link",
+  ],
+  make_differentials: [
+    "title_make_differentials",
+    "items_make_differentials",
+    "img_make_differentials",
   ],
   differentials: [
     "title_differentias",
@@ -79,7 +94,8 @@ const fields = {
     "title_faq",
     "subtitle_faq",
     "summary_faq",
-    "items_faq.faq_id.*"
+    "items_faq.faq_id.*",
+    "img_faq"
   ],
   letswork: [
     "title_letswork",
@@ -102,12 +118,12 @@ export const getHomeData = async (field?: f[]) => {
   let error = null;
 
   const joinedFields = field?.reduce<string[]>((acc, curr) => {
-    const fieldList = fields[curr] ?? [];
-    return [...acc, ...fieldList];
+    const fieldList = fields[ curr ] ?? [];
+    return [ ...acc, ...fieldList ];
   }, []) as string[] | null;
 
   // @ts-ignore
-  const data = await directus?.request(readItems("home", {fields: [...joinedFields, ...fields.SEO ?? '"*"']})) as any;
+  const data = await directus?.request(readItems("home", { fields: [ ...joinedFields, ...fields.SEO ?? '"*"' ] })) as any;
 
   if (!data) {
     return nullDataResponse;
@@ -135,11 +151,28 @@ export const getHomeData = async (field?: f[]) => {
     title: data?.title_about,
     subtitle: data?.subtitle_about,
     summary: data?.summary_about,
+    summary2: data?.summary_about2,
     btn: {
       label: data?.btn_about_label,
       link: data?.btn_about_link,
     },
     img: data?.img_about,
+    img2: data?.img_about2,
+  }
+
+  const battles_data = {
+    list: data?.list_battles,
+    items: data?.items_battles,
+    btn: {
+      label: data?.btn_battles_label,
+      link: data?.btn_battles_link,
+    },
+  }
+
+  const make_differentials_data = {
+    title: data?.title_make_differentials,
+    items: data?.items_make_differentials?.map((item: any) => ({ faq_id: item })),
+    img: data?.img_make_differentials,
   }
 
   const differentials_data = {
@@ -187,6 +220,7 @@ export const getHomeData = async (field?: f[]) => {
     subtitle: data?.subtitle_faq,
     summary: data?.summary_faq,
     items: data?.items_faq,
+    img: data?.img_faq,
   }
 
   const letswork_data = {
@@ -217,6 +251,8 @@ export const getHomeData = async (field?: f[]) => {
     faq_data,
     SEO_data,
     letswork_data,
+    battles_data,
+    make_differentials_data,
     error,
   };
 }

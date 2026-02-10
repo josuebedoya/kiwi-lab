@@ -44,21 +44,6 @@
   transition: all 0.6s ease-out 0s;
 }
 
-.header-navigation:not(.sticky){
-  border: 0 !important;
-}
-
-.header-navigation:not(.sticky) .nav-link,
-.header-navigation:not(.sticky) .nav-link::before{
-color: #fff !important;
- }
-
-.header-navigation:not(.sticky) .sub-menu .nav-link{
-  color: var(--heading) !important;
-}
-.header-navigation:not(.sticky) .primary-menu{
-  border-bottom: 0 !important;
-}
 
 
 .header-navigation .primary-menu{
@@ -336,9 +321,6 @@ color: #fff !important;
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
-.header-navigation:not(.sticky) .navbar-toggler span{
-  background-color: #fff;
 }
 .header-navigation .navbar-toggler span{
   position: relative;

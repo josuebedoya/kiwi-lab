@@ -1007,12 +1007,13 @@ button {
   z-index: 2;
 }
 
-.bussines-link {
-  color: #dc3545;
+.bussines-link *,
+html body div a .imagina {
+  color: var(--heading) !important;
 }
 
 .bussines-link:hover {
-  color: #a71d2a;
+  color: var(--heading);
 }
 
 /**** ELEMENTS ***/
@@ -1442,9 +1443,9 @@ button {
   border-radius: 25px;
 }
 
-.faq-section-area-2 .theme-section-title {
+/* .faq-section-area-2 .theme-section-title {
   position: absolute;
-}
+} */
 
 .faq-section-area-2 .content-left {
   padding-right: 50px;
@@ -1458,7 +1459,7 @@ button {
   z-index: 10;
   padding: 20px 30px;
   position: relative;
-  transform: translateY(-250%);
+  transform: translateY(-70%);
   text-transform: none;
 
   &::after {
@@ -1548,7 +1549,7 @@ button {
 
 @media (max-width: 1300px) {
   .faq-section-area-2 .subtitle {
-    transform: translateY(-230%);
+    transform: translateY(-50%);
   }
 }
 
@@ -1560,7 +1561,6 @@ button {
   .faq-section-area-2 .subtitle {
     font-size: 30px;
     line-height: 35px;
-    transform: translateY(-200%);
 
     &::after {
       scale: 1.5 1;
@@ -1587,7 +1587,6 @@ button {
   .faq-section-area-2 .subtitle {
     font-size: 25px;
     line-height: 28px;
-    transform: translateY(-110%);
 
     &::after {
       scale: 1.2 1;
@@ -1625,12 +1624,12 @@ button {
       right: 2%;
     }
   }
-
   .faq-section-area-2 .subtitle {
-
-    transform: translateY(-50%);
+    &::after {
+      scale: 1.5 1;
+      left: 25%;
+    }
   }
-
   .faq-section-area-2 img {
     max-height: 400px;
     margin-inline: auto;
@@ -1642,12 +1641,14 @@ button {
   .faq-section-area-2 .subtitle {
     font-size: 20px;
     line-height: 25px;
+    padding-left: 0 !important;
 
     &::after {
-      scale: 1 1;
-      left: 5%;
+      scale: 1.2 1;
+      left: 0;
       top: 50%;
       transform: translateY(-50%);
+      position: absolute;
     }
   }
 }

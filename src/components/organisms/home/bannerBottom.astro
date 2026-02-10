@@ -1,0 +1,48 @@
+---
+import toLink from "@/utils/toLink";
+import type { Btn } from "@/resources/defuaultTypes.ts";
+import "@/styles/components/_banner2.scss";
+import CustomImage from "@/components/atoms/customImage.astro";
+import "@/styles/components/bannerBottom.scss";
+
+interface Props {
+  title?: string;
+  summary?: string;
+  btn?: Btn;
+  img?: string;
+}
+const { title, summary, btn, img } = Astro.props;
+---
+
+<section id="bannerBottom" class="pt-170 pb-80 position-relative">
+  <div class="bg-image">
+    <CustomImage
+      id={img}
+      alt={title ?? "hero image"}
+      class="wow fadeInLeft position-absolute"
+    />
+  </div>
+  <div class="container">
+    <div class="row text-center text-white justify-content-center">
+      <div class="col-lg-9 col-xl-7">
+        <div
+          class="title wow fadeInDown text-white"
+          data-wow-delay="1s"
+          set:html={title}
+        />
+        <div class="wow fadeInDown text-white summary" set:html={summary} />
+        {
+          btn && (
+            <a
+              href={toLink(btn?.link)}
+              class="main-btn bordered-btn arrow-btn wow fadeInUp col-auto btn-1"
+              data-wow-delay=".5s"
+            >
+              {btn?.label}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

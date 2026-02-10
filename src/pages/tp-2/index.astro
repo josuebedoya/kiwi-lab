@@ -1,39 +1,38 @@
 ---
-import Differentials from "@/components/organisms/home/differentials.astro";
-import Experience from "@/components/organisms/home/experience.astro";
-import Faq from "@/components/organisms/home/faq.astro";
-import Impact from "@/components/organisms/home/impact.astro";
-import LetsWork from "@/components/organisms/home/letsWork.astro";
 import Partners from "@/components/organisms/home/partners.astro";
 import LayoutPage from "@/layouts/layoutPage.astro";
 import { getHomeData } from "@/server/services/getHomeData.ts";
-import RealImpact from "@/components/organisms/home/realImpact.astro";
 import Banner from "@/components/organisms/home/banner.astro";
 import BannerSomosKiwi from "@/components/organisms/home/bannerSomosKiwi.astro";
 import Battles from "@/components/organisms/home/battles.astro";
-import Faq2 from "@/components/organisms/home/faq2.astro";
+import WhatMakesDifferents from "@/components/organisms/home/whatMakesDifferents.astro";
 import Impact2 from "@/components/organisms/home/impact2.astro";
 import OurImpactText from "@/components/organisms/home/ourImpactText.astro";
+import Faq2 from "@/components/organisms/home/faq2.astro";
+import Experience2 from "@/components/organisms/home/experience2.astro";
+import BannerBottom from "@/components/organisms/home/bannerBottom.astro";
 
 // Data
 const {
   main_hero_data,
   about_data,
-  differentials_data,
   impact_data,
-  real_impact_data,
   partners_data,
   experience_data,
   SEO_data,
   faq_data,
+  battles_data,
+  make_differentials_data,
+  real_impact_data,
   letswork_data,
   error,
 } = await getHomeData([
   "main_hero",
   "about",
-  "differentials",
-  "impact",
+  "battles",
+  "make_differentials",
   "real_impact",
+  "impact",
   "partners",
   "experience",
   "faq",
@@ -45,49 +44,22 @@ if (error) {
 }
 
 const kiwiDATA = {
-  title: "Somos Kiwi",
-  summary: `           KIWI es un laboratorio de bienestar, prevención y salud mental.
-            Trabajamos con instituciones educativas que quieren ir <strong
-              >más allá de “lo de siempre” y construir estrategias de cuidado
-              que sí conecten con niños, adolescentes, familias y equipos
-              docentes.</strong>`,
+  title: about_data?.subtitle,
+  summary: about_data?.summary2,
   img: about_data?.img,
   img2: about_data?.img2,
 };
 
-const faq2Data = {
-  title: faq_data?.title,
-  img: faq_data?.img,
-  items: faq_data?.items,
-};
-
-const battlesData = {
-  title: "Nuestras batallas",
-  items: ["Decimos lo que pensamos.", "Nos hacemos cargo.", "Cuidamos mejor."],
-  list: [
-    "No hacemos charlas genéricas",
-    "No vendemos recetas mágicas",
-    "Diseñamos procesos vivos, hechos a la medida, con impacto real",
-  ],
-  btn: {
-    label: "Nuestras batallas",
-    link: "/nosotros/conocenos",
-  },
-};
-
-const impact_data2 = {
-  title: "Lo que hemos logrado",
-  subtitle: "En poco tiempo",
-  items: impact_data?.items,
-};
-
 const ourImpactaData = {
-  title: "Nuestro impacto no se mide solo en horas dictadas",
-  summary: `<p><strong> Se mide en </strong>conversaciones que antes no existían.<br> En equipos que se sienten <strong>acompañados.</strong><br> En <strong>estudiantes que cuestionan</strong>, piensan y deciden mejor.<br> En instituciones que pasan del discurso al <strong>cuidado real.</strong> </p>`,
-  btn: {
-    label: "¡Eso es impacto para nosotros!",
-    link: "/nosotros/nuestro-enfoque",
-  },
+  title: real_impact_data?.subtitle,
+  summary: real_impact_data?.summary,
+  btn: real_impact_data?.btn,
+};
+
+const experience_data2 = {
+  title: experience_data?.subtitle,
+  items: experience_data?.items,
+  btn: experience_data?.btn,
 };
 ---
 
@@ -100,11 +72,14 @@ const ourImpactaData = {
 >
   <Banner {...main_hero_data} />
   <BannerSomosKiwi {...kiwiDATA} />
-  <Battles {...battlesData} />
-  <Faq2 {...faq2Data} />
-  <Impact2 {...impact_data2} />
+  <Battles {...battles_data} />
+  <WhatMakesDifferents {...make_differentials_data} />
+  <Impact2 {...impact_data} />
   <OurImpactText {...ourImpactaData} />
   <Partners {...partners_data} />
+  <Experience2 {...experience_data2} />
+  <Faq2 {...faq_data} />
+  <BannerBottom {...letswork_data} />
 
   <style is:inline>
     h2,
@@ -114,9 +89,64 @@ const ourImpactaData = {
     h5,
     h6 {
       font-weight: 300 !important;
-      span {
+      span:not(.light) {
         font-weight: 700 !important;
       }
+    }
+
+    .footer-top {
+      display: none;
+    }
+
+    .main-btn,
+    footer input {
+      border-radius: 50px !important;
+    }
+
+    .main-btn::after {
+      content: none !important;
+    }
+    footer input {
+      background: transparent !important;
+      border: 1px solid #ddd;
+    }
+
+    footer .widget-title {
+      font-weight: 600 !important;
+    }
+
+    footer a,
+    footer {
+      color: var(--heading) !important;
+    }
+    footer {
+      color: var(--heading) !important;
+      padding-top: 2vw;
+    }
+
+    .header-navigation:not(.sticky) .nav-link,
+    .header-navigation:not(.sticky) .nav-link::before {
+      color: #fff !important;
+    }
+
+    .header-navigation:not(.sticky) {
+      border: 0 !important;
+    }
+
+    .header-navigation:not(.sticky) .nav-link,
+    .header-navigation:not(.sticky) .nav-link::before {
+      color: #fff !important;
+    }
+
+    .header-navigation:not(.sticky) .sub-menu .nav-link {
+      color: var(--heading) !important;
+    }
+    .header-navigation:not(.sticky) .primary-menu {
+      border-bottom: 0 !important;
+    }
+
+    .header-navigation:not(.sticky) .navbar-toggler span {
+      background-color: #fff;
     }
   </style>
 </LayoutPage>

@@ -20,6 +20,11 @@
   display: inline-block;
 }
 
+.banner-circles .imgs-container {
+  display: flex;
+  justify-content: center;
+}
+
 .banner-circles .title::after {
   position: absolute;
   content: "";

@@ -1,0 +1,145 @@
+---
+import CardExperience from "@/components/atoms/cardExperience.astro";
+import type { Btn } from "@/resources/defuaultTypes";
+import Carousel from "@/components/species/carousel.astro";
+import CardCarousel from "@/components/atoms/cardCarousel.astro";
+
+type Item = {
+  experience_id: {
+    img: string;
+    title: string;
+    summary: string;
+  };
+};
+
+interface Props {
+  title?: string;
+  items?: Item[];
+  btn?: Btn;
+}
+
+const { title, items, btn } = Astro.props;
+
+const twoLastWords = title?.split(" ").slice(-2).join(" ");
+const titleWithoutTwoLastWords = title?.split(" ").slice(0, -2).join(" ");
+---
+
+<section id="experiences2" class="process-area process-area-v1 pt-110 pb-80">
+  <div class="container-1350">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="section-title text-center mb-55 wow fadeInUp">
+          {
+            title && (
+              <h2 class="title">
+                {titleWithoutTwoLastWords} <span>{twoLastWords}</span>
+              </h2>
+            )
+          }
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <Carousel id="experience">
+          {
+            items?.map(({ experience_id: item }: Item, index: number) => (
+              <CardCarousel id="experience">
+                <CardExperience {...item} step={`Paso 0${index + 1}`} />
+              </CardCarousel>
+            ))
+          }
+        </Carousel>
+      </div>
+    </div>
+    <div class="btn-partners row justify-content-center mt-60">
+      {
+        btn && (
+          <a
+            href={btn.link}
+            class="main-btn arrow-btn col-auto rounded-pill bg-white outlined px-md-4"
+          >
+            {btn.label}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style is:inline>
+  #experiences2 {
+    background-color: #ddd;
+  }
+  #experiences2 .title {
+    font-size: 44px !important;
+    line-height: 48px !important;
+  }
+  #experiences2 .main-btn {
+    border: 1px solid var(--blue-dark) !important;
+    font-weight: 400 !important;
+    text-transform: none !important;
+  }
+
+  #experiences2 .main-btn:hover {
+    background-color: var(--blue-dark) !important;
+    color: var(--heading) !important;
+    &::after {
+      content: none !important;
+    }
+  }
+  #experiences2 .process-item {
+    color: var(--heading) !important;
+  }
+  #experiences2 .process-item .text {
+    max-width: 400px;
+    margin-inline: auto;
+  }
+  #experiences2 .process-item .text h4 {
+    font-size: 28px !important;
+  }
+  #experiences2 .process-item .text p {
+    line-height: 25px !important;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  #experiences2 .process-item .text span {
+    font-size: 18px !important;
+  }
+
+  #experiences2 .process-column::after {
+    background: url("/assets/images/shape/arrow-right.png") no-repeat center !important;
+    object-fit: contain !important;
+    background-size: contain !important;
+  }
+
+  @media (max-width: 992px) {
+    #experiences2 {
+      padding-top: 70px;
+      padding-bottom: 50px;
+    }
+
+    #experiences2 .title {
+      font-size: 35px !important;
+      line-height: 35px !important;
+    }
+  }
+
+  @media (max-width: 992px) {
+    #experiences2 {
+      padding-top: 40px;
+      padding-bottom: 30px;
+    }
+
+    #experiences2 .title {
+      font-size: 30px !important;
+      line-height: 32px !important;
+    }
+
+    #experiences2 .process-item .text p {
+      font-size: 16px !important;
+      line-height: 22px !important;
+    }
+  }
+</style>

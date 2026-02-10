@@ -1,6 +1,7 @@
 ---
 import CustomImage from "@/components/atoms/customImage.astro";
 import Acordion from "@/components/species/acordion.astro";
+import "@/styles/components/faq2.scss";
 
 interface Props {
   title?: string;
@@ -10,22 +11,31 @@ interface Props {
     body: string;
   }[];
 }
+
 const { items, title, img } = Astro.props;
+const firstWord = title?.split(" ")[0];
+const titleWithoutFirstWord = title?.split(" ").slice(1).join(" ");
 ---
 
-<section id="faqArea" class="faq-section-area-2 pb-120">
-  <div class="container custom-container-01">
-    <div class="row align-items-center">
-      <div class="col-md-6 col-lg-7">
-        <div class="content-left">
-          <div class="theme-section-title">
-            <span class="subtitle">{title}</span>
-          </div>
-          <Acordion id="accordionOne" items={items ?? []} />
+<section id="FAQ2" class="pt-110 pb-140">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="content pr-lg-5">
+          <h2 class="title mb-5">
+            <span>{firstWord}</span>
+            {titleWithoutFirstWord}
+          </h2>
+          <CustomImage
+            id={img}
+            width={600}
+            height={325}
+            alt={title || "FAQ Image"}
+          />
         </div>
       </div>
-      <div class="col-md-6 col-lg-5 pt-140 sc-image">
-        <CustomImage id={img} width={450} height={615} alt={title} />
+      <div class="col-md-6">
+        <Acordion id="accordionOne" items={items ?? []} />
       </div>
     </div>
   </div>
