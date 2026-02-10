@@ -6,8 +6,10 @@ interface Props {
   title?: string;
   img?: string;
   items?: {
-    title: string;
-    body: string;
+    faq_id: {
+      title: string;
+      body: string;
+    };
   }[];
 }
 const { items, title, img } = Astro.props;
@@ -25,7 +27,12 @@ const { items, title, img } = Astro.props;
         </div>
       </div>
       <div class="col-md-6 col-lg-5 pt-140 sc-image">
-        <CustomImage id={img} width={450} height={615} alt={title} />
+        <CustomImage
+          id={img}
+          width={450}
+          height={615}
+          alt={title || "FAQ Image"}
+        />
       </div>
     </div>
   </div>

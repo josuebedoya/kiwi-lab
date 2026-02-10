@@ -1,7 +1,7 @@
 ---
 import toLink from "@/utils/toLink";
-import type {Btn} from "@/resources/defuaultTypes.ts";
-import '@/styles/components/_banner2.scss'
+import type { Btn } from "@/resources/defuaultTypes.ts";
+import "@/styles/components/_banner2.scss";
 import CustomImage from "@/components/atoms/customImage.astro";
 
 interface Props {
@@ -13,58 +13,64 @@ interface Props {
   img?: string;
   words?: string[];
 }
-const {title, summary, btn, btn2, img, subtitle, words} = Astro.props;
+const { title, summary, btn, btn2, img, subtitle, words } = Astro.props;
 
 const wordsLength = words?.length || 0;
-const wordsCompleted = wordsLength > 10 ? words : [...words, ...words, ...words];
+const wordsCompleted =
+  wordsLength > 10
+    ? words
+    : [...(words || []), ...(words || []), ...(words || [])];
 ---
 
-
 <section class="hero-bg-image pt-300 position-relative">
- <div class="bg-image">
-  <CustomImage
-    id={img}
-    alt={title ?? "hero image"}
-    class="wow fadeInLeft"
-  />
- </div>
- <div class="container pb-200">
-  <div class="row">
-   <div class="col-lg-9 col-xl-7">
-    <span class="subtitle">{title}</span>
-    <h1 class="title wow fadeInDown" data-wow-delay="1s">{subtitle}</h1>
-    <p class="wow fadeInDown" data-wow-delay="1s">
-      {summary}
-    </p>
-    <div class="row justify-content-start col-lg-10 g-4 mt-4 pt-lg-3 btns">
-      {btn && (
-        <a
-          href={toLink(btn?.link)}
-          class="main-btn bordered-btn arrow-btn wow fadeInUp col-auto btn-1"
-          data-wow-delay=".5s"
-        >
-          {btn?.label}
-        </a>
-      )}
-      {btn2 && (
-        <a
-          href={toLink(btn2?.link)}
-          class="main-btn bordered-btn btn-heading-hover arrow-btn col-auto bg-white btn-2"
-        >
-          {btn2?.label}
-        </a>
-      )}
+  <div class="bg-image">
+    <CustomImage id={img} alt={title ?? "hero image"} class="wow fadeInLeft" />
+  </div>
+  <div class="container pb-200">
+    <div class="row">
+      <div class="col-lg-9 col-xl-7">
+        <span class="subtitle">{title}</span>
+        <h1 class="title wow fadeInDown" data-wow-delay="1s">{subtitle}</h1>
+        <p class="wow fadeInDown" data-wow-delay="1s">
+          {summary}
+        </p>
+        <div class="row justify-content-start col-lg-10 g-4 mt-4 pt-lg-3 btns">
+          {
+            btn && (
+              <a
+                href={toLink(btn?.link)}
+                class="main-btn bordered-btn arrow-btn wow fadeInUp col-auto btn-1"
+                data-wow-delay=".5s"
+              >
+                {btn?.label}
+              </a>
+            )
+          }
+          {
+            btn2 && (
+              <a
+                href={toLink(btn2?.link)}
+                class="main-btn bordered-btn btn-heading-hover arrow-btn col-auto bg-white btn-2"
+              >
+                {btn2?.label}
+              </a>
+            )
+          }
+        </div>
+      </div>
     </div>
-   </div>
   </div>
- </div>
- <div class="words pb-40">
-  <div class="words-track" id="marqueeTrack">
-    {wordsCompleted?.map((word, index) => (
-      <span class={`word wow fadeInUp`} data-wow-delay={`${index * 0.2}s`}>{word}</span>
-    ))}
+  <div class="words pb-40">
+    <div class="words-track" id="marqueeTrack">
+      {
+        wordsCompleted?.map((word, index) => (
+          <span class={`word wow fadeInUp`} data-wow-delay={`${index * 0.2}s`}>
+            {word}
+          </span>
+        ))
+      }
+    </div>
   </div>
- </div>
 </section>
 
 <script defer>
@@ -74,14 +80,14 @@ const wordsCompleted = wordsLength > 10 ? words : [...words, ...words, ...words]
   function buildMarquee() {
     track.innerHTML = "";
 
-    originalItems.forEach(item => {
+    originalItems.forEach((item) => {
       track.appendChild(item.cloneNode(true));
     });
 
     const containerWidth = track.parentElement.offsetWidth;
 
     while (track.scrollWidth < containerWidth * 2) {
-      originalItems.forEach(item => {
+      originalItems.forEach((item) => {
         track.appendChild(item.cloneNode(true));
       });
     }
